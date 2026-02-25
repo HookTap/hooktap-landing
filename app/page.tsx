@@ -527,25 +527,25 @@ export default function Home() {
                 Workflow einfügen und in Echtzeit benachrichtigt werden.{" "}
               </p>{" "}
             </div>{" "}
-            <div className="mt-8 grid gap-4 md:grid-cols-[1fr_1.1fr]">
+            <div className="mt-8 grid gap-3 md:grid-cols-[1fr_1.1fr] md:gap-4">
               {" "}
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div className="min-w-0 rounded-2xl border border-white/10 bg-black/20 p-4 md:p-5">
                 {" "}
-                <p className="text-sm uppercase tracking-[0.14em] text-white/50">
+                <p className="text-xs uppercase tracking-[0.14em] text-white/50 md:text-sm">
                   Deine persönliche URL
                 </p>{" "}
-                <p className="mt-3 rounded-xl border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm text-white/85">
+                <p className="mt-3 break-all rounded-xl border border-white/15 bg-black/35 px-3 py-2 font-mono text-xs text-white/85 md:text-sm">
                   {" "}
                   https://hooks.hooktap.de/webhook/deine-id{" "}
                 </p>{" "}
-                <p className="mt-3 text-sm text-white/60">
+                <p className="mt-3 text-xs text-white/60 md:text-sm">
                   Keine Registrierung, kein Passwort, keine zusätzliche
                   Einrichtung.
                 </p>{" "}
               </div>{" "}
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div className="min-w-0 rounded-2xl border border-white/10 bg-black/20 p-4 md:p-5">
                 {" "}
-                <pre className="overflow-x-auto whitespace-pre-wrap break-all rounded-xl bg-black/50 p-4 text-xs leading-relaxed text-slate-100">
+                <pre className="min-w-0 overflow-x-auto whitespace-pre-wrap break-words rounded-xl bg-black/50 p-3 text-[11px] leading-relaxed text-slate-100 md:p-4 md:text-xs">
                   {" "}
                   <code>{`curl -X POST https://hooks.hooktap.de/webhook/deine-id \\
   -H "Content-Type: application/json" \\
@@ -581,7 +581,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={sectionViewport}
                   transition={{ delay: idx * 0.08, duration: 0.4 }}
-                  className="rounded-2xl p-5"
+                  className="rounded-2xl p-4 md:p-5"
                 >
                   {" "}
                   <div className="mb-3 flex items-center justify-between">
@@ -594,8 +594,8 @@ export default function Home() {
                       <item.icon className="h-4 w-4" />{" "}
                     </span>{" "}
                   </div>{" "}
-                  <h3 className="text-xl font-semibold">{item.title}</h3>{" "}
-                  <p className="mt-2 text-sm leading-relaxed text-white/62">
+                  <h3 className="text-lg font-semibold md:text-xl">{item.title}</h3>{" "}
+                  <p className="mt-2 text-xs leading-relaxed text-white/62 md:text-sm">
                     {item.text}
                   </p>{" "}
                 </motion.article>
