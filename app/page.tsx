@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -228,23 +229,17 @@ const useCases = [
 ];
 
 const compatibilityItems = [
-  { label: "GitHub Actions", icon: CodeIcon },
-  { label: "GitLab CI", icon: CodeIcon },
-  { label: "Bitbucket Pipelines", icon: CodeIcon },
-  { label: "Zapier", icon: FlowIcon },
-  { label: "Make", icon: FlowIcon },
-  { label: "n8n", icon: FlowIcon },
-  { label: "Home Assistant", icon: GridIcon },
-  { label: "Grafana", icon: BellIcon },
-  { label: "Uptime Kuma", icon: BellIcon },
-  { label: "PagerDuty", icon: BellIcon },
-  { label: "Datadog", icon: BellIcon },
-  { label: "cURL", icon: CodeIcon },
-  { label: "Python", icon: CodeIcon },
-  { label: "Node.js", icon: CodeIcon },
-  { label: "PHP", icon: CodeIcon },
-  { label: "Ruby", icon: CodeIcon },
-  { label: "...und alles andere", icon: LayersIcon },
+  { label: "GitHub Actions", logo: "/icons/github.svg" },
+  { label: "GitLab CI", logo: "/icons/gitlab.svg" },
+  { label: "Bitbucket Pipelines", logo: "/icons/bitbucket.svg" },
+  { label: "Zapier", logo: "/icons/zapier.svg" },
+  { label: "Make", logo: "/icons/make.svg" },
+  { label: "n8n", logo: "/icons/n8n.svg" },
+  { label: "Home Assistant", logo: "/icons/homeassistant.svg" },
+  { label: "Grafana", logo: "/icons/grafanalabs.svg" },
+  { label: "PagerDuty", logo: "/icons/pagerduty.svg" },
+  { label: "cURL", logo: "/icons/curl.svg" },
+  { label: "Node.js", logo: "/icons/nodejs.svg" },
 ];
 
 const faq = [
@@ -556,15 +551,12 @@ export default function Home() {
         <Section id="compatibility" className="mt-14 md:mt-20">
           <h2 className="text-3xl font-bold md:text-4xl">Funktioniert mit allem, das HTTP kann.</h2>
           <div className="mt-6 flex flex-wrap gap-2">
-            {compatibilityItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <span key={item.label} className="badge badge-lg gap-2 border-base-300 bg-base-100 px-4 py-4 font-medium">
-                  <Icon className="h-4 w-4 text-primary" />
-                  {item.label}
-                </span>
-              );
-            })}
+            {compatibilityItems.map((item) => (
+              <span key={item.label} className="badge badge-lg gap-2 border-base-300 bg-base-100 px-4 py-4 font-medium">
+                <Image src={item.logo} alt={`${item.label} Logo`} width={16} height={16} className="h-4 w-4 object-contain" />
+                {item.label}
+              </span>
+            ))}
           </div>
         </Section>
 
