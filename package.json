@@ -12,16 +12,20 @@
     "daisyui": "^5.5.19",
     "framer-motion": "^12.34.3",
     "next": "16.1.6",
+    "postprocessing": "^6.38.3",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "three": "^0.183.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.183.1",
     "eslint": "^10.0.2",
     "eslint-config-next": "^0.2.4",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
