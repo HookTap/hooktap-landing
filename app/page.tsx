@@ -18,52 +18,178 @@ const navItems = [
   { href: "#faq", label: "FAQ" },
 ];
 
+type IconProps = { className?: string };
+
+function CodeIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M8 9 4 12l4 3" />
+      <path d="m16 9 4 3-4 3" />
+      <path d="m14 5-4 14" />
+    </svg>
+  );
+}
+
+function ServerIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="3" y="4" width="18" height="7" rx="2" />
+      <rect x="3" y="13" width="18" height="7" rx="2" />
+      <path d="M7 8h.01M7 17h.01M11 8h6M11 17h6" />
+    </svg>
+  );
+}
+
+function BellIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M6 9a6 6 0 1 1 12 0v4l1.5 2.5H4.5L6 13V9Z" />
+      <path d="M10 18a2 2 0 0 0 4 0" />
+    </svg>
+  );
+}
+
+function ListIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M9 7h10M9 12h10M9 17h10" />
+      <path d="M5 7h.01M5 12h.01M5 17h.01" />
+    </svg>
+  );
+}
+
+function EyeIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" />
+      <circle cx="12" cy="12" r="2.5" />
+    </svg>
+  );
+}
+
+function WifiIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M2 9a16 16 0 0 1 20 0" />
+      <path d="M5 12.5a11 11 0 0 1 14 0" />
+      <path d="M8.8 16a6 6 0 0 1 6.4 0" />
+      <circle cx="12" cy="19" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function GridIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="4" y="4" width="7" height="7" rx="1.5" />
+      <rect x="13" y="4" width="7" height="7" rx="1.5" />
+      <rect x="4" y="13" width="7" height="7" rx="1.5" />
+      <rect x="13" y="13" width="7" height="7" rx="1.5" />
+    </svg>
+  );
+}
+
+function SparkIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" />
+      <path d="m18.5 14 1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1 1-2.5Z" />
+    </svg>
+  );
+}
+
+function LockIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="4" y="10" width="16" height="10" rx="2" />
+      <path d="M8 10V7a4 4 0 1 1 8 0v3" />
+    </svg>
+  );
+}
+
+function LayersIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="m12 4 8 4-8 4-8-4 8-4Z" />
+      <path d="m4 12 8 4 8-4" />
+      <path d="m4 16 8 4 8-4" />
+    </svg>
+  );
+}
+
+function FlowIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <circle cx="6" cy="6" r="2" />
+      <circle cx="18" cy="6" r="2" />
+      <circle cx="12" cy="18" r="2" />
+      <path d="M8 6h8M7.5 7.5 10.5 16M16.5 7.5 13.5 16" />
+    </svg>
+  );
+}
+
+const socialProofItems = [
+  { label: "Entwickler", icon: CodeIcon },
+  { label: "DevOps-Teams", icon: ServerIcon },
+  { label: "Maker", icon: SparkIcon },
+  { label: "Automatisierer", icon: FlowIcon },
+];
+
 const features = [
   {
     title: "Push-Notifications in Echtzeit",
     body: "Jeder eingehende Webhook landet innerhalb von Sekunden als Notification auf deinem Sperrbildschirm.",
     pro: false,
+    icon: BellIcon,
   },
   {
     title: "Event-Feed",
     body: "Alle empfangenen Events chronologisch im Überblick – inklusive Payload, Zeitstempel und Lesestatus.",
     pro: false,
+    icon: ListIcon,
   },
   {
     title: "Payload-Vorschau",
     body: "Titel, Body und Typ sofort sichtbar. Alle Felder bleiben im Feed vollständig einsehbar.",
     pro: false,
+    icon: EyeIcon,
   },
   {
     title: "Offline-Hinweis",
     body: "Die App zeigt dir transparent an, wenn gerade keine neuen Events ankommen können.",
     pro: false,
+    icon: WifiIcon,
   },
   {
     title: "Homescreen-Widget",
     body: "Das letzte Event direkt am Homescreen – in Echtzeit aktualisiert.",
     pro: true,
+    icon: GridIcon,
   },
   {
     title: "Live Activity & Dynamic Island",
     body: "Aktive Events sichtbar auf Sperrbildschirm und Dynamic Island, ideal für laufende Prozesse.",
     pro: true,
+    icon: SparkIcon,
   },
   {
     title: "Sperrbildschirm-Widget",
     body: "Das neueste Event immer sichtbar, ohne das iPhone zu entsperren.",
     pro: true,
+    icon: LockIcon,
   },
   {
     title: "Bis zu 3 Webhooks",
     body: "Eigene Namen, Icons und Farben pro Webhook inklusive Filterung im Feed.",
     pro: true,
+    icon: LayersIcon,
   },
 ];
 
 const useCases = [
   {
     title: "Entwickler & DevOps",
+    icon: ServerIcon,
     items: [
       "CI/CD-Pipeline fertig -> Notification",
       "Server-Fehler oder Down-Alert -> Notification",
@@ -73,6 +199,7 @@ const useCases = [
   },
   {
     title: "Maker & No-Coders",
+    icon: SparkIcon,
     items: [
       "Zapier-Automation abgeschlossen -> Notification",
       "Neue Formular-Einreichung -> Notification",
@@ -82,6 +209,7 @@ const useCases = [
   },
   {
     title: "Monitoring & Alerts",
+    icon: BellIcon,
     items: [
       "Uptime-Monitor meldet Ausfall -> sofortige Notification",
       "Grafana-Alert ausgelöst -> Notification auf dem iPhone",
@@ -90,12 +218,33 @@ const useCases = [
   },
   {
     title: "Persönliche Automatisierungen",
+    icon: FlowIcon,
     items: [
       "Paket versendet (Tracking-Webhook) -> Notification",
       "Smart-Home-Event ausgelöst -> Notification",
       "Python-Skript abgeschlossen -> Notification",
     ],
   },
+];
+
+const compatibilityItems = [
+  { label: "GitHub Actions", icon: CodeIcon },
+  { label: "GitLab CI", icon: CodeIcon },
+  { label: "Bitbucket Pipelines", icon: CodeIcon },
+  { label: "Zapier", icon: FlowIcon },
+  { label: "Make", icon: FlowIcon },
+  { label: "n8n", icon: FlowIcon },
+  { label: "Home Assistant", icon: GridIcon },
+  { label: "Grafana", icon: BellIcon },
+  { label: "Uptime Kuma", icon: BellIcon },
+  { label: "PagerDuty", icon: BellIcon },
+  { label: "Datadog", icon: BellIcon },
+  { label: "cURL", icon: CodeIcon },
+  { label: "Python", icon: CodeIcon },
+  { label: "Node.js", icon: CodeIcon },
+  { label: "PHP", icon: CodeIcon },
+  { label: "Ruby", icon: CodeIcon },
+  { label: "...und alles andere", icon: LayersIcon },
 ];
 
 const faq = [
@@ -166,15 +315,15 @@ export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-45" />
-      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-red-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute -right-28 top-64 -z-10 h-80 w-80 rounded-full bg-orange-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-28 top-64 -z-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
 
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-10">
         <motion.header
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="navbar sticky top-4 z-50 rounded-full border border-red-500/25 bg-base-100/80 px-3 shadow-xl backdrop-blur-xl"
+          className="navbar sticky top-2 z-50 rounded-full border border-base-300/40 bg-base-100/85 px-3 shadow-xl backdrop-blur-xl"
         >
           <div className="navbar-start">
             <a href="#overview" className="brand-display rounded-full px-3 py-2 text-xl font-bold tracking-tight">
@@ -214,7 +363,7 @@ export default function Home() {
         <Section id="overview" className="pt-16 md:pt-24">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="mb-4 inline-flex items-center rounded-full border border-red-500/40 bg-red-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-red-200">
+              <p className="mb-4 inline-flex items-center rounded-full border border-base-300/60 bg-base-200/40 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
                 HookTap – Realtime iOS Webhooks
               </p>
               <h1 className="text-4xl font-bold leading-tight md:text-6xl">
@@ -223,11 +372,11 @@ export default function Home() {
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-base-content/75">
                 Sende eine HTTP-POST-Anfrage an deine persönliche URL – HookTap leitet sie sofort als Push-Notification auf dein iPhone weiter. Kein Server. Kein Code. Keine Wartezeit.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#cta" className="btn btn-primary btn-lg rounded-full">
+              <div className="mt-8 flex flex-nowrap items-center gap-3">
+                <a href="#cta" className="btn btn-primary btn-sm rounded-full whitespace-nowrap sm:btn-lg">
                   Kostenlos starten – App laden
                 </a>
-                <a href="#how" className="btn btn-outline btn-lg rounded-full">
+                <a href="#how" className="btn btn-outline btn-sm rounded-full whitespace-nowrap sm:btn-lg">
                   Mehr erfahren
                 </a>
               </div>
@@ -262,7 +411,20 @@ export default function Home() {
 
         <Section className="mt-12">
           <div className="glass-card rounded-2xl px-6 py-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-base-content/60">Für Entwickler · DevOps-Teams · Maker · Automatisierer</p>
+            <div className="flex flex-wrap gap-2">
+              {socialProofItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <span
+                    key={item.label}
+                    className="inline-flex items-center gap-2 rounded-full border border-base-300/70 bg-base-100/70 px-3 py-1.5 text-sm font-medium"
+                  >
+                    <Icon className="h-4 w-4 text-primary" />
+                    {item.label}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </Section>
 
@@ -280,9 +442,9 @@ export default function Home() {
                 <p className="text-sm text-base-content/60">Vorher</p>
                 <p className="mt-2 font-medium">Terminal offen halten, Browser-Tab reloaden, Ergebnis manuell prüfen.</p>
               </div>
-              <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-4">
-                <p className="text-sm text-red-200">Nachher mit HookTap</p>
-                <p className="mt-2 font-medium text-red-100">Ein Webhook. Eine Notification. Sofort Bescheid wissen.</p>
+              <div className="rounded-2xl border border-primary/40 bg-base-200/50 p-4">
+                <p className="text-sm text-primary">Nachher mit HookTap</p>
+                <p className="mt-2 font-medium text-base-content">Ein Webhook. Eine Notification. Sofort Bescheid wissen.</p>
               </div>
             </div>
           </div>
@@ -345,6 +507,9 @@ export default function Home() {
                 transition={{ delay: idx * 0.05, duration: 0.4 }}
                 className="glass-card rounded-2xl p-5"
               >
+                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
+                  <feature.icon className="h-4 w-4" />
+                </div>
                 <div className="mb-3 flex items-center justify-between gap-2">
                   <h3 className="font-semibold">{feature.title}</h3>
                   {feature.pro ? <span className="badge badge-warning badge-sm">Pro</span> : <span className="badge badge-ghost badge-sm">Free</span>}
@@ -368,7 +533,12 @@ export default function Home() {
                 className="card border border-base-300 bg-base-100/90 shadow"
               >
                 <div className="card-body">
-                  <h3 className="card-title">{group.title}</h3>
+                  <h3 className="card-title flex items-center gap-2">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
+                      <group.icon className="h-4 w-4" />
+                    </span>
+                    {group.title}
+                  </h3>
                   <ul className="space-y-2 text-sm text-base-content/80">
                     {group.items.map((item) => (
                       <li key={item} className="flex gap-2">
@@ -386,29 +556,15 @@ export default function Home() {
         <Section id="compatibility" className="mt-14 md:mt-20">
           <h2 className="text-3xl font-bold md:text-4xl">Funktioniert mit allem, das HTTP kann.</h2>
           <div className="mt-6 flex flex-wrap gap-2">
-            {[
-              "GitHub Actions",
-              "GitLab CI",
-              "Bitbucket Pipelines",
-              "Zapier",
-              "Make",
-              "n8n",
-              "Home Assistant",
-              "Grafana",
-              "Uptime Kuma",
-              "PagerDuty",
-              "Datadog",
-              "cURL",
-              "Python",
-              "Node.js",
-              "PHP",
-              "Ruby",
-              "...und alles andere",
-            ].map((item) => (
-              <span key={item} className="badge badge-lg border-base-300 bg-base-100 px-4 py-4 font-medium">
-                {item}
-              </span>
-            ))}
+            {compatibilityItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <span key={item.label} className="badge badge-lg gap-2 border-base-300 bg-base-100 px-4 py-4 font-medium">
+                  <Icon className="h-4 w-4 text-primary" />
+                  {item.label}
+                </span>
+              );
+            })}
           </div>
         </Section>
 

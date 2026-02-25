@@ -27,9 +27,9 @@ body {
 body {
   font-family: var(--font-body);
   background:
-    radial-gradient(circle at 15% 0%, color-mix(in oklab, #ef4444 18%, transparent), transparent 34%),
-    radial-gradient(circle at 85% 12%, color-mix(in oklab, #b91c1c 14%, transparent), transparent 36%),
-    linear-gradient(180deg, #0d0d11 0%, #131318 35%, #141116 65%, #0d0c10 100%);
+    radial-gradient(circle at 12% -8%, rgba(255, 255, 255, 0.05), transparent 32%),
+    radial-gradient(circle at 88% 4%, rgba(255, 255, 255, 0.04), transparent 36%),
+    linear-gradient(180deg, #050505 0%, #080808 40%, #0a0a0a 100%);
   color-scheme: dark;
 }
 
@@ -42,11 +42,11 @@ h3,
 }
 
 .glass-card {
-  background: color-mix(in oklab, #1a1517 86%, #ef4444 14%);
-  border: 1px solid color-mix(in oklab, #ef4444 30%, #31262a 70%);
+  background: color-mix(in oklab, #0f0f10 94%, #ffffff 6%);
+  border: 1px solid color-mix(in oklab, #ffffff 10%, #0f0f10 90%);
   box-shadow:
-    0 30px 70px -45px rgba(0, 0, 0, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 30px 70px -45px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
   border-radius: 1.5rem;
 }
 
@@ -58,7 +58,7 @@ h3,
 }
 
 .dot-grid {
-  background-image: radial-gradient(color-mix(in oklab, #ef4444 35%, transparent) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 
