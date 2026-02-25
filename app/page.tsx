@@ -8,6 +8,15 @@ const fadeUp = {
 };
 
 const sectionViewport = { once: true, amount: 0.2 };
+const navItems = [
+  { href: "#overview", label: "Überblick" },
+  { href: "#how", label: "Ablauf" },
+  { href: "#features", label: "Features" },
+  { href: "#use-cases", label: "Use Cases" },
+  { href: "#compatibility", label: "Kompatibilität" },
+  { href: "#pricing", label: "Preise" },
+  { href: "#faq", label: "FAQ" },
+];
 
 const features = [
   {
@@ -157,33 +166,55 @@ export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-45" />
-      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-sky-300/25 blur-3xl" />
-      <div className="pointer-events-none absolute -right-28 top-64 -z-10 h-80 w-80 rounded-full bg-emerald-300/30 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-red-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -right-28 top-64 -z-10 h-80 w-80 rounded-full bg-orange-500/20 blur-3xl" />
 
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-10">
         <motion.header
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="navbar rounded-2xl border border-base-300/70 bg-base-100/85 px-4 shadow-lg backdrop-blur"
+          className="navbar sticky top-4 z-50 rounded-full border border-red-500/25 bg-base-100/80 px-3 shadow-xl backdrop-blur-xl"
         >
           <div className="navbar-start">
-            <div className="brand-display text-xl font-bold tracking-tight">HookTap</div>
-          </div>
-          <div className="navbar-end gap-2">
-            <a href="#pricing" className="btn btn-ghost btn-sm">
-              Preise
+            <a href="#overview" className="brand-display rounded-full px-3 py-2 text-xl font-bold tracking-tight">
+              HookTap
             </a>
-            <a href="#cta" className="btn btn-primary btn-sm">
+          </div>
+
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal gap-1 rounded-full bg-base-200/60 p-1">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="rounded-full text-sm">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="navbar-end gap-2">
+            <a href="#cta" className="btn btn-primary btn-sm rounded-full">
               App laden
             </a>
+            <details className="dropdown dropdown-end lg:hidden">
+              <summary className="btn btn-ghost btn-sm rounded-full">Menü</summary>
+              <ul className="menu dropdown-content z-[60] mt-3 w-56 rounded-2xl border border-base-300 bg-base-100 p-2 shadow-2xl">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </details>
           </div>
         </motion.header>
 
-        <Section className="pt-16 md:pt-24">
+        <Section id="overview" className="pt-16 md:pt-24">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="mb-4 inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">
+              <p className="mb-4 inline-flex items-center rounded-full border border-red-500/40 bg-red-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-red-200">
                 HookTap – Realtime iOS Webhooks
               </p>
               <h1 className="text-4xl font-bold leading-tight md:text-6xl">
@@ -193,10 +224,10 @@ export default function Home() {
                 Sende eine HTTP-POST-Anfrage an deine persönliche URL – HookTap leitet sie sofort als Push-Notification auf dein iPhone weiter. Kein Server. Kein Code. Keine Wartezeit.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#cta" className="btn btn-primary btn-lg">
+                <a href="#cta" className="btn btn-primary btn-lg rounded-full">
                   Kostenlos starten – App laden
                 </a>
-                <a href="#how" className="btn btn-outline btn-lg">
+                <a href="#how" className="btn btn-outline btn-lg rounded-full">
                   Mehr erfahren
                 </a>
               </div>
@@ -221,8 +252,8 @@ export default function Home() {
                 </pre>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="badge badge-info badge-outline">No setup</span>
-                <span className="badge badge-success badge-outline">Realtime push</span>
+                <span className="badge badge-primary badge-outline">No setup</span>
+                <span className="badge badge-primary badge-outline">Realtime push</span>
                 <span className="badge badge-outline">iPhone-first</span>
               </div>
             </motion.div>
@@ -249,9 +280,9 @@ export default function Home() {
                 <p className="text-sm text-base-content/60">Vorher</p>
                 <p className="mt-2 font-medium">Terminal offen halten, Browser-Tab reloaden, Ergebnis manuell prüfen.</p>
               </div>
-              <div className="rounded-2xl border border-emerald-300/80 bg-emerald-50 p-4">
-                <p className="text-sm text-emerald-700">Nachher mit HookTap</p>
-                <p className="mt-2 font-medium text-emerald-900">Ein Webhook. Eine Notification. Sofort Bescheid wissen.</p>
+              <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-4">
+                <p className="text-sm text-red-200">Nachher mit HookTap</p>
+                <p className="mt-2 font-medium text-red-100">Ein Webhook. Eine Notification. Sofort Bescheid wissen.</p>
               </div>
             </div>
           </div>
@@ -302,7 +333,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section className="mt-14 md:mt-20">
+        <Section id="features" className="mt-14 md:mt-20">
           <h2 className="text-3xl font-bold md:text-4xl">Alles, was du brauchst. Nichts, was du nicht brauchst.</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, idx) => (
@@ -324,7 +355,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section className="mt-14 md:mt-20">
+        <Section id="use-cases" className="mt-14 md:mt-20">
           <h2 className="text-3xl font-bold md:text-4xl">Wer nutzt HookTap – und wofür?</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {useCases.map((group, idx) => (
@@ -352,7 +383,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section className="mt-14 md:mt-20">
+        <Section id="compatibility" className="mt-14 md:mt-20">
           <h2 className="text-3xl font-bold md:text-4xl">Funktioniert mit allem, das HTTP kann.</h2>
           <div className="mt-6 flex flex-wrap gap-2">
             {[
@@ -447,11 +478,11 @@ export default function Home() {
           </p>
         </Section>
 
-        <Section className="mt-14 md:mt-20">
+        <Section id="faq" className="mt-14 md:mt-20">
           <h2 className="text-3xl font-bold md:text-4xl">Häufige Fragen</h2>
           <div className="mt-7 space-y-3">
             {faq.map((item) => (
-              <div key={item.q} className="collapse-arrow collapse border border-base-300 bg-base-100">
+              <div key={item.q} className="collapse-arrow collapse rounded-2xl border border-base-300 bg-base-100">
                 <input type="radio" name="faq-accordion" defaultChecked={item.q === faq[0].q} />
                 <div className="collapse-title text-base font-semibold">{item.q}</div>
                 <div className="collapse-content text-sm text-base-content/75">
@@ -463,7 +494,7 @@ export default function Home() {
         </Section>
 
         <Section id="cta" className="mt-14 pb-20 md:mt-20">
-          <div className="glass-card rounded-3xl px-7 py-10 text-center md:px-14">
+          <div className="glass-card rounded-[2rem] px-7 py-10 text-center md:px-14">
             <h2 className="text-3xl font-bold md:text-5xl">Starte jetzt. Kostenlos.</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base-content/75">
               Deine persönliche Webhook-URL wartet – in weniger als einer Minute einsatzbereit.
