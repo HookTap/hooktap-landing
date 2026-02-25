@@ -1,3 +1,500 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0 },
+};
+
+const sectionViewport = { once: true, amount: 0.2 };
+
+const features = [
+  {
+    title: "Push-Notifications in Echtzeit",
+    body: "Jeder eingehende Webhook landet innerhalb von Sekunden als Notification auf deinem Sperrbildschirm.",
+    pro: false,
+  },
+  {
+    title: "Event-Feed",
+    body: "Alle empfangenen Events chronologisch im Überblick – inklusive Payload, Zeitstempel und Lesestatus.",
+    pro: false,
+  },
+  {
+    title: "Payload-Vorschau",
+    body: "Titel, Body und Typ sofort sichtbar. Alle Felder bleiben im Feed vollständig einsehbar.",
+    pro: false,
+  },
+  {
+    title: "Offline-Hinweis",
+    body: "Die App zeigt dir transparent an, wenn gerade keine neuen Events ankommen können.",
+    pro: false,
+  },
+  {
+    title: "Homescreen-Widget",
+    body: "Das letzte Event direkt am Homescreen – in Echtzeit aktualisiert.",
+    pro: true,
+  },
+  {
+    title: "Live Activity & Dynamic Island",
+    body: "Aktive Events sichtbar auf Sperrbildschirm und Dynamic Island, ideal für laufende Prozesse.",
+    pro: true,
+  },
+  {
+    title: "Sperrbildschirm-Widget",
+    body: "Das neueste Event immer sichtbar, ohne das iPhone zu entsperren.",
+    pro: true,
+  },
+  {
+    title: "Bis zu 3 Webhooks",
+    body: "Eigene Namen, Icons und Farben pro Webhook inklusive Filterung im Feed.",
+    pro: true,
+  },
+];
+
+const useCases = [
+  {
+    title: "Entwickler & DevOps",
+    items: [
+      "CI/CD-Pipeline fertig -> Notification",
+      "Server-Fehler oder Down-Alert -> Notification",
+      "Deployment auf Production abgeschlossen -> Notification",
+      "Cronjob erfolgreich durchgelaufen -> Notification",
+    ],
+  },
+  {
+    title: "Maker & No-Coders",
+    items: [
+      "Zapier-Automation abgeschlossen -> Notification",
+      "Neue Formular-Einreichung -> Notification",
+      "Neuer Stripe-Payment (via n8n) -> Notification",
+      "Make-Szenario ausgeführt -> Notification",
+    ],
+  },
+  {
+    title: "Monitoring & Alerts",
+    items: [
+      "Uptime-Monitor meldet Ausfall -> sofortige Notification",
+      "Grafana-Alert ausgelöst -> Notification auf dem iPhone",
+      "Eigenes Monitoring ohne externen Dienst",
+    ],
+  },
+  {
+    title: "Persönliche Automatisierungen",
+    items: [
+      "Paket versendet (Tracking-Webhook) -> Notification",
+      "Smart-Home-Event ausgelöst -> Notification",
+      "Python-Skript abgeschlossen -> Notification",
+    ],
+  },
+];
+
+const faq = [
+  {
+    q: "Was ist ein Webhook?",
+    a: "Ein Webhook ist eine automatisierte HTTP-Anfrage bei einem Ereignis. HookTap empfängt sie und leitet sie als Push-Notification auf dein iPhone weiter.",
+  },
+  {
+    q: "Brauche ich Programmierkenntnisse?",
+    a: "Nein. Bei Zapier, Make, n8n, GitHub und ähnlichen Tools reicht das Eintragen deiner HookTap-URL. Für cURL-Skripte hilft minimales Wissen.",
+  },
+  {
+    q: "Was bedeutet 'keine Registrierung'?",
+    a: "Beim ersten Start wird automatisch ein anonymer Account erstellt. Du bekommst direkt deine persönliche URL – ohne E-Mail oder Passwort.",
+  },
+  {
+    q: "Was passiert mit meinen Daten?",
+    a: "Events werden in Firebase gespeichert und nur auf deinem Gerät angezeigt. Die URL ist nicht erratbar. Konto und Daten lassen sich jederzeit löschen.",
+  },
+  {
+    q: "Wie viele Events kann ich empfangen?",
+    a: "Im Free-Plan sind die letzten 20 Events sichtbar, im Pro-Plan 500. Eingehende Webhooks sind in beiden Plänen unbegrenzt.",
+  },
+  {
+    q: "Was ist der Unterschied zwischen den Pro-Plänen?",
+    a: "Der Funktionsumfang ist identisch: monatlich ist flexibel kündbar, Lifetime ist einmalig bezahlt ohne laufendes Abo.",
+  },
+  {
+    q: "Kann ich mehrere Geräte nutzen?",
+    a: "Aktuell ist ein anonymer Account auf ein Gerät ausgelegt. Webhooks gehen an das iPhone, auf dem HookTap aktiv ist.",
+  },
+  {
+    q: "Welche Payload-Felder werden unterstützt?",
+    a: "HookTap erkennt title, body und type. Zusätzlich werden alle gesendeten JSON-Felder im Event-Feed gespeichert und angezeigt.",
+  },
+  {
+    q: "Kann ich Pro-Käufe wiederherstellen?",
+    a: "Ja, über 'Käufe wiederherstellen' in den App-Einstellungen kannst du den Status auf einem neuen Gerät reaktivieren.",
+  },
+  {
+    q: "Funktioniert HookTap ohne Internet?",
+    a: "Neue Events kommen nur online an. Bereits empfangene Events bleiben lokal in der App abrufbar.",
+  },
+];
+
+function Section({
+  children,
+  className = "",
+  ...props
+}: React.PropsWithChildren<{ className?: string }> &
+  Omit<React.ComponentProps<typeof motion.section>, "children" | "className">) {
+  return (
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      viewport={sectionViewport}
+      variants={fadeUp}
+      transition={{ duration: 0.55, ease: "easeOut" }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </motion.section>
+  );
+}
+
 export default function Home() {
-  return <main />;
+  return (
+    <main className="relative overflow-x-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-45" />
+      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-sky-300/25 blur-3xl" />
+      <div className="pointer-events-none absolute -right-28 top-64 -z-10 h-80 w-80 rounded-full bg-emerald-300/30 blur-3xl" />
+
+      <div className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-10">
+        <motion.header
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="navbar rounded-2xl border border-base-300/70 bg-base-100/85 px-4 shadow-lg backdrop-blur"
+        >
+          <div className="navbar-start">
+            <div className="brand-display text-xl font-bold tracking-tight">HookTap</div>
+          </div>
+          <div className="navbar-end gap-2">
+            <a href="#pricing" className="btn btn-ghost btn-sm">
+              Preise
+            </a>
+            <a href="#cta" className="btn btn-primary btn-sm">
+              App laden
+            </a>
+          </div>
+        </motion.header>
+
+        <Section className="pt-16 md:pt-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="mb-4 inline-flex items-center rounded-full border border-sky-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700">
+                HookTap – Realtime iOS Webhooks
+              </p>
+              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                Dein iPhone als <span className="grad-text">Webhook-Empfänger</span>. In Echtzeit.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-base-content/75">
+                Sende eine HTTP-POST-Anfrage an deine persönliche URL – HookTap leitet sie sofort als Push-Notification auf dein iPhone weiter. Kein Server. Kein Code. Keine Wartezeit.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#cta" className="btn btn-primary btn-lg">
+                  Kostenlos starten – App laden
+                </a>
+                <a href="#how" className="btn btn-outline btn-lg">
+                  Mehr erfahren
+                </a>
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={sectionViewport}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="glass-card rounded-3xl p-5"
+            >
+              <div className="mockup-code text-sm">
+                <pre data-prefix="$">
+                  <code>curl -X POST https://hooks.hooktap.de/webhook/deine-id</code>
+                </pre>
+                <pre data-prefix=">">
+                  <code>{'{"title":"Deploy fertig","body":"Production läuft"}'}</code>
+                </pre>
+                <pre data-prefix="<">
+                  <code>iPhone: Deploy fertig ✅</code>
+                </pre>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="badge badge-info badge-outline">No setup</span>
+                <span className="badge badge-success badge-outline">Realtime push</span>
+                <span className="badge badge-outline">iPhone-first</span>
+              </div>
+            </motion.div>
+          </div>
+        </Section>
+
+        <Section className="mt-12">
+          <div className="glass-card rounded-2xl px-6 py-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-base-content/60">Für Entwickler · DevOps-Teams · Maker · Automatisierer</p>
+          </div>
+        </Section>
+
+        <Section className="mt-14 md:mt-20">
+          <div className="grid gap-8 rounded-3xl border border-base-300/70 bg-base-100/80 p-8 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold md:text-4xl">Wann hast du zuletzt auf ein Terminal-Fenster gestarrt und gewartet?</h2>
+              <p className="mt-5 text-base-content/75">
+                Du deployest, du triggerst Jobs, deine CI/CD-Pipeline läuft durch – und du hast keine Ahnung, wann etwas fertig ist. Du refreshst. Du wartest. Du schaust noch mal nach.
+              </p>
+              <p className="mt-3 text-lg font-semibold text-primary">Mit HookTap bekommst du einfach eine Benachrichtigung. Fertig.</p>
+            </div>
+            <div className="grid gap-4">
+              <div className="rounded-2xl border border-base-300 bg-base-100 p-4">
+                <p className="text-sm text-base-content/60">Vorher</p>
+                <p className="mt-2 font-medium">Terminal offen halten, Browser-Tab reloaden, Ergebnis manuell prüfen.</p>
+              </div>
+              <div className="rounded-2xl border border-emerald-300/80 bg-emerald-50 p-4">
+                <p className="text-sm text-emerald-700">Nachher mit HookTap</p>
+                <p className="mt-2 font-medium text-emerald-900">Ein Webhook. Eine Notification. Sofort Bescheid wissen.</p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="how" className="mt-14 md:mt-20">
+          <h2 className="text-3xl font-bold md:text-4xl">So startest du in unter 2 Minuten</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                step: "Schritt 1",
+                title: "App laden & URL erhalten",
+                text: "Lade HookTap aus dem App Store und du bekommst sofort deine persönliche Webhook-URL. Keine Registrierung, kein Passwort.",
+                extra: "https://hooks.hooktap.de/webhook/deine-id",
+              },
+              {
+                step: "Schritt 2",
+                title: "URL einbinden",
+                text: "Kopiere die URL in jeden Service oder jedes Skript mit HTTP-POST: GitHub Actions, Zapier, n8n oder cURL.",
+                extra:
+                  'curl -X POST https://hooks.hooktap.de/webhook/deine-id \\\n  -H "Content-Type: application/json" \\\n  -d "{\\"title\\":\\"Deploy fertig\\",\\"body\\":\\"Production läuft ✅\\"}"',
+              },
+              {
+                step: "Schritt 3",
+                title: "Notification erhalten",
+                text: "Dein iPhone vibriert, die Notification erscheint und du weißt sofort Bescheid – egal wo du bist.",
+                extra: "In Sekunden am Sperrbildschirm.",
+              },
+            ].map((item, idx) => (
+              <motion.article
+                key={item.step}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={sectionViewport}
+                transition={{ delay: idx * 0.1, duration: 0.45 }}
+                className="card border border-base-300 bg-base-100 shadow-xl"
+              >
+                <div className="card-body">
+                  <span className="badge badge-primary badge-outline w-fit">{item.step}</span>
+                  <h3 className="card-title mt-2">{item.title}</h3>
+                  <p className="text-sm text-base-content/75">{item.text}</p>
+                  <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-3 text-xs text-slate-100">
+                    <code>{item.extra}</code>
+                  </pre>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </Section>
+
+        <Section className="mt-14 md:mt-20">
+          <h2 className="text-3xl font-bold md:text-4xl">Alles, was du brauchst. Nichts, was du nicht brauchst.</h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={sectionViewport}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                className="glass-card rounded-2xl p-5"
+              >
+                <div className="mb-3 flex items-center justify-between gap-2">
+                  <h3 className="font-semibold">{feature.title}</h3>
+                  {feature.pro ? <span className="badge badge-warning badge-sm">Pro</span> : <span className="badge badge-ghost badge-sm">Free</span>}
+                </div>
+                <p className="text-sm text-base-content/70">{feature.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+
+        <Section className="mt-14 md:mt-20">
+          <h2 className="text-3xl font-bold md:text-4xl">Wer nutzt HookTap – und wofür?</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {useCases.map((group, idx) => (
+              <motion.div
+                key={group.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={sectionViewport}
+                transition={{ delay: idx * 0.08, duration: 0.4 }}
+                className="card border border-base-300 bg-base-100/90 shadow"
+              >
+                <div className="card-body">
+                  <h3 className="card-title">{group.title}</h3>
+                  <ul className="space-y-2 text-sm text-base-content/80">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+
+        <Section className="mt-14 md:mt-20">
+          <h2 className="text-3xl font-bold md:text-4xl">Funktioniert mit allem, das HTTP kann.</h2>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {[
+              "GitHub Actions",
+              "GitLab CI",
+              "Bitbucket Pipelines",
+              "Zapier",
+              "Make",
+              "n8n",
+              "Home Assistant",
+              "Grafana",
+              "Uptime Kuma",
+              "PagerDuty",
+              "Datadog",
+              "cURL",
+              "Python",
+              "Node.js",
+              "PHP",
+              "Ruby",
+              "...und alles andere",
+            ].map((item) => (
+              <span key={item} className="badge badge-lg border-base-300 bg-base-100 px-4 py-4 font-medium">
+                {item}
+              </span>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="pricing" className="mt-14 md:mt-20">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold md:text-4xl">Einfach. Transparent. Fair.</h2>
+          </div>
+          <div className="grid gap-5 lg:grid-cols-3">
+            <article className="card border border-base-300 bg-base-100 shadow-xl">
+              <div className="card-body">
+                <h3 className="card-title">Free</h3>
+                <p className="text-sm text-base-content/70">Kostenlos, für immer</p>
+                <ul className="space-y-2 text-sm">
+                  <li>✓ 1 persönliche Webhook-URL</li>
+                  <li>✓ Push-Notifications in Echtzeit</li>
+                  <li>✓ Bis zu 20 Events im Feed</li>
+                  <li>✓ Payload-Vorschau</li>
+                  <li>✗ Homescreen-Widget</li>
+                  <li>✗ Live Activity & Dynamic Island</li>
+                  <li>✗ Sperrbildschirm-Widget</li>
+                  <li>✗ Mehrere Webhooks</li>
+                </ul>
+                <a href="#cta" className="btn btn-outline mt-2">
+                  App Store Download
+                </a>
+              </div>
+            </article>
+
+            <article className="card border border-base-300 bg-base-100 shadow-xl">
+              <div className="card-body">
+                <h3 className="card-title">Pro – Monatlich</h3>
+                <p className="text-sm text-base-content/70">0,99€/Monat · jederzeit kündbar</p>
+                <ul className="space-y-2 text-sm">
+                  <li>✓ Alles aus Free</li>
+                  <li>✓ 500 Events im Feed</li>
+                  <li>✓ Homescreen-Widget (Echtzeit)</li>
+                  <li>✓ Live Activity & Dynamic Island</li>
+                  <li>✓ Sperrbildschirm-Widget</li>
+                  <li>✓ Bis zu 3 Webhooks mit Icons & Farben</li>
+                </ul>
+                <a href="#cta" className="btn btn-primary mt-2">
+                  Monatlich starten
+                </a>
+              </div>
+            </article>
+
+            <article className="card border-2 border-primary bg-base-100 shadow-2xl">
+              <div className="card-body">
+                <div className="mb-2 flex items-center justify-between">
+                  <h3 className="card-title">Pro – Lifetime</h3>
+                  <span className="badge badge-warning">Bestes Angebot</span>
+                </div>
+                <p className="text-sm text-base-content/70">25€ einmalig · kein Abo</p>
+                <ul className="space-y-2 text-sm">
+                  <li>✓ Alles aus Pro</li>
+                  <li>✓ Einmaliger Kauf, nie wieder zahlen</li>
+                  <li>✓ Alle künftigen Pro-Features inklusive</li>
+                </ul>
+                <a href="#cta" className="btn btn-primary mt-2">
+                  Einmalig kaufen
+                </a>
+              </div>
+            </article>
+          </div>
+          <p className="mt-5 text-sm text-base-content/70">
+            Zahlung über deinen Apple-Account. Kein externes Konto nötig. Abo jederzeit über die iOS-Einstellungen kündbar.
+          </p>
+        </Section>
+
+        <Section className="mt-14 md:mt-20">
+          <h2 className="text-3xl font-bold md:text-4xl">Häufige Fragen</h2>
+          <div className="mt-7 space-y-3">
+            {faq.map((item) => (
+              <div key={item.q} className="collapse-arrow collapse border border-base-300 bg-base-100">
+                <input type="radio" name="faq-accordion" defaultChecked={item.q === faq[0].q} />
+                <div className="collapse-title text-base font-semibold">{item.q}</div>
+                <div className="collapse-content text-sm text-base-content/75">
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="cta" className="mt-14 pb-20 md:mt-20">
+          <div className="glass-card rounded-3xl px-7 py-10 text-center md:px-14">
+            <h2 className="text-3xl font-bold md:text-5xl">Starte jetzt. Kostenlos.</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base-content/75">
+              Deine persönliche Webhook-URL wartet – in weniger als einer Minute einsatzbereit.
+            </p>
+            <a href="#" className="btn btn-primary btn-lg mt-7">
+              Im App Store laden
+            </a>
+            <p className="mt-4 text-sm text-base-content/60">Kein Account. Kein Passwort. Keine Kreditkarte.</p>
+          </div>
+        </Section>
+      </div>
+
+      <footer className="border-t border-base-300 bg-base-100/85 py-7 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 text-sm text-base-content/70 md:px-8 lg:px-10">
+          <p>HookTap · Für iPhone · Entwickelt in Deutschland</p>
+          <div className="flex flex-wrap gap-3">
+            <a href="#" className="link link-hover">
+              Datenschutz
+            </a>
+            <a href="#" className="link link-hover">
+              Impressum
+            </a>
+            <a href="#" className="link link-hover">
+              Nutzungsbedingungen
+            </a>
+            <a href="#" className="link link-hover">
+              Support
+            </a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
 }
