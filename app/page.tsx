@@ -326,6 +326,10 @@ const faq = [
     q: "Wie viele Events kann ich empfangen?",
     a: "Im Free-Plan sind die letzten 20 Events sichtbar, im Pro-Plan 500. Eingehende Webhooks sind in beiden Plänen unbegrenzt.",
   },
+  {
+    q: "Was kann die HookTap Mac App?",
+    a: "Die HookTap Mac App ist dein Live-Webhook-Client in der Menüleiste: Sie verbindet sich per 6-stelligem Code mit deiner iPhone-App, zeigt eingehende Events in Echtzeit im Menü an, sendet neue Events zusätzlich als native macOS-Benachrichtigungen, erlaubt jederzeit Trennen und Neuverbinden des Geräts und enthält integrierte Auto-Updates.",
+  },
 ];
 function Section({
   children,
@@ -910,10 +914,20 @@ export default function Home() {
               Deine persönliche Webhook-URL wartet – in weniger als einer Minute
               einsatzbereit.{" "}
             </p>{" "}
-            <a href="#" className="btn btn-primary btn-lg mt-7">
-              {" "}
-              Im App Store laden{" "}
-            </a>{" "}
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href="#" className="btn btn-primary btn-lg">
+                {" "}
+                iOS App (App Store){" "}
+              </a>{" "}
+              <a
+                href="/HookTap%201.0.dmg"
+                download="HookTap 1.0.dmg"
+                className="btn btn-outline btn-lg"
+              >
+                {" "}
+                Mac App (.dmg){" "}
+              </a>{" "}
+            </div>{" "}
             <p className="mt-4 text-sm text-white/55">
               Kein Account. Kein Passwort. Keine Kreditkarte.
             </p>{" "}
