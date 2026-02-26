@@ -18,11 +18,15 @@ export default function DatenschutzPage() {
       <section className="neo-card mt-10 rounded-2xl p-6">
         <h2 className="text-xl font-semibold">1. Verantwortlicher</h2>
         <p className="mt-3 text-white/75">
-          [Name/Firma]
+          Tim
           <br />
-          [Anschrift]
+          c/o MDC Management#6326
           <br />
-          E-Mail: [deine@email.de]
+          Welserstraße 3
+          <br />
+          87463 Dietmannsried
+          <br />
+          E-Mail: admin@proofio.app
         </p>
       </section>
 
@@ -52,7 +56,7 @@ export default function DatenschutzPage() {
 
       <section className="neo-card mt-5 rounded-2xl p-6">
         <h2 className="text-xl font-semibold">5. Kontakt Datenschutz</h2>
-        <p className="mt-3 text-white/75">Für Anfragen zum Datenschutz: [deine@email.de]</p>
+        <p className="mt-3 text-white/75">Für Anfragen zum Datenschutz: admin@proofio.app</p>
       </section>
 
       <div className="mt-10">
