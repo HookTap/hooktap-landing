@@ -465,7 +465,7 @@ export default function Home() {
                 {" "}
                 <code>
                   {" "}
-                  {`curl -X POST https://hooks.hooktap.de/webhook/<DEINE_ID> -H "Content-Type: application/json" -d '{"type":"build","title":"CI erfolgreich","body":"Staging-Deploy ist live"}'`}{" "}
+                  {`curl -X POST https://hooks.hooktap.de/webhook/DEINE_ID -H "Content-Type: application/json" -d '{"type":"build","title":"CI erfolgreich","body":"Staging-Deploy ist live"}'`}{" "}
                 </code>{" "}
               </p>{" "}
               <div className="mt-8 flex flex-nowrap items-center justify-center gap-3">
@@ -540,7 +540,7 @@ export default function Home() {
                 </p>{" "}
                 <p className="mt-3 break-all rounded-xl border border-white/15 bg-black/35 px-3 py-2 font-mono text-xs text-white/85 md:text-sm">
                   {" "}
-                  https://hooks.hooktap.de/webhook/<DEINE_ID>{" "}
+                  https://hooks.hooktap.de/webhook/DEINE_ID{" "}
                 </p>{" "}
                 <p className="mt-3 text-xs text-white/60 md:text-sm">
                   Keine Registrierung, kein Passwort, keine zusätzliche
@@ -551,7 +551,7 @@ export default function Home() {
                 {" "}
                 <pre className="min-w-0 overflow-x-auto whitespace-pre-wrap break-words rounded-xl bg-black/50 p-3 text-[11px] leading-relaxed text-slate-100 md:p-4 md:text-xs">
                   {" "}
-                  <code>{`curl -X POST https://hooks.hooktap.de/webhook/<DEINE_ID> \\
+                  <code>{`curl -X POST https://hooks.hooktap.de/webhook/DEINE_ID \\
   -H "Content-Type: application/json" \\
   -d '{"type":"build","title":"CI erfolgreich","body":"Staging-Deploy ist live"}'`}</code>{" "}
                 </pre>{" "}
