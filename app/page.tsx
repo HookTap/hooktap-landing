@@ -785,6 +785,7 @@ export default function Home() {
                   <li>✓ Push-Notifications in Echtzeit</li>{" "}
                   <li>✓ Bis zu 20 Events im Feed</li>{" "}
                   <li>✓ Payload-Vorschau</li>{" "}
+                  <li className="text-white/35">✕ Mac App (Menüleiste)</li>{" "}
                   <li className="text-white/35">✕ Homescreen-Widget</li>{" "}
                   <li className="text-white/35">
                     ✕ Live Activity & Dynamic Island
@@ -815,6 +816,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-2 text-sm text-white/82">
                   {" "}
                   <li>✓ Alles aus Free</li> <li>✓ 500 Events im Feed</li>{" "}
+                  <li>✓ Mac App (Menüleiste & Benachrichtigungen)</li>{" "}
                   <li>✓ Homescreen-Widget (Echtzeit)</li>{" "}
                   <li>✓ Live Activity & Dynamic Island</li>{" "}
                   <li>✓ Sperrbildschirm-Widget</li>{" "}
@@ -846,6 +848,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-2 text-sm text-white/90">
                   {" "}
                   <li>✓ Alles aus Pro</li>{" "}
+                  <li>✓ Mac App (Menüleiste & Benachrichtigungen)</li>{" "}
                   <li>✓ Einmaliger Kauf, nie wieder zahlen</li>{" "}
                   <li>✓ Alle künftigen Pro-Features inklusive</li>{" "}
                 </ul>{" "}
