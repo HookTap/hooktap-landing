@@ -327,8 +327,8 @@ const faq = [
     a: "Im Free-Plan sind die letzten 20 Events sichtbar, im Pro-Plan 500. Eingehende Webhooks sind in beiden Plänen unbegrenzt.",
   },
   {
-    q: "Was kann die HookTap Mac App?",
-    a: "Die HookTap Mac App ist dein Live-Webhook-Client in der Menüleiste: Sie verbindet sich per 6-stelligem Code mit deiner iPhone-App, zeigt eingehende Events in Echtzeit im Menü an, sendet neue Events zusätzlich als native macOS-Benachrichtigungen, erlaubt jederzeit Trennen und Neuverbinden des Geräts und enthält integrierte Auto-Updates.",
+    q: "Was können die HookTap Desktop-Apps (Mac & Windows)?",
+    a: "Die HookTap Desktop-Apps sind deine Live-Webhook-Clients: Sie verbinden sich per 6-stelligem Code mit deiner iPhone-App, zeigen eingehende Events in Echtzeit an, senden neue Events zusätzlich als native System-Benachrichtigungen, erlauben jederzeit Trennen und Neuverbinden des Geräts und enthalten integrierte Auto-Updates.",
   },
 ];
 function Section({
@@ -785,7 +785,9 @@ export default function Home() {
                   <li>✓ Push-Notifications in Echtzeit</li>{" "}
                   <li>✓ Bis zu 20 Events im Feed</li>{" "}
                   <li>✓ Payload-Vorschau</li>{" "}
-                  <li className="text-white/35">✕ Mac App (Menüleiste)</li>{" "}
+                  <li className="text-white/35">
+                    ✕ Desktop-Apps (Mac & Windows)
+                  </li>{" "}
                   <li className="text-white/35">✕ Homescreen-Widget</li>{" "}
                   <li className="text-white/35">
                     ✕ Live Activity & Dynamic Island
@@ -816,7 +818,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-2 text-sm text-white/82">
                   {" "}
                   <li>✓ Alles aus Free</li> <li>✓ 500 Events im Feed</li>{" "}
-                  <li>✓ Mac App (Menüleiste & Benachrichtigungen)</li>{" "}
+                  <li>✓ Desktop-Apps (Mac & Windows)</li>{" "}
                   <li>✓ Homescreen-Widget (Echtzeit)</li>{" "}
                   <li>✓ Live Activity & Dynamic Island</li>{" "}
                   <li>✓ Sperrbildschirm-Widget</li>{" "}
@@ -848,7 +850,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-2 text-sm text-white/90">
                   {" "}
                   <li>✓ Alles aus Pro</li>{" "}
-                  <li>✓ Mac App (Menüleiste & Benachrichtigungen)</li>{" "}
+                  <li>✓ Desktop-Apps (Mac & Windows)</li>{" "}
                   <li>✓ Einmaliger Kauf, nie wieder zahlen</li>{" "}
                   <li>✓ Alle künftigen Pro-Features inklusive</li>{" "}
                 </ul>{" "}
@@ -918,17 +920,40 @@ export default function Home() {
               einsatzbereit.{" "}
             </p>{" "}
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href="#" className="btn btn-primary btn-lg">
-                {" "}
-                iOS App (App Store){" "}
+              <a href="#" className="btn btn-primary btn-lg gap-2">
+                <Image
+                  src="/icons8-mac-os-50.png"
+                  alt="Apple"
+                  width={18}
+                  height={18}
+                />
+                <span>iOS App (App Store)</span>
               </a>{" "}
               <a
                 href="/HookTap%201.0.dmg"
                 download="HookTap 1.0.dmg"
-                className="btn btn-outline btn-lg"
+                className="btn btn-outline btn-lg gap-2"
               >
-                {" "}
-                Mac App (.dmg){" "}
+                <Image
+                  src="/icons8-mac-os-50.png"
+                  alt="Apple"
+                  width={18}
+                  height={18}
+                />
+                <span>Mac App (.dmg)</span>
+              </a>{" "}
+              <a
+                href="/HookTapSetup.exe"
+                download="HookTapSetup.exe"
+                className="btn btn-outline btn-lg gap-2"
+              >
+                <Image
+                  src="/icons8-windows-11-50.png"
+                  alt="Windows"
+                  width={18}
+                  height={18}
+                />
+                <span>Windows App (.exe)</span>
               </a>{" "}
             </div>{" "}
             <p className="mt-4 text-sm text-white/55">
