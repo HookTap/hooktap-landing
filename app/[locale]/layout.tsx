@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import HookyFloatingButton from "@/app/components/HookyFloatingButton";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -101,6 +102,7 @@ export default async function LocaleLayout({
       <body className="bg-base-100 text-base-content antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}
+          <HookyFloatingButton />
         </NextIntlClientProvider>
       </body>
     </html>

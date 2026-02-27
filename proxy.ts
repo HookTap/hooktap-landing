@@ -9,7 +9,8 @@ export const config = {
     // - /api routes
     // - /_next (Next.js internals)
     // - /_vercel (Vercel internals)
+    // - /help (standalone English-only route, no locale prefix needed)
     // - /.*\..* (files with extensions, e.g. favicon.ico)
-    "/((?!api|_next|_vercel|.*\\..*).*)",
+    "/((?!api|_next|_vercel|help|.*\\..*).*)",
   ],
 };

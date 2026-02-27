@@ -739,6 +739,7 @@ export default function Home() {
                 <a href="#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
                 <a href="#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
                 <a href="#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
+                <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Legal</h4>
@@ -777,9 +778,6 @@ export default function Home() {
                   <RedditIcon className="h-4 w-4" />
                 </a>
               </div>
-              <a href="mailto:mail@hooktap.me" className="mt-2 text-sm text-white/50 hover:text-white">
-                {t("footer.support")}
-              </a>
             </div>
           </div>
           <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-white/30">
