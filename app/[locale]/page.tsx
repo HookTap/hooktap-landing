@@ -711,13 +711,13 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 md:px-8 lg:px-10">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             {/* Logo & Info */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col items-start gap-4">
               <Image
                 src="/hooktap-logo.png"
                 alt="HookTap Logo"
                 width={85}
                 height={32}
-                className="h-8 w-auto object-contain brightness-0 invert"
+                className="h-8 w-auto object-contain"
               />
               <p className="max-w-xs text-sm leading-relaxed text-white/60">
                 {t("footer.description")}
