@@ -148,7 +148,7 @@
     "bestDeal": "Best Deal",
     "free": {
       "label": "Free",
-      "price": "€0",
+      "price": "$0",
       "period": "Free, forever",
       "features": [
         "✓ 1 personal webhook URL",
@@ -165,7 +165,7 @@
     },
     "monthly": {
       "label": "Pro – Monthly",
-      "price": "€0.99",
+      "price": "$0.99",
       "period": "per month · cancel anytime",
       "features": [
         "✓ Everything in Free",
@@ -180,7 +180,7 @@
     },
     "lifetime": {
       "label": "Pro – Lifetime",
-      "price": "€24.99",
+      "price": "$24.99",
       "period": "one-time · no subscription",
       "features": [
         "✓ Everything in Pro",
