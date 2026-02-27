@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { WebhookModal } from "./components/WebhookModal";
 const PixelBlast = dynamic(() => import("./components/PixelBlast"), {
   ssr: false,
 });
@@ -959,6 +960,10 @@ export default function Home() {
             <p className="mt-4 text-sm text-white/55">
               Kein Account. Kein Passwort. Keine Kreditkarte.
             </p>{" "}
+            <div className="mt-5 flex items-center justify-center gap-2">
+              <span className="text-xs text-white/30">Bereits HookTap User?</span>
+              <WebhookModal triggerClassName="btn btn-ghost btn-xs rounded-full border border-white/15 text-xs text-white/60 hover:text-white hover:border-white/30" />
+            </div>{" "}
           </div>{" "}
         </Section>{" "}
       </div>{" "}

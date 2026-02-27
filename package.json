@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "daisyui": "^5.5.19",
+    "firebase": "^12.9.0",
     "framer-motion": "^12.34.3",
     "next": "16.1.6",
     "postprocessing": "^6.38.3",
