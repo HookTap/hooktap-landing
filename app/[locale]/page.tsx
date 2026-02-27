@@ -126,6 +126,14 @@ function InstagramIcon({ className = "h-4 w-4" }: IconProps) {
   );
 }
 
+function RedditIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.05l-2.454-.546-.748 3.54c2.061.171 3.963.805 5.277 1.77.305-.19.663-.301 1.044-.301.998 0 1.81.812 1.81 1.812 0 .693-.391 1.293-.959 1.593.017.168.026.337.026.508 0 2.942-3.825 5.333-8.539 5.333-4.71 0-8.539-2.391-8.539-5.333 0-.17.009-.339.025-.506a1.826 1.826 0 0 1-1.103-1.68c0-.998.812-1.81 1.81-1.81.385 0 .744.114 1.051.307 1.314-.968 3.218-1.603 5.283-1.774l.792-3.746a.427.427 0 0 1 .503-.334l2.81.625c.093-.068.205-.108.326-.109zM9.25 12a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5.5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm-5.465 3.328a.422.422 0 0 0-.173.77c.762.53 1.933.785 2.887.785 1.064 0 2.124-.251 2.887-.785a.422.422 0 0 0-.473-.698c-.544.385-1.482.604-2.414.604-.932 0-1.87-.219-2.414-.604a.422.422 0 0 0-.3-.072z" />
+    </svg>
+  );
+}
+
 const SOCIAL_PROOF_ICONS = [CodeIcon, ServerIcon, SparkIcon, FlowIcon];
 
 const FEATURE_META = [
@@ -759,6 +767,14 @@ export default function Home() {
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
                 >
                   <InstagramIcon className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.reddit.com/r/hooktap/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                >
+                  <RedditIcon className="h-4 w-4" />
                 </a>
               </div>
               <a href="mailto:mail@hooktap.me" className="mt-2 text-sm text-white/50 hover:text-white">
