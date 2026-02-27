@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
+import Image from "next/image";
 
 export function LanguageSwitcher() {
   const locale = useLocale();
@@ -13,7 +14,6 @@ export function LanguageSwitcher() {
   const switchLocale = (nextLocale: string) => {
     if (nextLocale === locale) return;
     startTransition(() => {
-      // Replace the locale segment in the current path
       const segments = pathname.split("/");
       segments[1] = nextLocale;
       router.push(segments.join("/") || `/${nextLocale}`);
@@ -25,26 +25,38 @@ export function LanguageSwitcher() {
       <button
         onClick={() => switchLocale("en")}
         disabled={isPending}
-        className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
+        className={`rounded-full p-1 transition-all ${
           locale === "en"
-            ? "bg-white/15 text-white"
-            : "text-white/45 hover:text-white/70"
+            ? "bg-white/15 ring-1 ring-white/30"
+            : "opacity-40 hover:opacity-70"
         }`}
         aria-label="Switch to English"
       >
-        EN
+        <Image
+          src="/english.png"
+          alt="English"
+          width={22}
+          height={22}
+          className="rounded-full object-cover"
+        />
       </button>
       <button
         onClick={() => switchLocale("de")}
         disabled={isPending}
-        className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all ${
+        className={`rounded-full p-1 transition-all ${
           locale === "de"
-            ? "bg-white/15 text-white"
-            : "text-white/45 hover:text-white/70"
+            ? "bg-white/15 ring-1 ring-white/30"
+            : "opacity-40 hover:opacity-70"
         }`}
         aria-label="Auf Deutsch wechseln"
       >
-        DE
+        <Image
+          src="/germany.png"
+          alt="Deutsch"
+          width={22}
+          height={22}
+          className="rounded-full object-cover"
+        />
       </button>
     </div>
   );
