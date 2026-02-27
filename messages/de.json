@@ -239,13 +239,106 @@
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "terms": "Nutzungsbedingungen",
-    "support": "Support"
+    "support": "Support",
+    "devGuide": "Developer Guide"
   },
   "socialProof": {
     "0": "Entwickler",
     "1": "DevOps-Teams",
     "2": "Maker",
     "3": "Automatisierer"
+  },
+  "dev": {
+    "meta": {
+      "title": "Developer Guide | HookTap",
+      "description": "So integrierst du HookTap in deine Workflows – Schritt-für-Schritt-Anleitung mit Code-Beispielen."
+    },
+    "badge": "Developer Guide",
+    "title": "HookTap in Minuten integrieren",
+    "subtitle": "Sende HTTP-POST-Anfragen an deine persönliche URL und empfange sie als Echtzeit-Push-Notifications auf deinem iPhone.",
+    "backLabel": "Zurück",
+    "ctaLabel": "App laden",
+    "what": {
+      "badge": "Überblick",
+      "title": "Was ist HookTap?",
+      "body": "HookTap verwandelt dein iPhone in einen Echtzeit-Webhook-Empfänger. Jede HTTP-POST-Anfrage an deine persönliche URL wird sofort als Push-Notification auf dein Gerät weitergeleitet – kein Server, kein Polling, kein Setup."
+    },
+    "create": {
+      "badge": "Schritt 1",
+      "title": "Webhook erstellen",
+      "step1Title": "App installieren",
+      "step1Body": "Lade HookTap aus dem App Store. Beim ersten Start wird automatisch ein anonymer Account erstellt – ohne E-Mail oder Passwort.",
+      "step2Title": "URL kopieren",
+      "step2Body": "Deine persönliche Webhook-URL wird sofort in der App angezeigt. Kopiere sie und verwende sie überall, wo HTTP-Anfragen möglich sind.",
+      "urlLabel": "Deine persönliche Webhook-URL",
+      "urlNote": "Keine Registrierung. Kein Passwort. Sofort einsatzbereit."
+    },
+    "send": {
+      "badge": "Schritt 2",
+      "title": "Erstes Event senden",
+      "subtitle": "Sende einen JSON-Payload an deine Webhook-URL. Das Event kommt innerhalb von Sekunden auf deinem iPhone an.",
+      "tabCurl": "cURL",
+      "tabJs": "JavaScript",
+      "tabPython": "Python",
+      "tabGithub": "GitHub Actions",
+      "payloadTitle": "Payload-Felder",
+      "fieldType": "type",
+      "fieldTypeDesc": "Event-Label – beliebiger String, z. B. \"build\", \"deploy\", \"alert\"",
+      "fieldTitle": "title",
+      "fieldTitleDesc": "Benachrichtigungstitel auf dem Sperrbildschirm",
+      "fieldBody": "body",
+      "fieldBodyDesc": "Benachrichtigungstext"
+    },
+    "types": {
+      "badge": "Referenz",
+      "title": "So werden Events zugestellt",
+      "subtitle": "Jeder eingehende Webhook wird gleichzeitig über alle drei Kanäle verarbeitet.",
+      "items": [
+        {
+          "type": "push",
+          "title": "Push-Notification",
+          "desc": "Erscheint sofort auf dem Sperrbildschirm und als Banner. Funktioniert auch wenn die App im Hintergrund oder geschlossen ist."
+        },
+        {
+          "type": "feed",
+          "title": "Event-Log",
+          "desc": "Chronologisch im In-App-Feed gespeichert – mit vollständigem Payload, Zeitstempel und Lesestatus."
+        },
+        {
+          "type": "widget",
+          "title": "Widget-Update",
+          "desc": "Das neueste Event aktualisiert dein Homescreen- und Sperrbildschirm-Widget in Echtzeit (Pro)."
+        }
+      ]
+    },
+    "platforms": {
+      "badge": "Plattformen",
+      "title": "Auf allen deinen Geräten",
+      "subtitle": "HookTap läuft auf dem iPhone und erweitert sich über native Mac- und Windows-Apps auf den Desktop.",
+      "items": [
+        {
+          "name": "iOS",
+          "plan": "Free & Pro",
+          "desc": "Die Haupt-App. Empfängt Webhook-Events, zeigt Push-Notifications an, verwaltet deine URLs und zeigt den Event-Feed.",
+          "note": "iPhone · iOS 16+"
+        },
+        {
+          "name": "macOS",
+          "plan": "Pro",
+          "desc": "Native Mac-App, die sich per 6-stelligem Code mit deiner iPhone-App verbindet. Zeigt Events in Echtzeit mit macOS-Systembenachrichtigungen.",
+          "note": "macOS 13 Ventura+ · .dmg Download"
+        },
+        {
+          "name": "Windows",
+          "plan": "Pro",
+          "desc": "Native Windows-App mit demselben Echtzeit-Event-Display und Systembenachrichtigungen. Verbindet sich in Sekunden mit der iPhone-App.",
+          "note": "Windows 10 / 11 · .exe Download"
+        }
+      ]
+    },
+    "nav": {
+      "label": "Developer Guide"
+    }
   },
   "modal": {
     "title": "Webhook-URLs abrufen",

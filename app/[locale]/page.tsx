@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { WebhookModal } from "@/app/components/WebhookModal";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
 
@@ -198,6 +198,7 @@ function Section({
 
 export default function Home() {
   const t = useTranslations();
+  const locale = useLocale();
 
   const navItems = [
     { href: "#overview", label: t("nav.overview") },
@@ -739,6 +740,7 @@ export default function Home() {
                 <a href="#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
                 <a href="#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
                 <a href="#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
+                <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</a>
                 <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
               </div>
               <div className="flex flex-col gap-3">

@@ -239,13 +239,106 @@
     "privacy": "Privacy",
     "imprint": "Legal Notice",
     "terms": "Terms",
-    "support": "Support"
+    "support": "Support",
+    "devGuide": "Developer Guide"
   },
   "socialProof": {
     "0": "Developers",
     "1": "DevOps Teams",
     "2": "Makers",
     "3": "Automators"
+  },
+  "dev": {
+    "meta": {
+      "title": "Developer Guide | HookTap",
+      "description": "Learn how to send webhook events to your iPhone with HookTap – step-by-step guide with code examples."
+    },
+    "badge": "Developer Guide",
+    "title": "Integrate HookTap in Minutes",
+    "subtitle": "Send HTTP POST requests to your personal URL and receive them as real-time push notifications on your iPhone.",
+    "backLabel": "Back",
+    "ctaLabel": "Get App",
+    "what": {
+      "badge": "Overview",
+      "title": "What is HookTap?",
+      "body": "HookTap turns your iPhone into a real-time webhook receiver. Every HTTP POST request sent to your personal URL is instantly delivered as a push notification to your device – no server, no polling, no extra setup."
+    },
+    "create": {
+      "badge": "Step 1",
+      "title": "Create your webhook",
+      "step1Title": "Install the app",
+      "step1Body": "Download HookTap from the App Store. On first launch, an anonymous account is created automatically – no email or password needed.",
+      "step2Title": "Copy your URL",
+      "step2Body": "Your personal webhook URL is shown immediately inside the app. Copy it and use it anywhere that can send HTTP requests.",
+      "urlLabel": "Your personal webhook URL",
+      "urlNote": "No registration. No password. Ready instantly."
+    },
+    "send": {
+      "badge": "Step 2",
+      "title": "Send your first event",
+      "subtitle": "POST a JSON payload to your webhook URL. The event arrives on your iPhone within seconds.",
+      "tabCurl": "cURL",
+      "tabJs": "JavaScript",
+      "tabPython": "Python",
+      "tabGithub": "GitHub Actions",
+      "payloadTitle": "Payload fields",
+      "fieldType": "type",
+      "fieldTypeDesc": "Event label – any string, e.g. \"build\", \"deploy\", \"alert\"",
+      "fieldTitle": "title",
+      "fieldTitleDesc": "Notification title displayed on the lock screen",
+      "fieldBody": "body",
+      "fieldBodyDesc": "Notification body text"
+    },
+    "types": {
+      "badge": "Reference",
+      "title": "How events are delivered",
+      "subtitle": "Every incoming webhook is processed through all three channels simultaneously.",
+      "items": [
+        {
+          "type": "push",
+          "title": "Push Notification",
+          "desc": "Appears instantly on the lock screen and as a banner. Works even when the app is in the background or closed."
+        },
+        {
+          "type": "feed",
+          "title": "Event Log",
+          "desc": "Stored chronologically in the in-app feed with full payload, timestamp, and read status."
+        },
+        {
+          "type": "widget",
+          "title": "Widget Update",
+          "desc": "The latest event updates your Home Screen and Lock Screen widget in real time (Pro)."
+        }
+      ]
+    },
+    "platforms": {
+      "badge": "Platforms",
+      "title": "Available on all your devices",
+      "subtitle": "HookTap works on iPhone and extends to your desktop via native Mac and Windows apps.",
+      "items": [
+        {
+          "name": "iOS",
+          "plan": "Free & Pro",
+          "desc": "The primary app. Receives webhook events, shows push notifications, manages your URLs, and displays the full event feed.",
+          "note": "iPhone · iOS 16+"
+        },
+        {
+          "name": "macOS",
+          "plan": "Pro",
+          "desc": "Native Mac app that connects to your iPhone via a 6-digit pairing code. Displays events in real time with macOS system notifications.",
+          "note": "macOS 13 Ventura+ · .dmg download"
+        },
+        {
+          "name": "Windows",
+          "plan": "Pro",
+          "desc": "Native Windows app with the same real-time event display and system notifications. Pairs with your iPhone app in seconds.",
+          "note": "Windows 10 / 11 · .exe download"
+        }
+      ]
+    },
+    "nav": {
+      "label": "Developer Guide"
+    }
   },
   "modal": {
     "title": "Get webhook URLs",
