@@ -931,8 +931,8 @@ export default function Home() {
                 <span>iOS App (App Store)</span>
               </a>{" "}
               <a
-                href="/HookTap%201.0.dmg"
-                download="HookTap 1.0.dmg"
+                href="/HookTap%201.1.dmg"
+                download="HookTap 1.1.dmg"
                 className="btn btn-outline btn-lg gap-2"
               >
                 <Image

@@ -3,12 +3,12 @@
     <channel>
         <title>HookTapMac</title>
         <item>
-            <title>1.0</title>
-            <pubDate>Fri, 27 Feb 2026 10:15:37 +0100</pubDate>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <title>1.1</title>
+            <pubDate>Fri, 27 Feb 2026 11:10:31 +0100</pubDate>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://hooktap.de/HookTap%201.0.dmg" length="13431125" type="application/octet-stream" sparkle:edSignature="d43k8wmp3cYEjX/uTHhad+mq3x2j7aE4ZvzVniUsX3t6RGaqoFiscS/O0lufLBEZ+UdlQR6Y4lWPWp20UGiTAw=="/>
+            <enclosure url="https://hooktap.de/HookTap%201.1.dmg" length="13429326" type="application/octet-stream" sparkle:edSignature="0R877vEECVCrY9+n7lGzePrd+F5N+BqqmMOXCnbuKxC0LKnOnt9IyCLf+BEh6+nlYwDlPV+mUmMqtOlSrMLvAw=="/>
         </item>
     </channel>
 </rss>
