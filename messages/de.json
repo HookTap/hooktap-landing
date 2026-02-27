@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "title": "HookTap | iOS Webhooks für Entwickler",
+    "description": "HookTap bringt Push-Benachrichtigungen, Widgets und Live-Updates per Webhook auf dein iPhone. DSGVO-konform, ohne Account, Hosting in Berlin.",
+    "ogTitle": "HookTap | iOS Webhooks für Entwickler",
+    "ogDescription": "Push-Benachrichtigungen, Widgets und Live-Updates per Webhook auf dein iPhone.",
+    "ogImageAlt": "HookTap OpenGraph Vorschau"
+  },
+  "nav": {
+    "overview": "Überblick",
+    "how": "Ablauf",
+    "features": "Features",
+    "useCases": "Use Cases",
+    "compatibility": "Kompatibilität",
+    "pricing": "Preise",
+    "faq": "FAQ",
+    "getApp": "App laden",
+    "menu": "Menü"
+  },
+  "hero": {
+    "badge": "HookTap – Realtime iOS Webhooks",
+    "headline": "Dein iPhone als Webhook-Empfänger. In Echtzeit.",
+    "sub": "Sende eine HTTP-POST-Anfrage an deine persönliche URL – HookTap leitet sie sofort als Push-Notification auf dein iPhone weiter. Kein Server. Kein Code. Keine Wartezeit.",
+    "hosting": "Hosting in Berlin, Deutschland.",
+    "curlExample": "curl -X POST https://hooks.hooktap.me/webhook/DEINE_ID -H \"Content-Type: application/json\" -d '{\"type\":\"build\",\"title\":\"CI erfolgreich\",\"body\":\"Staging-Deploy ist live\"}'",
+    "ctaPrimary": "Kostenlos starten – App laden",
+    "ctaSecondary": "Mehr erfahren"
+  },
+  "problem": {
+    "badge": "Problem",
+    "headline": "Du deployest, triggerst Jobs und weißt nie genau, wann etwas fertig ist.",
+    "body": "Statt ständig Tabs zu refreshen und Logs zu prüfen, schickt dir HookTap einfach eine Notification aufs iPhone. Direkt. Verlässlich. Ohne Overhead.",
+    "cta": "Eine URL. Ein Webhook. Sofort Bescheid wissen."
+  },
+  "how": {
+    "badge": "Schnellstart",
+    "headline": "So startest du in unter 2 Minuten",
+    "sub": "HookTap ist sofort einsatzbereit. URL kopieren, in deinen Workflow einfügen und in Echtzeit benachrichtigt werden.",
+    "urlLabel": "Deine persönliche URL",
+    "urlValue": "https://hooks.hooktap.me/webhook/DEINE_ID",
+    "urlNote": "Keine Registrierung, kein Passwort, keine zusätzliche Einrichtung.",
+    "curlExample": "curl -X POST https://hooks.hooktap.me/webhook/DEINE_ID \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"type\":\"build\",\"title\":\"CI erfolgreich\",\"body\":\"Staging-Deploy ist live\"}'",
+    "steps": [
+      {
+        "title": "App laden",
+        "text": "Installieren und sofort persönliche Webhook-URL erhalten."
+      },
+      {
+        "title": "URL einbinden",
+        "text": "In GitHub Actions, Zapier, n8n, Make oder jedes Script eintragen."
+      },
+      {
+        "title": "Push erhalten",
+        "text": "HookTap sendet dir in Sekunden eine iPhone-Notification."
+      }
+    ]
+  },
+  "features": {
+    "badge": "Funktionen",
+    "headline": "Alles, was du brauchst. Nichts, was du nicht brauchst.",
+    "sub": "HookTap fokussiert sich auf schnelle, klare Signale für deine Abläufe. Kein Overhead, nur Features, die im Alltag wirklich helfen.",
+    "footer": "HookTap liefert fokussierte Benachrichtigungen für Entwickler, DevOps-Teams und Automatisierungen.",
+    "items": [
+      {
+        "title": "Push-Notifications in Echtzeit",
+        "body": "Jeder eingehende Webhook landet innerhalb von Sekunden als Notification auf deinem Sperrbildschirm."
+      },
+      {
+        "title": "Event-Feed",
+        "body": "Alle empfangenen Events chronologisch im Überblick – inklusive Payload, Zeitstempel und Lesestatus."
+      },
+      {
+        "title": "Payload-Vorschau",
+        "body": "Titel, Body und Typ sofort sichtbar. Alle Felder bleiben im Feed vollständig einsehbar."
+      },
+      {
+        "title": "Offline-Hinweis",
+        "body": "Die App zeigt dir transparent an, wenn gerade keine neuen Events ankommen können."
+      },
+      {
+        "title": "Homescreen-Widget",
+        "body": "Das letzte Event direkt am Homescreen – in Echtzeit aktualisiert."
+      },
+      {
+        "title": "Live Activity & Dynamic Island",
+        "body": "Aktive Events sichtbar auf Sperrbildschirm und Dynamic Island, ideal für laufende Prozesse."
+      },
+      {
+        "title": "Sperrbildschirm-Widget",
+        "body": "Das neueste Event immer sichtbar, ohne das iPhone zu entsperren."
+      },
+      {
+        "title": "Bis zu 3 Webhooks",
+        "body": "Eigene Namen, Icons und Farben pro Webhook inklusive Filterung im Feed."
+      }
+    ]
+  },
+  "useCases": {
+    "badge": "Anwendungsfälle",
+    "headline": "Wer nutzt HookTap – und wofür?",
+    "sub": "Definiere deine Signale und erhalte Benachrichtigungen genau dann, wenn etwas Wichtiges in deinen Workflows passiert.",
+    "groups": [
+      {
+        "title": "Entwickler & DevOps",
+        "items": [
+          "CI/CD-Pipeline fertig -> Notification",
+          "Server-Fehler oder Down-Alert -> Notification",
+          "Deployment auf Production abgeschlossen -> Notification",
+          "Cronjob erfolgreich durchgelaufen -> Notification"
+        ]
+      },
+      {
+        "title": "Maker & No-Coders",
+        "items": [
+          "Zapier-Automation abgeschlossen -> Notification",
+          "Neue Formular-Einreichung -> Notification",
+          "Neuer Stripe-Payment (via n8n) -> Notification",
+          "Make-Szenario ausgeführt -> Notification"
+        ]
+      },
+      {
+        "title": "Monitoring & Alerts",
+        "items": [
+          "Uptime-Monitor meldet Ausfall -> sofortige Notification",
+          "Grafana-Alert ausgelöst -> Notification auf dem iPhone",
+          "Eigenes Monitoring ohne externen Dienst"
+        ]
+      },
+      {
+        "title": "Persönliche Automatisierungen",
+        "items": [
+          "Paket versendet (Tracking-Webhook) -> Notification",
+          "Smart-Home-Event ausgelöst -> Notification",
+          "Python-Skript abgeschlossen -> Notification"
+        ]
+      }
+    ]
+  },
+  "compatibility": {
+    "badge": "Integrationen",
+    "headline": "Funktioniert mit allem, das HTTP kann.",
+    "more": "…und viel mehr."
+  },
+  "pricing": {
+    "badge": "Preise",
+    "headline": "Einfach. Transparent. Fair.",
+    "sub": "Wähle den Plan, der zu deinem Workflow passt. Upgrade jederzeit möglich.",
+    "bestDeal": "Bestes Angebot",
+    "free": {
+      "label": "Free",
+      "price": "0€",
+      "period": "Kostenlos, für immer",
+      "features": [
+        "✓ 1 persönliche Webhook-URL",
+        "✓ Push-Notifications in Echtzeit",
+        "✓ Bis zu 20 Events im Feed",
+        "✓ Payload-Vorschau",
+        "✕ Desktop-Apps (Mac & Windows)",
+        "✕ Homescreen-Widget",
+        "✕ Live Activity & Dynamic Island",
+        "✕ Sperrbildschirm-Widget",
+        "✕ Mehrere Webhooks"
+      ],
+      "cta": "App Store Download"
+    },
+    "monthly": {
+      "label": "Pro – Monatlich",
+      "price": "0,99€",
+      "period": "pro Monat · jederzeit kündbar",
+      "features": [
+        "✓ Alles aus Free",
+        "✓ 500 Events im Feed",
+        "✓ Desktop-Apps (Mac & Windows)",
+        "✓ Homescreen-Widget (Echtzeit)",
+        "✓ Live Activity & Dynamic Island",
+        "✓ Sperrbildschirm-Widget",
+        "✓ Bis zu 3 Webhooks mit Icons & Farben"
+      ],
+      "cta": "Monatlich starten"
+    },
+    "lifetime": {
+      "label": "Pro – Lifetime",
+      "price": "24,99€",
+      "period": "einmalig · kein Abo",
+      "features": [
+        "✓ Alles aus Pro",
+        "✓ Desktop-Apps (Mac & Windows)",
+        "✓ Einmaliger Kauf, nie wieder zahlen",
+        "✓ Alle künftigen Pro-Features inklusive"
+      ],
+      "cta": "Einmalig kaufen"
+    },
+    "footer": "Zahlung über deinen Apple-Account. Kein externes Konto nötig. Abo jederzeit über die iOS-Einstellungen kündbar."
+  },
+  "faq": {
+    "badge": "Fragen",
+    "headline": "Häufige Fragen",
+    "items": [
+      {
+        "q": "Was ist ein Webhook?",
+        "a": "Ein Webhook ist eine automatisierte HTTP-Anfrage bei einem Ereignis. HookTap empfängt sie und leitet sie als Push-Notification auf dein iPhone weiter."
+      },
+      {
+        "q": "Brauche ich Programmierkenntnisse?",
+        "a": "Nein. Bei Zapier, Make, n8n, GitHub und ähnlichen Tools reicht das Eintragen deiner HookTap-URL. Für cURL-Skripte hilft minimales Wissen."
+      },
+      {
+        "q": "Was bedeutet 'keine Registrierung'?",
+        "a": "Beim ersten Start wird automatisch ein anonymer Account erstellt. Du bekommst direkt deine persönliche URL – ohne E-Mail oder Passwort."
+      },
+      {
+        "q": "Was passiert mit meinen Daten?",
+        "a": "Events werden in Firebase gespeichert und nur auf deinem Gerät angezeigt. Die URL ist nicht erratbar. Konto und Daten lassen sich jederzeit löschen."
+      },
+      {
+        "q": "Wie viele Events kann ich empfangen?",
+        "a": "Im Free-Plan sind die letzten 20 Events sichtbar, im Pro-Plan 500. Eingehende Webhooks sind in beiden Plänen unbegrenzt."
+      },
+      {
+        "q": "Was können die HookTap Desktop-Apps (Mac & Windows)?",
+        "a": "Die HookTap Desktop-Apps sind deine Live-Webhook-Clients: Sie verbinden sich per 6-stelligem Code mit deiner iPhone-App, zeigen eingehende Events in Echtzeit an, senden neue Events zusätzlich als native System-Benachrichtigungen, erlauben jederzeit Trennen und Neuverbinden des Geräts und enthalten integrierte Auto-Updates."
+      }
+    ]
+  },
+  "cta": {
+    "badge": "Loslegen",
+    "headline": "Starte jetzt. Kostenlos.",
+    "sub": "Deine persönliche Webhook-URL wartet – in weniger als einer Minute einsatzbereit.",
+    "ios": "iOS App (App Store)",
+    "mac": "Mac App (.dmg)",
+    "windows": "Windows App (.exe)",
+    "noAccount": "Kein Account. Kein Passwort. Keine Kreditkarte.",
+    "existingUser": "Bereits HookTap User?",
+    "getWebhookUrl": "Webhook-URL kopieren"
+  },
+  "footer": {
+    "tagline": "HookTap · Für iPhone · Entwickelt in Deutschland",
+    "privacy": "Datenschutz",
+    "imprint": "Impressum",
+    "terms": "Nutzungsbedingungen",
+    "support": "Support"
+  },
+  "socialProof": {
+    "0": "Entwickler",
+    "1": "DevOps-Teams",
+    "2": "Maker",
+    "3": "Automatisierer"
+  },
+  "modal": {
+    "title": "Webhook-URLs abrufen",
+    "instruction": "Öffne die HookTap iOS App → Einstellungen → PC / Mac verbinden",
+    "connecting": "Verbinde…",
+    "showUrls": "Webhook-URLs anzeigen",
+    "codeExpiry": "Der Code ist 5 Minuten gültig und wird nur für diesen Abruf verwendet.",
+    "yourWebhooks": "Deine Webhook-URLs",
+    "copyInstruction": "Kopiere die URL und verwende sie in deinen Integrationen.",
+    "copyTitle": "URL kopieren",
+    "copied": "Kopiert",
+    "copy": "Kopieren",
+    "primary": "Primär",
+    "enterNewCode": "← Neuen Code eingeben",
+    "triggerButton": "Webhook-URL kopieren",
+    "errors": {
+      "invalidCode": "Ungültiger Code. Bitte prüfe die Eingabe.",
+      "expiredCode": "Code abgelaufen. Bitte generiere einen neuen in der iOS App.",
+      "unknown": "Unbekannter Fehler."
+    }
+  }
+}

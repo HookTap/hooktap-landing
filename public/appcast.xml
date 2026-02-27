@@ -8,7 +8,7 @@
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://hooktap.de/HookTap%201.1.dmg" length="13431941" type="application/octet-stream" sparkle:edSignature="Ogbrm18Lm3CNOzd3TuedD9/qDW+IPaGi5dh9gyzGY6+a/KfVxpFy9NqwFPWSq1Hm6MX0d1k4lOs1YveLdWRvAQ=="/>
+            <enclosure url="https://hooktap.me/HookTap%201.1.dmg" length="13431941" type="application/octet-stream" sparkle:edSignature="Ogbrm18Lm3CNOzd3TuedD9/qDW+IPaGi5dh9gyzGY6+a/KfVxpFy9NqwFPWSq1Hm6MX0d1k4lOs1YveLdWRvAQ=="/>
         </item>
     </channel>
 </rss>

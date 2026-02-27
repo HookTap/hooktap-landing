@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -11,7 +12,7 @@ interface Webhook {
   url: string;
 }
 
-// ── Firebase (lazy-loaded, nur wenn Modal geöffnet wird) ─────────────────────
+// ── Firebase (lazy-loaded, only when modal is opened) ─────────────────────────
 
 async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   const { initializeApp, getApps, getApp } = await import("firebase/app");
@@ -31,11 +32,9 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Anonym einloggen → ID-Token für Cloud Function
   const credential = await signInAnonymously(auth);
   const idToken = await credential.user.getIdToken();
 
-  // pairMacDevice aufrufen → registriert dieses Gerät als linked device
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const res = await fetch(
     `https://us-central1-${projectId}.cloudfunctions.net/pairMacDevice`,
@@ -47,15 +46,14 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   );
 
   if (!res.ok) {
-    const data = await res.json().catch(() => ({})) as { error?: string };
-    if (res.status === 404) throw new Error("Ungültiger Code. Bitte prüfe die Eingabe.");
-    if (res.status === 410) throw new Error("Code abgelaufen. Bitte generiere einen neuen in der iOS App.");
-    throw new Error(data.error ?? "Unbekannter Fehler.");
+    // Return error codes so they can be localized in the component
+    if (res.status === 404) throw new Error("INVALID_CODE");
+    if (res.status === 410) throw new Error("EXPIRED_CODE");
+    throw new Error("UNKNOWN_ERROR");
   }
 
   const { userId } = await res.json() as { userId: string };
 
-  // Webhooks aus Firestore lesen — jetzt erlaubt dank isLinkedDevice() Rule
   const snap = await getDocs(
     query(collection(db, "webhooks"), where("userId", "==", userId))
   );
@@ -68,7 +66,7 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
         name: d.name as string,
         webhookId: d.webhookId as string,
         isPrimary: d.isPrimary as boolean,
-        url: `https://hooks.hooktap.de/webhook/${d.webhookId as string}`,
+        url: `https://hooks.hooktap.me/webhook/${d.webhookId as string}`,
       };
     })
     .sort((a, b) => (b.isPrimary ? 1 : -1));
@@ -77,6 +75,7 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
 // ── Copy button ───────────────────────────────────────────────────────────────
 
 function CopyButton({ text }: { text: string }) {
+  const t = useTranslations("modal");
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -89,17 +88,17 @@ function CopyButton({ text }: { text: string }) {
     <button
       onClick={handleCopy}
       className="btn btn-ghost btn-xs shrink-0 gap-1.5 font-mono text-xs"
-      title="URL kopieren"
+      title={t("copyTitle")}
     >
       {copied ? (
         <>
           <CheckIcon className="h-3.5 w-3.5 text-success" />
-          <span className="text-success">Kopiert</span>
+          <span className="text-success">{t("copied")}</span>
         </>
       ) : (
         <>
           <CopyIcon className="h-3.5 w-3.5" />
-          <span>Kopieren</span>
+          <span>{t("copy")}</span>
         </>
       )}
     </button>
@@ -117,6 +116,7 @@ function CodeInput({
   loading: boolean;
   error: string | null;
 }) {
+  const t = useTranslations("modal");
   const [digits, setDigits] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -155,10 +155,8 @@ function CodeInput({
         <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/15 mx-auto">
           <LinkIcon className="h-5 w-5 text-primary" />
         </div>
-        <h3 className="text-lg font-bold">Webhook-URLs abrufen</h3>
-        <p className="mt-1.5 text-sm text-white/55">
-          Öffne die HookTap iOS App → Einstellungen → PC / Mac verbinden
-        </p>
+        <h3 className="text-lg font-bold">{t("title")}</h3>
+        <p className="mt-1.5 text-sm text-white/55">{t("instruction")}</p>
       </div>
 
       <div className="flex gap-2" onPaste={handlePaste}>
@@ -194,12 +192,10 @@ function CodeInput({
         {loading ? (
           <span className="loading loading-spinner loading-sm" />
         ) : null}
-        {loading ? "Verbinde…" : "Webhook-URLs anzeigen"}
+        {loading ? t("connecting") : t("showUrls")}
       </button>
 
-      <p className="text-center text-xs text-white/35">
-        Der Code ist 5 Minuten gültig und wird nur für diesen Abruf verwendet.
-      </p>
+      <p className="text-center text-xs text-white/35">{t("codeExpiry")}</p>
     </div>
   );
 }
@@ -213,16 +209,16 @@ function WebhookList({
   webhooks: Webhook[];
   onBack: () => void;
 }) {
+  const t = useTranslations("modal");
+
   return (
     <div className="flex flex-col gap-5">
       <div className="text-center">
         <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-2xl bg-success/15 mx-auto">
           <CheckCircleIcon className="h-5 w-5 text-success" />
         </div>
-        <h3 className="text-lg font-bold">Deine Webhook-URLs</h3>
-        <p className="mt-1 text-sm text-white/55">
-          Kopiere die URL und verwende sie in deinen Integrationen.
-        </p>
+        <h3 className="text-lg font-bold">{t("yourWebhooks")}</h3>
+        <p className="mt-1 text-sm text-white/55">{t("copyInstruction")}</p>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -235,7 +231,7 @@ function WebhookList({
               <span className="font-semibold text-sm">{wh.name}</span>
               {wh.isPrimary && (
                 <span className="badge badge-xs border-primary/40 bg-primary/10 text-primary">
-                  Primär
+                  {t("primary")}
                 </span>
               )}
             </div>
@@ -253,7 +249,7 @@ function WebhookList({
         onClick={onBack}
         className="btn btn-ghost btn-sm w-full rounded-xl text-white/50"
       >
-        ← Neuen Code eingeben
+        {t("enterNewCode")}
       </button>
     </div>
   );
@@ -262,6 +258,7 @@ function WebhookList({
 // ── Main modal ────────────────────────────────────────────────────────────────
 
 export function WebhookModal({ triggerClassName }: { triggerClassName?: string }) {
+  const t = useTranslations("modal");
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [step, setStep] = useState<"code" | "webhooks">("code");
   const [webhooks, setWebhooks] = useState<Webhook[]>([]);
@@ -277,6 +274,12 @@ export function WebhookModal({ triggerClassName }: { triggerClassName?: string }
 
   const close = () => dialogRef.current?.close();
 
+  const resolveError = (code: string): string => {
+    if (code === "INVALID_CODE") return t("errors.invalidCode");
+    if (code === "EXPIRED_CODE") return t("errors.expiredCode");
+    return t("errors.unknown");
+  };
+
   const handleCodeSubmit = async (code: string) => {
     setLoading(true);
     setError(null);
@@ -285,7 +288,8 @@ export function WebhookModal({ triggerClassName }: { triggerClassName?: string }
       setWebhooks(result);
       setStep("webhooks");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Unbekannter Fehler.");
+      const msg = e instanceof Error ? e.message : "UNKNOWN_ERROR";
+      setError(resolveError(msg));
     } finally {
       setLoading(false);
     }
@@ -294,7 +298,7 @@ export function WebhookModal({ triggerClassName }: { triggerClassName?: string }
   return (
     <>
       <button onClick={open} className={triggerClassName}>
-        Webhook-URL kopieren
+        {t("triggerButton")}
       </button>
 
       <dialog ref={dialogRef} className="modal modal-bottom sm:modal-middle">
@@ -323,7 +327,7 @@ export function WebhookModal({ triggerClassName }: { triggerClassName?: string }
           )}
         </div>
         <form method="dialog" className="modal-backdrop">
-          <button>schließen</button>
+          <button>close</button>
         </form>
       </dialog>
     </>

@@ -1,4 +1,4 @@
-const FALLBACK_SITE_URL = "https://hooktap.de";
+const FALLBACK_SITE_URL = "https://hooktap.me";
 
 function normalizeUrl(value: string): string {
   const withProtocol =

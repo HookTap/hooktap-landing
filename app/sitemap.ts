@@ -7,10 +7,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: `${siteUrl}/`,
+      url: `${siteUrl}/en`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${siteUrl}/de`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
   ];
 }
