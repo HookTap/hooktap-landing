@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Datenschutz | HookTap",
+  title: "Datenschutz",
   description: "Datenschutzerklärung von HookTap.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+  alternates: {
+    canonical: "/datenschutz",
+  },
 };
 
 export default function DatenschutzPage() {
