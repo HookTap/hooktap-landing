@@ -234,7 +234,8 @@
     "getWebhookUrl": "Get webhook URL"
   },
   "footer": {
-    "tagline": "HookTap · For iPhone · Made in Germany",
+    "description": "HookTap brings push notifications, widgets, and live updates via webhook directly to your iPhone. Simple, fast, and secure.",
+    "madeInGermany": "Made with ❤️ in Germany",
     "privacy": "Privacy",
     "imprint": "Legal Notice",
     "terms": "Terms",

@@ -108,6 +108,24 @@ function FlowIcon({ className = "h-4 w-4" }: IconProps) {
   );
 }
 
+function XIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
 const SOCIAL_PROOF_ICONS = [CodeIcon, ServerIcon, SparkIcon, FlowIcon];
 
 const FEATURE_META = [
@@ -237,9 +255,16 @@ export default function Home() {
           <div className="navbar-start">
             <a
               href="#overview"
-              className="brand-display rounded-full px-3 py-2 text-xl font-bold tracking-tight"
+              className="brand-display flex items-center rounded-full px-3 py-2"
             >
-              HookTap
+              <Image
+                src="/hooktap-logo.png"
+                alt="HookTap"
+                width={85}
+                height={32}
+                className="h-8 w-auto object-contain"
+                priority
+              />
             </a>
           </div>
           <div className="navbar-center hidden lg:flex">
@@ -682,22 +707,71 @@ export default function Home() {
       </div>
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
-      <footer className="mt-4 border-t border-white/10 bg-black/60 py-7 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 text-sm text-white/60 md:px-8 lg:px-10">
-          <p>{t("footer.tagline")}</p>
-          <div className="flex flex-wrap gap-3">
-            <a href="datenschutz" className="link link-hover">
-              {t("footer.privacy")}
-            </a>
-            <a href="impressum" className="link link-hover">
-              {t("footer.imprint")}
-            </a>
-            <a href="nutzungsbedingungen" className="link link-hover">
-              {t("footer.terms")}
-            </a>
-            <a href="#" className="link link-hover">
-              {t("footer.support")}
-            </a>
+      <footer className="mt-4 border-t border-white/10 bg-black/60 py-12 backdrop-blur">
+        <div className="mx-auto max-w-6xl px-6 md:px-8 lg:px-10">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+            {/* Logo & Info */}
+            <div className="flex flex-col gap-4">
+              <Image
+                src="/hooktap-logo.png"
+                alt="HookTap Logo"
+                width={100}
+                height={38}
+                className="h-8 w-auto brightness-0 invert"
+              />
+              <p className="max-w-xs text-sm leading-relaxed text-white/60">
+                {t("footer.description")}
+              </p>
+              <div className="flex items-center gap-2 text-xs text-white/40">
+                <Image src="/germany.png" alt="Germany" width={16} height={12} className="rounded-sm" />
+                <span>{t("footer.madeInGermany")}</span>
+              </div>
+            </div>
+
+            {/* Links */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-3">
+                <h4 className="text-sm font-semibold text-white/90">Product</h4>
+                <a href="#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
+                <a href="#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
+                <a href="#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h4 className="text-sm font-semibold text-white/90">Legal</h4>
+                <a href="datenschutz" className="text-sm text-white/50 hover:text-white">{t("footer.privacy")}</a>
+                <a href="impressum" className="text-sm text-white/50 hover:text-white">{t("footer.imprint")}</a>
+                <a href="nutzungsbedingungen" className="text-sm text-white/50 hover:text-white">{t("footer.terms")}</a>
+              </div>
+            </div>
+
+            {/* Social & Support */}
+            <div className="flex flex-col gap-4 md:items-end">
+              <h4 className="text-sm font-semibold text-white/90">Social</h4>
+              <div className="flex gap-4">
+                <a
+                  href="https://x.com/hooktap_me"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                >
+                  <XIcon className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://instagram.com/hooktap.me"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                >
+                  <InstagramIcon className="h-4 w-4" />
+                </a>
+              </div>
+              <a href="mailto:support@hooktap.me" className="mt-2 text-sm text-white/50 hover:text-white">
+                {t("footer.support")}
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-white/30">
+            © {new Date().getFullYear()} HookTap. All rights reserved.
           </div>
         </div>
       </footer>
