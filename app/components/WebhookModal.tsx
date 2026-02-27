@@ -11,14 +11,12 @@ interface Webhook {
   url: string;
 }
 
-// ── Firebase helpers (lazy-loaded) ────────────────────────────────────────────
+// ── Firebase (lazy-loaded, nur wenn Modal geöffnet wird) ─────────────────────
 
 async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   const { initializeApp, getApps, getApp } = await import("firebase/app");
   const { getAuth, signInAnonymously } = await import("firebase/auth");
-  const { getFirestore, collection, query, where, getDocs } = await import(
-    "firebase/firestore"
-  );
+  const { getFirestore, collection, query, where, getDocs } = await import("firebase/firestore");
 
   const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -33,40 +31,36 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Sign in anonymously
+  // Anonym einloggen → ID-Token für Cloud Function
   const credential = await signInAnonymously(auth);
   const idToken = await credential.user.getIdToken();
 
-  // Call pairing Cloud Function
+  // pairMacDevice aufrufen → registriert dieses Gerät als linked device
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const res = await fetch(
     `https://us-central1-${projectId}.cloudfunctions.net/pairMacDevice`,
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${idToken}`,
-      },
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${idToken}` },
       body: JSON.stringify({ code }),
     }
   );
 
   if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
+    const data = await res.json().catch(() => ({})) as { error?: string };
     if (res.status === 404) throw new Error("Ungültiger Code. Bitte prüfe die Eingabe.");
-    if (res.status === 410)
-      throw new Error("Code abgelaufen. Bitte generiere einen neuen in der iOS App.");
+    if (res.status === 410) throw new Error("Code abgelaufen. Bitte generiere einen neuen in der iOS App.");
     throw new Error(data.error ?? "Unbekannter Fehler.");
   }
 
-  const { userId } = await res.json();
+  const { userId } = await res.json() as { userId: string };
 
-  // Fetch webhooks from Firestore
+  // Webhooks aus Firestore lesen — jetzt erlaubt dank isLinkedDevice() Rule
   const snap = await getDocs(
     query(collection(db, "webhooks"), where("userId", "==", userId))
   );
 
-  const webhooks: Webhook[] = snap.docs
+  return snap.docs
     .map((doc) => {
       const d = doc.data();
       return {
@@ -78,8 +72,6 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
       };
     })
     .sort((a, b) => (b.isPrimary ? 1 : -1));
-
-  return webhooks;
 }
 
 // ── Copy button ───────────────────────────────────────────────────────────────
