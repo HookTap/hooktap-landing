@@ -266,7 +266,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "meta-llama/llama-3.2-3b-instruct:free",
+        model: "arcee-ai/trinity-mini:free",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...messages,
