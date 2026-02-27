@@ -715,17 +715,13 @@ export default function Home() {
               <Image
                 src="/hooktap-logo.png"
                 alt="HookTap Logo"
-                width={100}
-                height={38}
-                className="h-8 w-auto brightness-0 invert"
+                width={85}
+                height={32}
+                className="h-8 w-auto object-contain brightness-0 invert"
               />
               <p className="max-w-xs text-sm leading-relaxed text-white/60">
                 {t("footer.description")}
               </p>
-              <div className="flex items-center gap-2 text-xs text-white/40">
-                <Image src="/germany.png" alt="Germany" width={16} height={12} className="rounded-sm" />
-                <span>{t("footer.madeInGermany")}</span>
-              </div>
             </div>
 
             {/* Links */}
@@ -765,7 +761,7 @@ export default function Home() {
                   <InstagramIcon className="h-4 w-4" />
                 </a>
               </div>
-              <a href="mailto:support@hooktap.me" className="mt-2 text-sm text-white/50 hover:text-white">
+              <a href="mailto:mail@hooktap.me" className="mt-2 text-sm text-white/50 hover:text-white">
                 {t("footer.support")}
               </a>
             </div>
