@@ -157,7 +157,7 @@ function CodeInput({
         </div>
         <h3 className="text-lg font-bold">Webhook-URLs abrufen</h3>
         <p className="mt-1.5 text-sm text-white/55">
-          Öffne die HookTap iOS App → Einstellungen → Pairings → Neuer Code
+          Öffne die HookTap iOS App → Einstellungen → PC / Mac verbinden
         </p>
       </div>
 
@@ -174,7 +174,7 @@ function CodeInput({
             value={d}
             onChange={(e) => handleChange(i, e.target.value)}
             onKeyDown={(e) => handleKeyDown(i, e)}
-            className="input input-bordered h-14 w-11 rounded-xl text-center text-xl font-bold tabular-nums focus:border-primary focus:outline-none"
+            className="h-14 w-11 rounded-xl border border-white/15 bg-white/5 text-center text-xl font-bold tabular-nums text-white outline-none focus:border-primary"
           />
         ))}
       </div>
@@ -198,7 +198,7 @@ function CodeInput({
       </button>
 
       <p className="text-center text-xs text-white/35">
-        Der Code ist 10 Minuten gültig und wird nur für diesen Abruf verwendet.
+        Der Code ist 5 Minuten gültig und wird nur für diesen Abruf verwendet.
       </p>
     </div>
   );
@@ -298,7 +298,7 @@ export function WebhookModal({ triggerClassName }: { triggerClassName?: string }
       </button>
 
       <dialog ref={dialogRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box relative max-w-md rounded-3xl border border-white/10 bg-base-200 px-6 py-7">
+        <div className="modal-box relative max-w-md rounded-3xl border border-white/10 bg-[#111111] px-6 py-7">
           <button
             onClick={close}
             className="btn btn-ghost btn-sm btn-circle absolute right-4 top-4 text-white/40"
