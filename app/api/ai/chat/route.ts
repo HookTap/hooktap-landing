@@ -206,7 +206,7 @@ HookTap lets you share a webhook with teammates so multiple people receive the s
 **How to share (owner side):**
 1. Go to the **Webhooks Tab**
 2. Swipe right on any webhook → tap **"Share"**
-3. A unique **8-character invite code** is generated (e.g. `A1B2C3D4`)
+3. A unique **8-character invite code** is generated (e.g. \`A1B2C3D4\`)
 4. The code is valid for **15 minutes** (one-time use)
 5. Share the code via copy or the system share sheet
 
