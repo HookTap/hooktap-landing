@@ -55,12 +55,13 @@ function EyeIcon({ className = "h-4 w-4" }: IconProps) {
     </svg>
   );
 }
-function WifiIcon({ className = "h-4 w-4" }: IconProps) {
+function UsersIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-      <path d="M2 9a16 16 0 0 1 20 0" /> <path d="M5 12.5a11 11 0 0 1 14 0" />
-      <path d="M8.8 16a6 6 0 0 1 6.4 0" />
-      <circle cx="12" cy="19" r="1" fill="currentColor" />
+      <circle cx="9" cy="7" r="3" />
+      <path d="M3 21v-2a5 5 0 0 1 10 0v2" />
+      <path d="M16 11a3 3 0 1 0 0-6" />
+      <path d="M21 21v-2a5 5 0 0 0-4-4.9" />
     </svg>
   );
 }
@@ -140,7 +141,7 @@ const FEATURE_META = [
   { pro: false, icon: BellIcon },
   { pro: false, icon: ListIcon },
   { pro: false, icon: EyeIcon },
-  { pro: false, icon: WifiIcon },
+  { pro: false, icon: UsersIcon },
   { pro: true, icon: GridIcon },
   { pro: true, icon: SparkIcon },
   { pro: true, icon: LockIcon },

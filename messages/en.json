@@ -74,8 +74,8 @@
         "body": "Title, body, and type immediately visible. All fields remain fully accessible in the feed."
       },
       {
-        "title": "Offline Indicator",
-        "body": "The app transparently shows you when no new events can come through."
+        "title": "Webhook Sharing",
+        "body": "Generate an invite code and let teammates receive the same events on their devices."
       },
       {
         "title": "Home Screen Widget",
@@ -210,7 +210,7 @@
       },
       {
         "q": "What happens to my data?",
-        "a": "Events are stored in Firebase and only displayed on your device. The URL is not guessable. Account and data can be deleted at any time."
+        "a": "Events are securely stored on servers in Berlin and only displayed on your device. The URL is not guessable. Account and data can be deleted at any time."
       },
       {
         "q": "How many events can I receive?",
@@ -219,6 +219,10 @@
       {
         "q": "What can the HookTap Desktop apps (Mac & Windows) do?",
         "a": "The HookTap Desktop apps are your live webhook clients: they connect via a 6-digit code to your iPhone app, display incoming events in real time, send new events as native system notifications, allow disconnecting and reconnecting your device at any time, and include built-in auto-updates."
+      },
+      {
+        "q": "Can I share a webhook with my team?",
+        "a": "Yes. In the Webhooks tab, swipe right on any webhook and tap Share. A unique 8-character invite code is generated (valid for 15 minutes). Share the code with a colleague – they redeem it via 'Enter Share Code' in their Webhooks tab and immediately start receiving push notifications for all events on that webhook. Owners can revoke access anytime; viewers can leave at any time."
       }
     ]
   },
