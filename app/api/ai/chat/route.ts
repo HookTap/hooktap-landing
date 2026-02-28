@@ -111,7 +111,7 @@ curl -X POST https://hooks.hooktap.me/webhook/YOUR_WEBHOOK_ID \\
   run: |
     curl -X POST https://hooks.hooktap.me/webhook/YOUR_WEBHOOK_ID \\
       -H "Content-Type: application/json" \\
-      -d '{"type":"push","title":"Build ${{ github.run_number }} done","body":"${{ github.ref_name }} deployed successfully"}'
+      -d '{"type":"push","title":"Build \${{ github.run_number }} done","body":"\${{ github.ref_name }} deployed successfully"}'
 \`\`\`
 
 ---
