@@ -10,6 +10,7 @@
     "overview": "Überblick",
     "how": "Ablauf",
     "features": "Features",
+    "why": "Warum HookTap",
     "useCases": "Use Cases",
     "compatibility": "Kompatibilität",
     "pricing": "Preise",
@@ -94,6 +95,62 @@
         "body": "Eigene Namen, Icons und Farben pro Webhook inklusive Filterung im Feed."
       }
     ]
+  },
+  "why": {
+    "badge": "Warum HookTap",
+    "headline": "Das richtige Tool für den Job.",
+    "sub": "Andere Lösungen funktionieren – aber sie wurden nicht dafür gebaut.",
+    "alternatives": [
+      {
+        "title": "Discord / Telegram / Slack",
+        "sub": "Messenger-Bots",
+        "items": [
+          "Bot-Token, Webhooks, Einladungslinks – Overhead",
+          "Kein nativer HTTP-POST-Endpunkt",
+          "Alerts gehen im Chat-Verlauf unter",
+          "Erfordert einen gemeinsamen Channel oder Account"
+        ]
+      },
+      {
+        "title": "Email-Alerts",
+        "sub": "SMTP / SendGrid / Mailgun",
+        "items": [
+          "Nicht Echtzeit – Verzögerungen sind normal",
+          "Notifications häufen sich an und werden übersehen",
+          "Spam-Filter verschlucken kritische Alerts",
+          "Zu viel Aufwand für ein simples Signal"
+        ]
+      },
+      {
+        "title": "Self-hosted",
+        "sub": "ntfy, Gotify, Apprise",
+        "items": [
+          "Erfordert einen eigenen Server",
+          "TLS, Auth, Firewall – dein Problem",
+          "Updates und Backups liegen bei dir",
+          "Widerspricht dem Gedanken der Einfachheit"
+        ]
+      },
+      {
+        "title": "Enterprise-Tools",
+        "sub": "PagerDuty, OpsGenie, xMatters",
+        "items": [
+          "Für Ops-Teams gebaut, nicht für Solo-Devs",
+          "Komplexes Onboarding und Konfiguration",
+          "Pläne starten bei 20 $/Monat",
+          "Viel zu viel für eine einfache Push-Notification"
+        ]
+      }
+    ],
+    "hooktap": {
+      "title": "HookTap: Eine URL. Ein POST. Fertig.",
+      "items": [
+        "Ein HTTP POST → iPhone-Push in Sekunden",
+        "Kein Server, kein Bot, kein Account nötig",
+        "In unter 2 Minuten startklar – kostenlos",
+        "Privacy by Design – Hosting in Deutschland"
+      ]
+    }
   },
   "useCases": {
     "badge": "Anwendungsfälle",

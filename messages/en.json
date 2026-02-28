@@ -10,6 +10,7 @@
     "overview": "Overview",
     "how": "How It Works",
     "features": "Features",
+    "why": "Why HookTap",
     "useCases": "Use Cases",
     "compatibility": "Compatibility",
     "pricing": "Pricing",
@@ -94,6 +95,62 @@
         "body": "Custom names, icons, and colors per webhook including feed filtering."
       }
     ]
+  },
+  "why": {
+    "badge": "Why HookTap",
+    "headline": "The right tool for the job.",
+    "sub": "Other solutions work – but they weren't built for this.",
+    "alternatives": [
+      {
+        "title": "Discord / Telegram / Slack",
+        "sub": "Messenger Bots",
+        "items": [
+          "Bot tokens, webhooks, invite links – setup overhead",
+          "No native HTTP POST endpoint",
+          "Alerts get buried in chat history",
+          "Requires a shared channel or account"
+        ]
+      },
+      {
+        "title": "Email Alerts",
+        "sub": "SMTP / SendGrid / Mailgun",
+        "items": [
+          "Not real-time – delivery delays are common",
+          "Notifications pile up and go unread",
+          "Spam filters eat critical alerts",
+          "Overkill setup for a simple signal"
+        ]
+      },
+      {
+        "title": "Self-hosted",
+        "sub": "ntfy, Gotify, Apprise",
+        "items": [
+          "Requires a server you maintain",
+          "TLS, auth, firewall – your problem",
+          "Updates and backups on you",
+          "Defeats the point of simplicity"
+        ]
+      },
+      {
+        "title": "Enterprise Tools",
+        "sub": "PagerDuty, OpsGenie, xMatters",
+        "items": [
+          "Built for ops teams, not solo devs",
+          "Complex onboarding and config",
+          "Plans start at $20+/month",
+          "Way too much for a simple push"
+        ]
+      }
+    ],
+    "hooktap": {
+      "title": "HookTap: One URL. One POST. Done.",
+      "items": [
+        "One HTTP POST → iPhone push in seconds",
+        "No server, no bot, no account required",
+        "Ready in under 2 minutes – free forever",
+        "Private by design – hosted in Germany"
+      ]
+    }
   },
   "useCases": {
     "badge": "Use Cases",

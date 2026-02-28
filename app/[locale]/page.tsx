@@ -65,6 +65,29 @@ function UsersIcon({ className = "h-4 w-4" }: IconProps) {
     </svg>
   );
 }
+function MessageIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+function MailIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m2 7 10 7 10-7" />
+    </svg>
+  );
+}
+function BuildingIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 function GridIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
@@ -148,6 +171,8 @@ const FEATURE_META = [
   { pro: true, icon: LayersIcon },
 ];
 
+const ALT_ICONS = [MessageIcon, MailIcon, ServerIcon, BuildingIcon];
+
 const USE_CASE_ICONS = [ServerIcon, SparkIcon, BellIcon, FlowIcon];
 
 const STEP_ICONS = [SparkIcon, FlowIcon, BellIcon];
@@ -205,6 +230,7 @@ export default function Home() {
     { href: "#overview", label: t("nav.overview") },
     { href: "#how", label: t("nav.how") },
     { href: "#features", label: t("nav.features") },
+    { href: "#why", label: t("nav.why") },
     { href: "#use-cases", label: t("nav.useCases") },
     { href: "#compatibility", label: t("nav.compatibility") },
     { href: "#pricing", label: t("nav.pricing") },
@@ -486,6 +512,81 @@ export default function Home() {
           </div>
         </Section>
 
+        {/* ── Why HookTap ────────────────────────────────────────────────────── */}
+        <Section id="why" className="mt-20 md:mt-28">
+          <div className="px-2 py-8 md:px-0">
+            <div className="mx-auto max-w-3xl text-center">
+              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                {t("why.badge")}
+              </span>
+              <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                {t("why.headline")}
+              </h2>
+              <p className="mt-4 text-base text-white/55">{t("why.sub")}</p>
+            </div>
+
+            {/* 2×2 Alternativen-Grid */}
+            <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+              {([0, 1, 2, 3] as const).map((idx) => {
+                const AltIcon = ALT_ICONS[idx];
+                return (
+                  <motion.div
+                    key={idx}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={sectionViewport}
+                    variants={fadeUp}
+                    transition={{ delay: idx * 0.06, duration: 0.4 }}
+                    className="rounded-2xl border border-white/8 bg-white/[0.03] p-5"
+                  >
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                        <AltIcon className="h-4 w-4 text-white/35" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-white/60">
+                          {t(`why.alternatives.${idx}.title`)}
+                        </div>
+                        <div className="text-[11px] text-white/30">
+                          {t(`why.alternatives.${idx}.sub`)}
+                        </div>
+                      </div>
+                    </div>
+                    <ul className="space-y-1.5">
+                      {([0, 1, 2, 3] as const).map((j) => (
+                        <li key={j} className="flex items-start gap-2 text-xs text-white/35">
+                          <span className="mt-px shrink-0 text-white/20">—</span>
+                          {t(`why.alternatives.${idx}.items.${j}`)}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* HookTap Highlight-Banner */}
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={sectionViewport}
+              variants={fadeUp}
+              transition={{ delay: 0.28, duration: 0.45 }}
+              className="mx-auto mt-4 max-w-3xl rounded-2xl border border-primary/40 bg-primary/8 p-6"
+            >
+              <p className="mb-4 text-base font-bold text-white">{t("why.hooktap.title")}</p>
+              <ul className="grid gap-2 sm:grid-cols-2">
+                {([0, 1, 2, 3] as const).map((i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm text-white/80">
+                    <span className="shrink-0 font-bold text-primary">✓</span>
+                    {t(`why.hooktap.items.${i}`)}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </Section>
+
         {/* ── Use cases ──────────────────────────────────────────────────────── */}
         <Section id="use-cases" className="mt-20 md:mt-28">
           <div className="px-2 py-8 md:px-0">
@@ -740,6 +841,7 @@ export default function Home() {
                 <h4 className="text-sm font-semibold text-white/90">Product</h4>
                 <a href="#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
                 <a href="#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
+                <a href="#why" className="text-sm text-white/50 hover:text-white">{t("nav.why")}</a>
                 <a href="#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
                 <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</a>
                 <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
