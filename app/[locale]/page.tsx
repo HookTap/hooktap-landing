@@ -792,8 +792,8 @@ export default function Home() {
                 <span>{t("cta.ios")}</span>
               </a>
               <a
-                href="/HookTap%201.1.dmg"
-                download="HookTap 1.1.dmg"
+                href="/HookTap%201.1.2.dmg"
+                download="HookTap 1.1.2.dmg"
                 className="btn btn-outline btn-lg gap-2"
               >
                 <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
