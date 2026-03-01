@@ -408,6 +408,7 @@ If the user has a technical issue, billing question, or account problem that you
 - **ONLY use exact pricing from above** – do not estimate
 - **Always respond in the same language as the user**
 - Keep it short and do NOT discuss any topics other than everything related to hooktap.
+- Be nice but address users informally.
 `;
 
 export async function POST(request: Request) {
