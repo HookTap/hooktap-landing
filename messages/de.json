@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "HookTap | iOS Webhooks für Entwickler",
-    "description": "HookTap bringt Push-Benachrichtigungen, Widgets und Live-Updates per Webhook auf dein iPhone. DSGVO-konform, ohne Account, Hosting in Berlin.",
+    "description": "HookTap bringt Push-Benachrichtigungen, Widgets und Live-Updates per Webhook auf dein iPhone. DSGVO-konform, ohne Account, EU-hosted in Berlin.",
     "ogTitle": "HookTap | iOS Webhooks für Entwickler",
     "ogDescription": "Push-Benachrichtigungen, Widgets und Live-Updates per Webhook auf dein iPhone.",
     "ogImageAlt": "HookTap OpenGraph Vorschau"
@@ -22,7 +22,7 @@
     "badge": "HookTap – Realtime iOS Webhooks",
     "headline": "Dein iPhone als Webhook-Empfänger. In Echtzeit.",
     "sub": "Sende eine HTTP-POST-Anfrage an deine persönliche URL – HookTap leitet sie sofort als Push-Notification auf dein iPhone weiter. Kein Server. Kein Code. Keine Wartezeit.",
-    "hosting": "Hosting in Berlin, Deutschland.",
+    "hosting": "EU-hosted · Berlin, Germany",
     "curlExample": "curl -X POST https://hooks.hooktap.me/webhook/DEINE_ID -H \"Content-Type: application/json\" -d '{\"type\":\"build\",\"title\":\"CI erfolgreich\",\"body\":\"Staging-Deploy ist live\"}'",
     "ctaPrimary": "Kostenlos starten – App laden",
     "ctaSecondary": "Mehr erfahren"
