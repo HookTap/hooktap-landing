@@ -323,7 +323,7 @@ HookTap works with anything that can send HTTP POST requests:
 - Up to 20 events in feed
 - Payload preview and Event Detail
 - No desktop apps
-- No widgets (home screen, lock screen, Dynamic Island)
+- No widgets (home screen, lock screen, Live Activitys/Dynamic Island)
 - No multiple webhooks
 
 **Pro – Monthly – $0.99/month (cancel anytime)**
