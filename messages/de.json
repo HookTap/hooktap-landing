@@ -79,16 +79,16 @@
         "body": "Generiere einen Einladungscode und lass Teammitglieder dieselben Events auf ihren Geräten empfangen."
       },
       {
-        "title": "Homescreen-Widget",
-        "body": "Das letzte Event direkt am Homescreen – in Echtzeit aktualisiert."
+        "title": "Home- & Sperrbildschirm-Widgets",
+        "body": "Das letzte Event immer direkt auf deinem Home- und Sperrbildschirm – in Echtzeit aktualisiert."
       },
       {
         "title": "Live Activity & Dynamic Island",
         "body": "Aktive Events sichtbar auf Sperrbildschirm und Dynamic Island, ideal für laufende Prozesse."
       },
       {
-        "title": "Sperrbildschirm-Widget",
-        "body": "Das neueste Event immer sichtbar, ohne das iPhone zu entsperren."
+        "title": "JSON Mapping",
+        "body": "Verbinde beliebige Dienste – mappe JSON-Felder von GitHub, Stripe, Vercel und mehr direkt auf deine Benachrichtigungen."
       },
       {
         "title": "Bis zu 3 Webhooks",
@@ -213,9 +213,9 @@
         "✓ Bis zu 20 Events im Feed",
         "✓ Payload-Vorschau",
         "✕ Desktop-Apps (Mac & Windows)",
-        "✕ Homescreen-Widget",
+        "✕ Home- & Sperrbildschirm-Widgets",
         "✕ Live Activity & Dynamic Island",
-        "✕ Sperrbildschirm-Widget",
+        "✕ JSON Mapping",
         "✕ Mehrere Webhooks"
       ],
       "cta": "App Store Download"
@@ -228,9 +228,9 @@
         "✓ Alles aus Free",
         "✓ 500 Events im Feed",
         "✓ Desktop-Apps (Mac & Windows)",
-        "✓ Homescreen-Widget (Echtzeit)",
+        "✓ Home- & Sperrbildschirm-Widgets",
         "✓ Live Activity & Dynamic Island",
-        "✓ Sperrbildschirm-Widget",
+        "✓ JSON Mapping",
         "✓ Bis zu 3 Webhooks mit Icons & Farben"
       ],
       "cta": "Monatlich starten"

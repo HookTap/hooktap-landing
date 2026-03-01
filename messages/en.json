@@ -79,16 +79,16 @@
         "body": "Generate an invite code and let teammates receive the same events on their devices."
       },
       {
-        "title": "Home Screen Widget",
-        "body": "The latest event directly on your home screen – updated in real time."
+        "title": "Home & Lock Screen Widgets",
+        "body": "The latest event always visible on your home and lock screen – updated in real time."
       },
       {
         "title": "Live Activity & Dynamic Island",
         "body": "Active events visible on lock screen and Dynamic Island, ideal for ongoing processes."
       },
       {
-        "title": "Lock Screen Widget",
-        "body": "The newest event always visible, without unlocking your iPhone."
+        "title": "JSON Mapping",
+        "body": "Connect any service — map JSON fields from GitHub, Stripe, Vercel and more directly to your notifications."
       },
       {
         "title": "Up to 3 Webhooks",
@@ -213,9 +213,9 @@
         "✓ Up to 20 events in feed",
         "✓ Payload preview",
         "✕ Desktop apps (Mac & Windows)",
-        "✕ Home screen widget",
+        "✕ Home & Lock screen widgets",
         "✕ Live Activity & Dynamic Island",
-        "✕ Lock screen widget",
+        "✕ JSON Mapping",
         "✕ Multiple webhooks"
       ],
       "cta": "App Store Download"
@@ -228,9 +228,9 @@
         "✓ Everything in Free",
         "✓ 500 events in feed",
         "✓ Desktop apps (Mac & Windows)",
-        "✓ Home screen widget (real-time)",
+        "✓ Home & Lock screen widgets",
         "✓ Live Activity & Dynamic Island",
-        "✓ Lock screen widget",
+        "✓ JSON Mapping",
         "✓ Up to 3 webhooks with icons & colors"
       ],
       "cta": "Start Monthly"

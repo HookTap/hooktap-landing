@@ -167,7 +167,7 @@ const FEATURE_META = [
   { pro: false, icon: UsersIcon },
   { pro: true, icon: GridIcon },
   { pro: true, icon: SparkIcon },
-  { pro: true, icon: LockIcon },
+  { pro: true, icon: CodeIcon },
   { pro: true, icon: LayersIcon },
 ];
 
