@@ -368,7 +368,10 @@ export default function Home() {
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/65">
                 {t("hero.sub")}
               </p>
-              <p className="mt-3 text-sm text-white/55">{t("hero.hosting")}</p>
+              <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/55">
+                <ServerIcon className="h-3.5 w-3.5" />
+                <span>{t("hero.hosting")}</span>
+              </div>
               <p className="mx-auto mt-5 max-w-3xl rounded-xl border border-white/10 bg-black/30 px-4 py-3 font-mono text-xs text-white/75 md:text-sm">
                 <code>{t("hero.curlExample")}</code>
               </p>
@@ -836,13 +839,17 @@ export default function Home() {
             </div>
 
             {/* Links */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Product</h4>
                 <a href="#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
                 <a href="#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
                 <a href="#why" className="text-sm text-white/50 hover:text-white">{t("nav.why")}</a>
                 <a href="#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h4 className="text-sm font-semibold text-white/90">Help</h4>
+                <a href="#faq" className="text-sm text-white/50 hover:text-white">FAQ</a>
                 <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</a>
                 <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
               </div>
