@@ -910,7 +910,7 @@ export default function Home() {
             </div>
 
             {/* Links */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Product</h4>
                 <a href="#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
