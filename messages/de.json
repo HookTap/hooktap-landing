@@ -80,7 +80,7 @@
       },
       {
         "title": "Widgets",
-        "body": "Das letzte Event immer direkt auf deinem Home- und Sperrbildschirm – in Echtzeit aktualisiert."
+        "body": "Das letzte Event immer direkt auf deinem Home- und Sperrbildschirm."
       },
       {
         "title": "Live Activity",
@@ -284,6 +284,10 @@
       {
         "q": "Warum ist EU-Hosting wichtig?",
         "a": "Hosting in der Europäischen Union bedeutet, dass deine Daten durch strenge Datenschutzgesetze wie die DSGVO geschützt sind. Dies gewährleistet höhere Standards für Datensicherheit, Transparenz und Nutzerrechte im Vergleich zu vielen anderen Regionen. Für Entwickler und Teams bietet es zudem planbare Compliance-Anforderungen und Sicherheit beim Umgang mit sensiblen Informationen."
+      },
+      {
+        "q": "Warum aktualisiert sich das Widget nicht in Echtzeit?",
+        "a": "Das Widget zeigt immer das neueste Event, aber iOS entscheidet selbst über den exakten Zeitpunkt der visuellen Aktualisierung (WidgetKit-Budget). Faktoren wie Akku und Nutzung spielen hier eine Rolle. Für echte Echtzeit-Infos nutze am besten den Typ push, da Benachrichtigungen immer sofort erscheinen."
       }
     ]
   },
