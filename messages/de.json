@@ -280,6 +280,10 @@
       {
         "q": "Kann ich einen Webhook mit meinem Team teilen?",
         "a": "Ja. Im Webhooks-Tab nach rechts wischen und auf 'Teilen' tippen. Es wird ein 8-stelliger Einladungscode erstellt (15 Minuten gültig). Teile den Code mit einem Kollegen – er löst ihn über 'Code eingeben' im Webhooks-Tab ein und empfängt sofort Push-Benachrichtigungen für alle Events dieses Webhooks. Eigentümer können den Zugriff jederzeit widerrufen; Viewer können jederzeit austreten."
+      },
+      {
+        "q": "Warum ist EU-Hosting wichtig?",
+        "a": "Hosting in der Europäischen Union bedeutet, dass deine Daten durch strenge Datenschutzgesetze wie die DSGVO geschützt sind. Dies gewährleistet höhere Standards für Datensicherheit, Transparenz und Nutzerrechte im Vergleich zu vielen anderen Regionen. Für Entwickler und Teams bietet es zudem planbare Compliance-Anforderungen und Sicherheit beim Umgang mit sensiblen Informationen."
       }
     ]
   },
