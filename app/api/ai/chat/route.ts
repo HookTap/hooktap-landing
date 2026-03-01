@@ -116,6 +116,50 @@ curl -X POST https://hooks.hooktap.me/webhook/YOUR_WEBHOOK_ID \\
 
 ---
 
+## JSON FIELD MAPPING
+
+JSON Field Mapping lets you use HookTap with services that send their own fixed JSON format (e.g. GitHub, Stripe, Grafana) – without needing to reformat the payload on your end.
+
+Instead of requiring \`type\`, \`title\`, and \`body\` at the top level, you configure **dot-notation paths** that tell HookTap where to find those values inside the incoming JSON.
+
+**Configuration:** Open the iOS app → Webhooks Tab → tap a webhook → "Field Mapping"
+
+**Configurable fields:**
+- **Title Path** – dot-notation path to the value used as the notification title (e.g. \`workflow_run.name\`, \`repository.full_name\`)
+- **Body Path** – dot-notation path to the value used as the notification body (e.g. \`workflow_run.conclusion\`, \`data.object.amount\`)
+- **Event Type** – fixed event type for all incoming events on this webhook (\`push\`, \`feed\`, or \`widget\`) – overrides any \`type\` field in the payload
+
+**How dot-notation works:**
+- \`workflow_run.name\` → reads \`payload.workflow_run.name\`
+- \`repository.full_name\` → reads \`payload.repository.full_name\`
+- \`data.object.amount\` → reads \`payload.data.object.amount\`
+- If the path is not found in the payload, HookTap falls back to the raw \`title\` / \`body\` fields if present
+
+**Example – GitHub webhook (no modification needed):**
+
+GitHub sends its own JSON. Configure the webhook in HookTap with:
+- Title Path: \`workflow_run.name\`
+- Body Path: \`workflow_run.conclusion\`
+- Event Type: \`push\`
+
+Then point your GitHub Actions webhook directly at your HookTap URL. No curl wrapper needed.
+
+**Example – Stripe webhook:**
+- Title Path: \`type\` (e.g. extracts \`"payment_intent.succeeded"\`)
+- Body Path: \`data.object.amount\`
+- Event Type: \`feed\`
+
+**When to use field mapping vs. standard format:**
+- **Standard format**: you control the sender (your own script, GitHub Actions step) → use \`{"type":"push","title":"...","body":"..."}\`
+- **Field mapping**: third-party service sends its own fixed JSON and you cannot change it → configure paths in the app
+
+**Notes:**
+- Field mapping is configured per webhook – different webhooks can have different mappings
+- If no mapping is configured, HookTap expects the standard \`type\`, \`title\`, \`body\` format
+- The \`payload\` object (extra key-value pairs) still works the same way regardless of mapping
+
+---
+
 ## EVENT TYPES
 
 The \`type\` field determines how the event is displayed in the app:
@@ -159,7 +203,7 @@ The \`type\` field determines how the event is displayed in the app:
 - Swipe right on any webhook → **Share** to generate an invite code for teammates
 - **"Enter Share Code"** row lets you redeem a code received from another user
 - **"Shared with Me"** section shows webhooks shared by others; swipe left to leave
-- **Pro:** "+" button to add up to 3 webhooks total; each can have a custom name, icon (20 options), and color (10 options)
+- Pro: "+" button to add up to 10 webhooks total; each can have a custom name, icon (20 options), and color (10 options)
 
 ### Settings Tab
 - **User ID** and **Webhook ID(s)** – copyable, useful for debugging
@@ -188,7 +232,7 @@ The \`type\` field determines how the event is displayed in the app:
 - Full account deletion from within the app
 
 **Pro Features (Pro Monthly or Pro Lifetime plans only):**
-- **Up to 3 Webhooks** – custom name, icon (20 options), color (10 options) per webhook
+- **Up to 10 Webhooks** – custom name, icon (20 options), color (10 options) per webhook
 - **500 events** in the feed (vs. 20 for Free)
 - **Event feed filtering** by webhook (when using multiple webhooks)
 - **Home Screen Widget** – updates in real time with every \`widget\`-type event
@@ -279,7 +323,7 @@ HookTap works with anything that can send HTTP POST requests:
 - Up to 20 events in feed
 - Payload preview and Event Detail
 - No desktop apps
-- No widgets (home screen, lock screen, Dynamic Island)
+- No widgets (home screen, lock screen, Live Activitys/Dynamic Island)
 - No multiple webhooks
 
 **Pro – Monthly – $0.99/month (cancel anytime)**
@@ -289,7 +333,7 @@ HookTap works with anything that can send HTTP POST requests:
 - Home screen widget (real-time, \`widget\` type events)
 - Live Activity & Dynamic Island
 - Lock screen widget
-- Up to 3 webhooks with custom names, icons & colors
+- Up to 10 webhooks with custom names, icons & colors
 - Feed filtering by webhook
 
 **Pro – Lifetime – $24.99 (one-time, no subscription)**

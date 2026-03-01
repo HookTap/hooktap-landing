@@ -58,6 +58,65 @@ const CODE: Record<string, string> = {
   github: GITHUB,
 };
 
+// ── Field mapping examples ────────────────────────────────────────────────────
+const MAPPING_PLAIN = `// Incoming JSON (sent by GitHub)
+{
+  "repository": { "full_name": "acme/backend" },
+  "workflow_run": {
+    "name":        "Deploy to production",
+    "conclusion":  "success",
+    "head_branch": "main"
+  }
+}
+
+// fieldMapping – set on the webhook document in Firestore
+{
+  "titlePath": "workflow_run.name",
+  "bodyPath":  "workflow_run.conclusion",
+  "eventType": "push"
+}
+
+// → Notification
+//   Title: "Deploy to production"
+//   Body:  "success"`;
+
+const MAPPING_TEMPLATE = `// fieldMapping with template syntax
+// Anything inside {…} is resolved as a dot-notation path.
+// Everything outside is treated as a literal.
+{
+  "titlePath": "🚀 {repository.full_name}",
+  "bodyPath":  "{workflow_run.conclusion} on {workflow_run.head_branch}",
+  "eventType": "push"
+}
+
+// Same GitHub payload as above
+// → Notification
+//   Title: "🚀 acme/backend"
+//   Body:  "success on main"`;
+
+const MAPPING_DEEP = `// Incoming JSON (sent by Stripe)
+{
+  "type": "payment_intent.succeeded",
+  "data": {
+    "object": {
+      "amount":   4900,
+      "currency": "eur",
+      "receipt_email": "user@example.com"
+    }
+  }
+}
+
+// fieldMapping
+{
+  "titlePath": "{type}",
+  "bodyPath":  "€{data.object.amount} · {data.object.receipt_email}",
+  "eventType": "feed"
+}
+
+// → Notification
+//   Title: "payment_intent.succeeded"
+//   Body:  "€4900 · user@example.com"`;
+
 // ── Platform icons ────────────────────────────────────────────────────────
 function AppleIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
@@ -298,6 +357,55 @@ export default function DevPage() {
                   <span className="text-sm text-white/50">{t(`send.${desc}` as Parameters<typeof t>[0])}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ── Field Mapping ─────────────────────────────────────────────── */}
+        <motion.section initial="hidden" whileInView="show" viewport={vp} variants={fadeUp} transition={{ duration: 0.5 }}>
+          <div className="mb-2 flex items-center gap-3">
+            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              {t("mapping.badge")}
+            </span>
+          </div>
+          <h2 className="text-2xl font-bold text-white mt-2 mb-2">{t("mapping.title")}</h2>
+          <p className="text-white/55 text-sm mb-7">{t("mapping.subtitle")}</p>
+
+          <div className="space-y-5">
+            {/* Plain dot-notation */}
+            <div className="rounded-[1.5rem] p-6 md:p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <p className="text-sm font-semibold text-white/80 mb-1">{t("mapping.plainTitle")}</p>
+              <p className="text-xs text-white/45 mb-4">{t("mapping.plainDesc")}</p>
+              <pre
+                className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"
+                style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.72)" }}
+              >
+                <code>{MAPPING_PLAIN}</code>
+              </pre>
+            </div>
+
+            {/* Template syntax */}
+            <div className="rounded-[1.5rem] p-6 md:p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <p className="text-sm font-semibold text-white/80 mb-1">{t("mapping.templateTitle")}</p>
+              <p className="text-xs text-white/45 mb-4">{t("mapping.templateDesc")}</p>
+              <pre
+                className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"
+                style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.72)" }}
+              >
+                <code>{MAPPING_TEMPLATE}</code>
+              </pre>
+            </div>
+
+            {/* Deep paths / Stripe */}
+            <div className="rounded-[1.5rem] p-6 md:p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <p className="text-sm font-semibold text-white/80 mb-1">{t("mapping.deepTitle")}</p>
+              <p className="text-xs text-white/45 mb-4">{t("mapping.deepDesc")}</p>
+              <pre
+                className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"
+                style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.72)" }}
+              >
+                <code>{MAPPING_DEEP}</code>
+              </pre>
             </div>
           </div>
         </motion.section>

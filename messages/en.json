@@ -63,7 +63,7 @@
     "footer": "HookTap delivers focused notifications for developers, DevOps teams, and automations.",
     "items": [
       {
-        "title": "Real-Time Push Notifications",
+        "title": "Notifications",
         "body": "Every incoming webhook lands within seconds as a notification on your lock screen."
       },
       {
@@ -79,19 +79,19 @@
         "body": "Generate an invite code and let teammates receive the same events on their devices."
       },
       {
-        "title": "Home Screen Widget",
-        "body": "The latest event directly on your home screen – updated in real time."
+        "title": "Widgets",
+        "body": "The latest event always visible on your home and lock screen – updated in real time."
       },
       {
-        "title": "Live Activity & Dynamic Island",
+        "title": "Live Activity",
         "body": "Active events visible on lock screen and Dynamic Island, ideal for ongoing processes."
       },
       {
-        "title": "Lock Screen Widget",
-        "body": "The newest event always visible, without unlocking your iPhone."
+        "title": "JSON Mapping",
+        "body": "Connect any service — map JSON fields from GitHub, Stripe, Vercel and more directly to your notifications."
       },
       {
-        "title": "Up to 3 Webhooks",
+        "title": "Up to 10 Webhooks",
         "body": "Custom names, icons, and colors per webhook including feed filtering."
       }
     ]
@@ -213,9 +213,9 @@
         "✓ Up to 20 events in feed",
         "✓ Payload preview",
         "✕ Desktop apps (Mac & Windows)",
-        "✕ Home screen widget",
+        "✕ Home & Lock screen widgets",
         "✕ Live Activity & Dynamic Island",
-        "✕ Lock screen widget",
+        "✕ JSON Mapping",
         "✕ Multiple webhooks"
       ],
       "cta": "App Store Download"
@@ -228,10 +228,10 @@
         "✓ Everything in Free",
         "✓ 500 events in feed",
         "✓ Desktop apps (Mac & Windows)",
-        "✓ Home screen widget (real-time)",
+        "✓ Home & Lock screen widgets",
         "✓ Live Activity & Dynamic Island",
-        "✓ Lock screen widget",
-        "✓ Up to 3 webhooks with icons & colors"
+        "✓ JSON Mapping",
+        "✓ Up to 10 webhooks with icons & colors"
       ],
       "cta": "Start Monthly"
     },
@@ -400,6 +400,17 @@
           "note": "Windows 10 / 11 · .exe download"
         }
       ]
+    },
+    "mapping": {
+      "badge": "Field Mapping",
+      "title": "Connect any service directly",
+      "subtitle": "Services like GitHub, Stripe, or Grafana send their own fixed JSON format. Field mapping lets you point HookTap at any path inside that payload – no wrapper script or middleware needed.",
+      "plainTitle": "Plain dot-notation",
+      "plainDesc": "Extract a value from a nested JSON path using dot-notation.",
+      "templateTitle": "Template syntax",
+      "templateDesc": "Wrap paths in {curly braces} to combine static text, emojis, and multiple fields in one string.",
+      "deepTitle": "Deep paths",
+      "deepDesc": "Any depth of nesting is supported – useful for Stripe, Grafana, or custom webhook payloads."
     },
     "nav": {
       "label": "Developer Guide"

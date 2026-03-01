@@ -63,7 +63,7 @@
     "footer": "HookTap liefert fokussierte Benachrichtigungen für Entwickler, DevOps-Teams und Automatisierungen.",
     "items": [
       {
-        "title": "Push-Notifications in Echtzeit",
+        "title": "Benachrichtigungen",
         "body": "Jeder eingehende Webhook landet innerhalb von Sekunden als Notification auf deinem Sperrbildschirm."
       },
       {
@@ -79,19 +79,19 @@
         "body": "Generiere einen Einladungscode und lass Teammitglieder dieselben Events auf ihren Geräten empfangen."
       },
       {
-        "title": "Homescreen-Widget",
-        "body": "Das letzte Event direkt am Homescreen – in Echtzeit aktualisiert."
+        "title": "Widgets",
+        "body": "Das letzte Event immer direkt auf deinem Home- und Sperrbildschirm – in Echtzeit aktualisiert."
       },
       {
-        "title": "Live Activity & Dynamic Island",
+        "title": "Live Activity",
         "body": "Aktive Events sichtbar auf Sperrbildschirm und Dynamic Island, ideal für laufende Prozesse."
       },
       {
-        "title": "Sperrbildschirm-Widget",
-        "body": "Das neueste Event immer sichtbar, ohne das iPhone zu entsperren."
+        "title": "JSON Mapping",
+        "body": "Verbinde beliebige Dienste – mappe JSON-Felder von GitHub, Stripe, Vercel und mehr direkt auf deine Benachrichtigungen."
       },
       {
-        "title": "Bis zu 3 Webhooks",
+        "title": "Bis zu 10 Webhooks",
         "body": "Eigene Namen, Icons und Farben pro Webhook inklusive Filterung im Feed."
       }
     ]
@@ -213,9 +213,9 @@
         "✓ Bis zu 20 Events im Feed",
         "✓ Payload-Vorschau",
         "✕ Desktop-Apps (Mac & Windows)",
-        "✕ Homescreen-Widget",
+        "✕ Home- & Sperrbildschirm-Widgets",
         "✕ Live Activity & Dynamic Island",
-        "✕ Sperrbildschirm-Widget",
+        "✕ JSON Mapping",
         "✕ Mehrere Webhooks"
       ],
       "cta": "App Store Download"
@@ -228,10 +228,10 @@
         "✓ Alles aus Free",
         "✓ 500 Events im Feed",
         "✓ Desktop-Apps (Mac & Windows)",
-        "✓ Homescreen-Widget (Echtzeit)",
+        "✓ Home- & Sperrbildschirm-Widgets",
         "✓ Live Activity & Dynamic Island",
-        "✓ Sperrbildschirm-Widget",
-        "✓ Bis zu 3 Webhooks mit Icons & Farben"
+        "✓ JSON Mapping",
+        "✓ Bis zu 10 Webhooks mit Icons & Farben"
       ],
       "cta": "Monatlich starten"
     },
@@ -400,6 +400,17 @@
           "note": "Windows 10 / 11 · .exe Download"
         }
       ]
+    },
+    "mapping": {
+      "badge": "Field Mapping",
+      "title": "Jeden Dienst direkt anbinden",
+      "subtitle": "Dienste wie GitHub, Stripe oder Grafana senden ihr eigenes JSON-Format. Mit Field Mapping zeigst du HookTap einfach auf den richtigen Pfad im Payload – kein Wrapper-Skript oder Middleware nötig.",
+      "plainTitle": "Einfache Dot-Notation",
+      "plainDesc": "Extrahiere einen Wert aus einem verschachtelten JSON-Pfad per Dot-Notation.",
+      "templateTitle": "Template-Syntax",
+      "templateDesc": "Schließe Pfade in {geschweifte Klammern} ein, um statischen Text, Emojis und mehrere Felder in einem String zu kombinieren.",
+      "deepTitle": "Tiefe Pfade",
+      "deepDesc": "Beliebige Verschachtelungstiefe wird unterstützt – nützlich für Stripe, Grafana oder eigene Webhook-Payloads."
     },
     "nav": {
       "label": "Developer Guide"
