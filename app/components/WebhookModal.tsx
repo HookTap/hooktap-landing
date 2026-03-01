@@ -16,7 +16,7 @@ interface Webhook {
 
 async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   const { initializeApp, getApps, getApp } = await import("firebase/app");
-  const { getAuth, signInAnonymously } = await import("firebase/auth");
+  const { getAuth, signInAnonymously, signInWithCustomToken } = await import("firebase/auth");
   const { getFirestore, collection, query, where, getDocs } = await import("firebase/firestore");
 
   const firebaseConfig = {
@@ -51,7 +51,10 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
     throw new Error("UNKNOWN_ERROR");
   }
 
-  const { userId } = await res.json() as { userId: string };
+  const { userId, token } = await res.json() as { userId: string; token: string };
+
+  // Sign in as the iOS user so Firestore rules grant access to their webhooks
+  await signInWithCustomToken(auth, token);
 
   const snap = await getDocs(
     query(collection(db, "webhooks"), where("userId", "==", userId))
