@@ -63,7 +63,7 @@
     "footer": "HookTap liefert fokussierte Benachrichtigungen für Entwickler, DevOps-Teams und Automatisierungen.",
     "items": [
       {
-        "title": "Push-Notifications in Echtzeit",
+        "title": "Benachrichtigungen",
         "body": "Jeder eingehende Webhook landet innerhalb von Sekunden als Notification auf deinem Sperrbildschirm."
       },
       {
@@ -79,11 +79,11 @@
         "body": "Generiere einen Einladungscode und lass Teammitglieder dieselben Events auf ihren Geräten empfangen."
       },
       {
-        "title": "Home- & Sperrbildschirm-Widgets",
+        "title": "Widgets",
         "body": "Das letzte Event immer direkt auf deinem Home- und Sperrbildschirm – in Echtzeit aktualisiert."
       },
       {
-        "title": "Live Activity & Dynamic Island",
+        "title": "Live Activity",
         "body": "Aktive Events sichtbar auf Sperrbildschirm und Dynamic Island, ideal für laufende Prozesse."
       },
       {

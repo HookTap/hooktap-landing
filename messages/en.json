@@ -63,7 +63,7 @@
     "footer": "HookTap delivers focused notifications for developers, DevOps teams, and automations.",
     "items": [
       {
-        "title": "Real-Time Push Notifications",
+        "title": "Notifications",
         "body": "Every incoming webhook lands within seconds as a notification on your lock screen."
       },
       {
@@ -79,11 +79,11 @@
         "body": "Generate an invite code and let teammates receive the same events on their devices."
       },
       {
-        "title": "Home & Lock Screen Widgets",
+        "title": "Widgets",
         "body": "The latest event always visible on your home and lock screen – updated in real time."
       },
       {
-        "title": "Live Activity & Dynamic Island",
+        "title": "Live Activity",
         "body": "Active events visible on lock screen and Dynamic Island, ideal for ongoing processes."
       },
       {
