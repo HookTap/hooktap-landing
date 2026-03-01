@@ -32,7 +32,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What does Pro add?",
-    a: "Pro unlocks the Home Screen Widget, Live Activity & Dynamic Island, Lock Screen Widget, up to 3 webhooks with custom icons and colors, 500 events in feed, and the native desktop apps for Mac and Windows.",
+    a: "Pro unlocks the Home Screen Widget, Live Activity & Dynamic Island, Lock Screen Widget, up to 10 webhooks with custom icons and colors, 500 events in feed, and the native desktop apps for Mac and Windows.",
   },
   {
     q: "How do the desktop apps work?",

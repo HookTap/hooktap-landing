@@ -159,7 +159,7 @@ The \`type\` field determines how the event is displayed in the app:
 - Swipe right on any webhook → **Share** to generate an invite code for teammates
 - **"Enter Share Code"** row lets you redeem a code received from another user
 - **"Shared with Me"** section shows webhooks shared by others; swipe left to leave
-- **Pro:** "+" button to add up to 3 webhooks total; each can have a custom name, icon (20 options), and color (10 options)
+- Pro: "+" button to add up to 10 webhooks total; each can have a custom name, icon (20 options), and color (10 options)
 
 ### Settings Tab
 - **User ID** and **Webhook ID(s)** – copyable, useful for debugging
@@ -188,7 +188,7 @@ The \`type\` field determines how the event is displayed in the app:
 - Full account deletion from within the app
 
 **Pro Features (Pro Monthly or Pro Lifetime plans only):**
-- **Up to 3 Webhooks** – custom name, icon (20 options), color (10 options) per webhook
+- **Up to 10 Webhooks** – custom name, icon (20 options), color (10 options) per webhook
 - **500 events** in the feed (vs. 20 for Free)
 - **Event feed filtering** by webhook (when using multiple webhooks)
 - **Home Screen Widget** – updates in real time with every \`widget\`-type event
@@ -289,7 +289,7 @@ HookTap works with anything that can send HTTP POST requests:
 - Home screen widget (real-time, \`widget\` type events)
 - Live Activity & Dynamic Island
 - Lock screen widget
-- Up to 3 webhooks with custom names, icons & colors
+- Up to 10 webhooks with custom names, icons & colors
 - Feed filtering by webhook
 
 **Pro – Lifetime – $24.99 (one-time, no subscription)**

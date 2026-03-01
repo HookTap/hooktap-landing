@@ -91,7 +91,7 @@
         "body": "Connect any service — map JSON fields from GitHub, Stripe, Vercel and more directly to your notifications."
       },
       {
-        "title": "Up to 3 Webhooks",
+        "title": "Up to 10 Webhooks",
         "body": "Custom names, icons, and colors per webhook including feed filtering."
       }
     ]
@@ -231,7 +231,7 @@
         "✓ Home & Lock screen widgets",
         "✓ Live Activity & Dynamic Island",
         "✓ JSON Mapping",
-        "✓ Up to 3 webhooks with icons & colors"
+        "✓ Up to 10 webhooks with icons & colors"
       ],
       "cta": "Start Monthly"
     },

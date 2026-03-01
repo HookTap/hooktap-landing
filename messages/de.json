@@ -91,7 +91,7 @@
         "body": "Verbinde beliebige Dienste – mappe JSON-Felder von GitHub, Stripe, Vercel und mehr direkt auf deine Benachrichtigungen."
       },
       {
-        "title": "Bis zu 3 Webhooks",
+        "title": "Bis zu 10 Webhooks",
         "body": "Eigene Namen, Icons und Farben pro Webhook inklusive Filterung im Feed."
       }
     ]
@@ -231,7 +231,7 @@
         "✓ Home- & Sperrbildschirm-Widgets",
         "✓ Live Activity & Dynamic Island",
         "✓ JSON Mapping",
-        "✓ Bis zu 3 Webhooks mit Icons & Farben"
+        "✓ Bis zu 10 Webhooks mit Icons & Farben"
       ],
       "cta": "Monatlich starten"
     },
