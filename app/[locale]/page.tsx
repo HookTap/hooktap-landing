@@ -917,6 +917,10 @@ export default function Home() {
                 <a href="#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
                 <a href="#why" className="text-sm text-white/50 hover:text-white">{t("nav.why")}</a>
                 <a href="#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h4 className="text-sm font-semibold text-white/90">Help</h4>
+                <a href="#faq" className="text-sm text-white/50 hover:text-white">FAQ</a>
                 <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</a>
                 <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
               </div>
