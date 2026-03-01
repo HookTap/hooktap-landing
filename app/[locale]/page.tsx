@@ -108,6 +108,23 @@ function SparkIcon({ className = "h-4 w-4" }: IconProps) {
     </svg>
   );
 }
+function DownloadIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
+function LinkIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
+}
 function LockIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
@@ -169,7 +186,7 @@ const FEATURE_META = [
   { pro: false, icon: UsersIcon },
   { pro: true, icon: GridIcon },
   { pro: true, icon: SparkIcon },
-  { pro: true, icon: LockIcon },
+  { pro: true, icon: CodeIcon },
   { pro: true, icon: LayersIcon },
 ];
 
@@ -177,7 +194,7 @@ const ALT_ICONS = [MessageIcon, MailIcon, ServerIcon, BuildingIcon];
 
 const USE_CASE_ICONS = [ServerIcon, SparkIcon, BellIcon, FlowIcon];
 
-const STEP_ICONS = [SparkIcon, FlowIcon, BellIcon];
+const STEP_ICONS = [DownloadIcon, LinkIcon, BellIcon];
 
 const compatibilityItems = [
   { label: "GitHub Actions", logo: "/icons/github.svg" },
@@ -194,13 +211,6 @@ const compatibilityItems = [
 
 const featureIconTones = [
   "border-red-400/30 bg-red-500/10 text-red-300",
-  "border-sky-400/30 bg-sky-500/10 text-sky-300",
-  "border-emerald-400/30 bg-emerald-500/10 text-emerald-300",
-  "border-amber-400/30 bg-amber-500/10 text-amber-300",
-  "border-violet-400/30 bg-violet-500/10 text-violet-300",
-  "border-orange-400/30 bg-orange-500/10 text-orange-300",
-  "border-fuchsia-400/30 bg-fuchsia-500/10 text-fuchsia-300",
-  "border-zinc-300/30 bg-zinc-500/10 text-zinc-200",
 ];
 
 function Section({
