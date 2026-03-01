@@ -1,5 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations, useLocale } from "next-intl";
@@ -106,6 +108,23 @@ function SparkIcon({ className = "h-4 w-4" }: IconProps) {
     </svg>
   );
 }
+function DownloadIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
+function LinkIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
+}
 function LockIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
@@ -175,7 +194,7 @@ const ALT_ICONS = [MessageIcon, MailIcon, ServerIcon, BuildingIcon];
 
 const USE_CASE_ICONS = [ServerIcon, SparkIcon, BellIcon, FlowIcon];
 
-const STEP_ICONS = [SparkIcon, FlowIcon, BellIcon];
+const STEP_ICONS = [DownloadIcon, LinkIcon, BellIcon];
 
 const compatibilityItems = [
   { label: "GitHub Actions", logo: "/icons/github.svg" },
@@ -192,13 +211,6 @@ const compatibilityItems = [
 
 const featureIconTones = [
   "border-red-400/30 bg-red-500/10 text-red-300",
-  "border-sky-400/30 bg-sky-500/10 text-sky-300",
-  "border-emerald-400/30 bg-emerald-500/10 text-emerald-300",
-  "border-amber-400/30 bg-amber-500/10 text-amber-300",
-  "border-violet-400/30 bg-violet-500/10 text-violet-300",
-  "border-orange-400/30 bg-orange-500/10 text-orange-300",
-  "border-fuchsia-400/30 bg-fuchsia-500/10 text-fuchsia-300",
-  "border-zinc-300/30 bg-zinc-500/10 text-zinc-200",
 ];
 
 function Section({
@@ -223,6 +235,7 @@ function Section({
 }
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
 
@@ -319,21 +332,79 @@ export default function Home() {
             <a href="#cta" className="btn btn-primary btn-sm rounded-full hidden sm:flex">
               {t("nav.getApp")}
             </a>
-            <details className="dropdown dropdown-end lg:hidden">
-              <summary className="btn btn-ghost btn-sm rounded-full">
-                {t("nav.menu")}
-              </summary>
-              <ul className="menu dropdown-content z-[60] mt-3 w-56 rounded-2xl border border-white/15 bg-black/85 p-2 shadow-2xl">
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    <a href={item.href}>{item.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </details>
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="btn btn-ghost btn-sm rounded-full lg:hidden"
+              aria-label="Open Menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
           </div>
         </motion.header>
       </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex flex-col bg-black/95 backdrop-blur-2xl"
+          >
+            <div className="flex items-center justify-between p-6">
+              <Image
+                src="/hooktap-logo.png"
+                alt="HookTap"
+                width={100}
+                height={36}
+                className="h-9 w-auto object-contain"
+              />
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="btn btn-ghost btn-circle btn-sm"
+                aria-label="Close Menu"
+              >
+                <X className="h-6 w-6 text-white" />
+              </button>
+            </div>
+            <nav className="flex flex-1 flex-col items-center justify-center p-6 pb-20">
+              <ul className="flex flex-col items-center gap-6 text-center">
+                {navItems.map((item, idx) => (
+                  <motion.li
+                    key={item.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 + 0.1 }}
+                  >
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="text-2xl font-bold text-white transition-colors hover:text-primary"
+                    >
+                      {item.label}
+                    </a>
+                  </motion.li>
+                ))}
+                <motion.li
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navItems.length * 0.05 + 0.1 }}
+                  className="mt-4"
+                >
+                  <a
+                    href="#cta"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="btn btn-primary btn-lg rounded-full px-12"
+                  >
+                    {t("nav.getApp")}
+                  </a>
+                </motion.li>
+              </ul>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-10">
 
@@ -368,7 +439,10 @@ export default function Home() {
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/65">
                 {t("hero.sub")}
               </p>
-              <p className="mt-3 text-sm text-white/55">{t("hero.hosting")}</p>
+              <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/55">
+                <ServerIcon className="h-3.5 w-3.5" />
+                <span>{t("hero.hosting")}</span>
+              </div>
               <p className="mx-auto mt-5 max-w-3xl rounded-xl border border-white/10 bg-black/30 px-4 py-3 font-mono text-xs text-white/75 md:text-sm">
                 <code>{t("hero.curlExample")}</code>
               </p>

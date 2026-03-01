@@ -54,7 +54,7 @@ HookTap is a real-time webhook receiver for your iPhone. When you send an HTTP P
 - No server required
 - No code required
 - No account registration required (anonymous account created automatically on first launch)
-- Hosted in Berlin, Germany (GDPR compliant)
+- EU-hosted in Berlin, Germany (GDPR compliant)
 
 ---
 
@@ -352,7 +352,7 @@ Payment is processed through your Apple account. No external account needed. Mon
 - You instantly get your personal URL – no email or password required
 - The webhook URL is cryptographically random and not guessable
 - Account and all data (events, webhooks, device registrations) can be deleted at any time from Settings
-- Hosted in Berlin, Germany (GDPR compliant, no data leaves the EU)
+- EU-hosted in Berlin, Germany (GDPR compliant, no data leaves the EU)
 
 ---
 

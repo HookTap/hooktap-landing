@@ -40,11 +40,15 @@ const FAQ_ITEMS = [
   },
   {
     q: "What happens to my data?",
-    a: "Your events are stored securely and only displayed on your device. The webhook URL is not guessable. You can delete your account and all data at any time from within the app. HookTap is hosted in Berlin, Germany (GDPR compliant).",
+    a: "Your events are stored securely and only displayed on your device. The webhook URL is not guessable. You can delete your account and all data at any time from within the app. HookTap is EU-hosted in Berlin, Germany (GDPR compliant).",
   },
   {
     q: "How many events can I receive?",
     a: "Incoming webhooks are unlimited on all plans. Your event feed stores the last 20 events on Free and the last 500 on Pro.",
+  },
+  {
+    q: "Why does EU hosting matter?",
+    a: "Hosting in the European Union means your data is protected by strict privacy laws such as the GDPR. This ensures higher standards for data security, transparency, and user rights compared to many other regions. For developers and teams, it also provides predictable compliance requirements and peace of mind when handling sensitive information.",
   },
 ];
 
