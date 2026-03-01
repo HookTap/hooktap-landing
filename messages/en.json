@@ -397,6 +397,17 @@
         }
       ]
     },
+    "mapping": {
+      "badge": "Field Mapping",
+      "title": "Connect any service directly",
+      "subtitle": "Services like GitHub, Stripe, or Grafana send their own fixed JSON format. Field mapping lets you point HookTap at any path inside that payload – no wrapper script or middleware needed.",
+      "plainTitle": "Plain dot-notation",
+      "plainDesc": "Extract a value from a nested JSON path using dot-notation.",
+      "templateTitle": "Template syntax",
+      "templateDesc": "Wrap paths in {curly braces} to combine static text, emojis, and multiple fields in one string.",
+      "deepTitle": "Deep paths",
+      "deepDesc": "Any depth of nesting is supported – useful for Stripe, Grafana, or custom webhook payloads."
+    },
     "nav": {
       "label": "Developer Guide"
     }

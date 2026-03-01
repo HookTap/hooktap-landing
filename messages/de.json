@@ -397,6 +397,17 @@
         }
       ]
     },
+    "mapping": {
+      "badge": "Field Mapping",
+      "title": "Jeden Dienst direkt anbinden",
+      "subtitle": "Dienste wie GitHub, Stripe oder Grafana senden ihr eigenes JSON-Format. Mit Field Mapping zeigst du HookTap einfach auf den richtigen Pfad im Payload – kein Wrapper-Skript oder Middleware nötig.",
+      "plainTitle": "Einfache Dot-Notation",
+      "plainDesc": "Extrahiere einen Wert aus einem verschachtelten JSON-Pfad per Dot-Notation.",
+      "templateTitle": "Template-Syntax",
+      "templateDesc": "Schließe Pfade in {geschweifte Klammern} ein, um statischen Text, Emojis und mehrere Felder in einem String zu kombinieren.",
+      "deepTitle": "Tiefe Pfade",
+      "deepDesc": "Beliebige Verschachtelungstiefe wird unterstützt – nützlich für Stripe, Grafana oder eigene Webhook-Payloads."
+    },
     "nav": {
       "label": "Developer Guide"
     }
