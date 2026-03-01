@@ -34,7 +34,7 @@ const PYTHON = `import httpx  # or: import requests
 httpx.post(
     "https://hooks.hooktap.me/webhook/YOUR_ID",
     json={
-        "type":  "build",
+        "type":  "push",
         "title": "CI succeeded",
         "body":  "Staging deploy is live",
     },
@@ -46,7 +46,7 @@ const GITHUB = `# .github/workflows/notify.yml
     curl -X POST https://hooks.hooktap.me/webhook/\${{ secrets.HOOKTAP_ID }} \\
       -H "Content-Type: application/json" \\
       -d '{
-        "type":  "deploy",
+        "type":  "push",
         "title": "Deploy complete",
         "body":  "Branch: \${{ github.ref_name }}"
       }'`;
@@ -71,9 +71,9 @@ const MAPPING_PLAIN = `// Incoming JSON (sent by GitHub)
 
 // fieldMapping – set on the webhook document in Firestore
 {
-  "titlePath": "workflow_run.name",
-  "bodyPath":  "workflow_run.conclusion",
-  "eventType": "push"
+  "title": "workflow_run.name",
+  "nody":  "workflow_run.conclusion",
+  "type": "push"
 }
 
 // → Notification
@@ -84,9 +84,9 @@ const MAPPING_TEMPLATE = `// fieldMapping with template syntax
 // Anything inside {…} is resolved as a dot-notation path.
 // Everything outside is treated as a literal.
 {
-  "titlePath": "🚀 {repository.full_name}",
-  "bodyPath":  "{workflow_run.conclusion} on {workflow_run.head_branch}",
-  "eventType": "push"
+  "title": "🚀 {repository.full_name}",
+  "body":  "{workflow_run.conclusion} on {workflow_run.head_branch}",
+  "type": "push"
 }
 
 // Same GitHub payload as above
@@ -108,9 +108,9 @@ const MAPPING_DEEP = `// Incoming JSON (sent by Stripe)
 
 // fieldMapping
 {
-  "titlePath": "{type}",
-  "bodyPath":  "€{data.object.amount} · {data.object.receipt_email}",
-  "eventType": "feed"
+  "title": "{type}",
+  "body":  "€{data.object.amount} · {data.object.receipt_email}",
+  "type": "feed"
 }
 
 // → Notification
