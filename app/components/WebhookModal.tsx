@@ -35,9 +35,8 @@ async function pairAndFetchWebhooks(code: string): Promise<Webhook[]> {
   const credential = await signInAnonymously(auth);
   const idToken = await credential.user.getIdToken();
 
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const res = await fetch(
-    `https://us-central1-${projectId}.cloudfunctions.net/pairMacDevice`,
+    `https://pairmacdevice-lizlvozwda-uc.a.run.app`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${idToken}` },
