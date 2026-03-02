@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "eu-central-1-shared-at-01.graphassets.com",
       },
+      {
+        protocol: "https",
+        hostname: "eu-west-2.graphassets.com",
+      },
     ],
   },
 };
