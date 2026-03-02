@@ -100,7 +100,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} data-theme="night">
       <body className="bg-base-100 text-base-content antialiased">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
           <HookyFloatingButton />
         </NextIntlClientProvider>
