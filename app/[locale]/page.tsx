@@ -861,7 +861,7 @@ export default function Home() {
               {t("cta.sub")}
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href="https://ios.hooktap.me/" className="btn btn-primary btn-lg gap-2">
+              <a href={`/${locale}/ios`} className="btn btn-primary btn-lg gap-2">
                 <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
                 <span>{t("cta.ios")}</span>
               </a>
