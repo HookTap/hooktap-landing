@@ -463,5 +463,69 @@
         "text": "Behalte den Überblick mit bis zu 10 Webhooks. Weise jedem Hook einen eigenen Namen, eine Farbe und ein passendes Icon zu, um Signale sofort visuell zu unterscheiden."
       }
     ]
+  },
+  "legal": {
+    "back": "Zurück zur Startseite",
+    "imprint": {
+      "title": "Impressum",
+      "subtitle": "Angaben gemäß § 5 TMG und § 18 MStV.",
+      "sections": {
+        "provider": "Anbieter",
+        "contact": "Kontakt",
+        "responsible": "Verantwortlich für den Inhalt"
+      }
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "subtitle": "Hinweis: Bitte durch eine rechtlich geprüfte Datenschutzerklärung ersetzen.",
+      "sections": [
+        {
+          "title": "1. Verantwortlicher",
+          "text": "Tim\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nE-Mail: mail@hooktap.me"
+        },
+        {
+          "title": "2. Verarbeitung von Daten",
+          "text": "Bei der Nutzung von HookTap können technische Daten, Webhook-Inhalte und Nutzungsdaten verarbeitet werden, soweit dies für den Betrieb der App erforderlich ist."
+        },
+        {
+          "title": "3. Speicherdauer",
+          "text": "Daten werden nur so lange gespeichert, wie es für den jeweiligen Zweck erforderlich ist oder gesetzliche Pflichten dies vorsehen."
+        },
+        {
+          "title": "4. Deine Rechte",
+          "text": "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch."
+        },
+        {
+          "title": "5. Kontakt Datenschutz",
+          "text": "Für Anfragen zum Datenschutz: mail@hooktap.me"
+        }
+      ]
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Hinweis: Bitte durch rechtlich geprüfte Nutzungsbedingungen ersetzen.",
+      "sections": [
+        {
+          "title": "1. Geltungsbereich",
+          "text": "Diese Bedingungen regeln die Nutzung der HookTap-App und der zugehörigen Dienste."
+        },
+        {
+          "title": "2. Leistungsbeschreibung",
+          "text": "HookTap stellt Webhook-Empfang und Push-Benachrichtigungen auf iOS bereit. Der Leistungsumfang kann je nach Tarif variieren."
+        },
+        {
+          "title": "3. Pflichten der Nutzer",
+          "text": "Die Nutzung darf nicht rechtswidrig sein. Insbesondere dürfen keine schädlichen oder missbräuchlichen Inhalte übermittelt werden."
+        },
+        {
+          "title": "4. Haftung",
+          "text": "Es gelten die gesetzlichen Haftungsregelungen. Eine Haftung für leichte Fahrlässigkeit ist, soweit zulässig, ausgeschlossen."
+        },
+        {
+          "title": "5. Schlussbestimmungen",
+          "text": "Es gilt deutsches Recht. Gerichtsstand ist, soweit zulässig, der Sitz des Anbieters."
+        }
+      ]
+    }
   }
 }

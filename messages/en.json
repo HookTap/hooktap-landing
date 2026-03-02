@@ -463,5 +463,69 @@
         "text": "Stay organized with up to 10 webhooks. Assign a unique name, color, and matching icon to each hook to visually distinguish signals instantly."
       }
     ]
+  },
+  "legal": {
+    "back": "Back to Home",
+    "imprint": {
+      "title": "Legal Notice",
+      "subtitle": "Information according to § 5 TMG and § 18 MStV.",
+      "sections": {
+        "provider": "Provider",
+        "contact": "Contact",
+        "responsible": "Responsible for content"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "subtitle": "Note: Please replace with a legally reviewed privacy policy.",
+      "sections": [
+        {
+          "title": "1. Controller",
+          "text": "Tim\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nEmail: mail@hooktap.me"
+        },
+        {
+          "title": "2. Data Processing",
+          "text": "When using HookTap, technical data, webhook content, and usage data may be processed to the extent necessary for the operation of the app."
+        },
+        {
+          "title": "3. Storage Duration",
+          "text": "Data is only stored for as long as necessary for the respective purpose or as required by legal obligations."
+        },
+        {
+          "title": "4. Your Rights",
+          "text": "You have the right to information, rectification, erasure, restriction of processing, data portability, and objection."
+        },
+        {
+          "title": "5. Privacy Contact",
+          "text": "For privacy inquiries: mail@hooktap.me"
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "subtitle": "Note: Please replace with legally reviewed terms of use.",
+      "sections": [
+        {
+          "title": "1. Scope",
+          "text": "These terms govern the use of the HookTap app and associated services."
+        },
+        {
+          "title": "2. Service Description",
+          "text": "HookTap provides webhook reception and push notifications on iOS. The scope of service may vary depending on the plan."
+        },
+        {
+          "title": "3. User Obligations",
+          "text": "Use must not be unlawful. In particular, no harmful or abusive content may be transmitted."
+        },
+        {
+          "title": "4. Liability",
+          "text": "Legal liability regulations apply. Liability for slight negligence is excluded to the extent permitted."
+        },
+        {
+          "title": "5. Final Provisions",
+          "text": "German law applies. The place of jurisdiction is, to the extent permitted, the seat of the provider."
+        }
+      ]
+    }
   }
 }
