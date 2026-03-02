@@ -245,8 +245,6 @@ export default function Home() {
     { href: "#how", label: t("nav.how") },
     { href: "#features", label: t("nav.features") },
     { href: "#why", label: t("nav.why") },
-    { href: "#use-cases", label: t("nav.useCases") },
-    { href: "#compatibility", label: t("nav.compatibility") },
     { href: "#pricing", label: t("nav.pricing") },
     { href: "#faq", label: t("nav.faq") },
   ];
