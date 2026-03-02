@@ -439,5 +439,12 @@
       "expiredCode": "Code abgelaufen. Bitte generiere einen neuen in der iOS App.",
       "unknown": "Unbekannter Fehler."
     }
+  },
+  "iosComingSoon": {
+    "badge": "In Kürze verfügbar",
+    "headline": "HookTap für iOS ist bald da.",
+    "sub": "Wir bereiten aktuell den Launch im App Store vor. In Kürze kannst du HookTap direkt auf deinem iPhone installieren und deine Webhooks in Echtzeit empfangen.",
+    "cta": "Bald im App Store",
+    "back": "Zurück zur Startseite"
   }
 }
