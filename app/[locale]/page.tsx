@@ -309,7 +309,7 @@ export default function Home() {
               <Image
                 src="/hooktap-logo.png"
                 alt="HookTap"
-                width={85}
+                width={128}
                 height={32}
                 className="h-8 w-auto object-contain"
                 priority
@@ -356,7 +356,7 @@ export default function Home() {
               <Image
                 src="/hooktap-logo.png"
                 alt="HookTap"
-                width={100}
+                width={144}
                 height={36}
                 className="h-9 w-auto object-contain"
               />
@@ -900,7 +900,7 @@ export default function Home() {
               <Image
                 src="/hooktap-logo.png"
                 alt="HookTap Logo"
-                width={85}
+                width={128}
                 height={32}
                 className="h-8 w-auto object-contain"
               />

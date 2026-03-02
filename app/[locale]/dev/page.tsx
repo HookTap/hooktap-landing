@@ -195,7 +195,7 @@ export default function DevPage() {
         >
           <div className="navbar-start gap-2">
             <a href={homeHref} className="brand-display flex items-center rounded-full px-3 py-2">
-              <Image src="/hooktap-logo.png" alt="HookTap" width={85} height={32} className="h-8 w-auto object-contain" priority />
+              <Image src="/hooktap-logo.png" alt="HookTap" width={128} height={32} className="h-8 w-auto object-contain" priority />
             </a>
             <a href={homeHref} className="hidden sm:flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/50 hover:text-white/80 transition-colors">
               <ArrowLeft className="w-3 h-3" />
