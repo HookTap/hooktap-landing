@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { WebhookModal } from "@/app/components/WebhookModal";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
 
@@ -921,14 +922,14 @@ export default function Home() {
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Help</h4>
                 <a href="#faq" className="text-sm text-white/50 hover:text-white">FAQ</a>
-                <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</a>
+                <Link href="/dev" className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</Link>
                 <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Legal</h4>
-                <a href="datenschutz" className="text-sm text-white/50 hover:text-white">{t("footer.privacy")}</a>
-                <a href="impressum" className="text-sm text-white/50 hover:text-white">{t("footer.imprint")}</a>
-                <a href="nutzungsbedingungen" className="text-sm text-white/50 hover:text-white">{t("footer.terms")}</a>
+                <Link href="/datenschutz" className="text-sm text-white/50 hover:text-white">{t("footer.privacy")}</Link>
+                <Link href="/impressum" className="text-sm text-white/50 hover:text-white">{t("footer.imprint")}</Link>
+                <Link href="/nutzungsbedingungen" className="text-sm text-white/50 hover:text-white">{t("footer.terms")}</Link>
               </div>
             </div>
 

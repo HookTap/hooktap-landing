@@ -5,6 +5,7 @@ import { ArrowLeft, X } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
 
 const PixelBlast = dynamic(() => import("@/app/components/PixelBlast"), {
@@ -173,22 +174,22 @@ export default function IosComingSoonPage() {
             <div className="grid grid-cols-3 gap-4">
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Product</h4>
-                <a href={`${homeHref}#overview`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.overview")}</a>
-                <a href={`${homeHref}#features`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.features")}</a>
-                <a href={`${homeHref}#why`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.why")}</a>
-                <a href={`${homeHref}#pricing`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.pricing")}</a>
+                <Link href="/#overview" className="text-sm text-white/50 hover:text-white">{tGlobal("nav.overview")}</Link>
+                <Link href="/#features" className="text-sm text-white/50 hover:text-white">{tGlobal("nav.features")}</Link>
+                <Link href="/#why" className="text-sm text-white/50 hover:text-white">{tGlobal("nav.why")}</Link>
+                <Link href="/#pricing" className="text-sm text-white/50 hover:text-white">{tGlobal("nav.pricing")}</Link>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Help</h4>
-                <a href={`${homeHref}#faq`} className="text-sm text-white/50 hover:text-white">FAQ</a>
-                <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.devGuide")}</a>
+                <Link href="/#faq" className="text-sm text-white/50 hover:text-white">FAQ</Link>
+                <Link href="/dev" className="text-sm text-white/50 hover:text-white">{tGlobal("footer.devGuide")}</Link>
                 <a href="/help" className="text-sm text-white/50 hover:text-white">{tGlobal("footer.support")}</a>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Legal</h4>
-                <a href={`/${locale}/datenschutz`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.privacy")}</a>
-                <a href={`/${locale}/impressum`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.imprint")}</a>
-                <a href={`/${locale}/nutzungsbedingungen`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.terms")}</a>
+                <Link href="/datenschutz" className="text-sm text-white/50 hover:text-white">{tGlobal("footer.privacy")}</Link>
+                <Link href="/impressum" className="text-sm text-white/50 hover:text-white">{tGlobal("footer.imprint")}</Link>
+                <Link href="/nutzungsbedingungen" className="text-sm text-white/50 hover:text-white">{tGlobal("footer.terms")}</Link>
               </div>
             </div>
             <div className="flex flex-col gap-4 md:items-end">
