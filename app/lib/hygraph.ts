@@ -1,5 +1,5 @@
-export async function hygraphFetch<T>(query: string, variables = {}, locale: string): Promise<T> {
-  const hygraphLocale = locale.toUpperCase();
+export async function hygraphFetch<T>(query: string, variables: any = {}, locale: string): Promise<T> {
+  const hygraphLocale = locale.toUpperCase(); // DE or EN
   
   const url = process.env.HYGRAPH_URL;
   const token = process.env.HYGRAPH_TOKEN;
@@ -8,15 +8,28 @@ export async function hygraphFetch<T>(query: string, variables = {}, locale: str
     throw new Error("HYGRAPH_URL or HYGRAPH_TOKEN is missing in environment variables");
   }
 
+  // We add the locale to the variables to ensure Next.js creates 
+  // a unique cache entry for each language.
+  const extendedVariables = {
+    ...variables,
+    __locale: hygraphLocale // Forces unique cache key per locale
+  };
+
   const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token.trim()}`,
-      "gcms-locales": hygraphLocale,
+      "gcms-locales": hygraphLocale, // Standard Hygraph localization header
     },
-    body: JSON.stringify({ query, variables }),
-    next: { revalidate: 60 }, // Lower revalidate for debugging
+    body: JSON.stringify({ 
+      query, 
+      variables: extendedVariables 
+    }),
+    next: { 
+      revalidate: 60,
+      tags: [`hygraph-${locale}`] 
+    },
   });
 
   const responseBody = await res.json();
