@@ -527,5 +527,12 @@
         }
       ]
     }
+  },
+  "blog": {
+    "title": "HookTap Blog",
+    "subtitle": "News, tutorials and updates about webhooks.",
+    "readMore": "Read more",
+    "back": "Back to overview",
+    "publishedOn": "Published on"
   }
 }

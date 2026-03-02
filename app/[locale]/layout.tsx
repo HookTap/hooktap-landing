@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import HookyFloatingButton from "@/app/components/HookyFloatingButton";
 import { NewsBar } from "@/app/components/NewsBar";
+import { Navbar } from "@/app/components/Navbar";
+import { Footer } from "@/app/components/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -103,7 +105,9 @@ export default async function LocaleLayout({
       <body className="bg-base-100 text-base-content antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NewsBar />
+          <Navbar />
           {children}
+          <Footer />
           <HookyFloatingButton />
         </NextIntlClientProvider>
       </body>
