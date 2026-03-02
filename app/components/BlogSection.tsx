@@ -19,6 +19,8 @@ const LATEST_POSTS_QUERY = `
 
 export async function BlogSection({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "blog" });
+  
+  // Explicitly fetch data for this locale
   const { posts } = await hygraphFetch<{ posts: any[] }>(LATEST_POSTS_QUERY, {}, locale);
 
   if (!posts || posts.length === 0) return null;
@@ -71,7 +73,7 @@ export async function BlogSection({ locale }: { locale: string }) {
       
       <div className="mt-12 text-center">
         <Link href="/blog" className="btn btn-outline rounded-full">
-          {t("back")}
+          {t("viewAll")}
         </Link>
       </div>
     </section>
