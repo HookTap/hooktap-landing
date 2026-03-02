@@ -527,6 +527,10 @@
     }
   },
   "blog": {
+    "meta": {
+      "title": "Blog | HookTap News & Tutorials",
+      "description": "Learn everything about webhooks, CI/CD automation and new HookTap features in our official blog."
+    },
     "title": "HookTap Blog",
     "subtitle": "News, tutorials and updates about webhooks.",
     "readMore": "Read more",

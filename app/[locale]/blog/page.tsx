@@ -2,6 +2,7 @@ import { hygraphFetch } from "@/app/lib/hygraph";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import type { Metadata } from "next";
 
 const ALL_POSTS_QUERY = `
   query AllPosts {
@@ -16,6 +17,25 @@ const ALL_POSTS_QUERY = `
     }
   }
 `;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog.meta" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+    },
+  };
+}
 
 export default async function BlogPage({
   params,
