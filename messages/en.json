@@ -445,6 +445,23 @@
     "headline": "HookTap for iOS is coming soon.",
     "sub": "We are currently preparing the launch in the App Store. Soon you will be able to install HookTap directly on your iPhone and receive your webhooks in real time.",
     "cta": "Soon in App Store",
-    "back": "Back to Home"
+    "back": "Back to Home",
+    "features": [
+      {
+        "badge": "Real-time",
+        "title": "Push Notifications & Event Feed",
+        "text": "Get every webhook instantly as a push notification. Inside the app, you'll find all received events chronologically sorted with full payload preview and timestamps."
+      },
+      {
+        "badge": "Team",
+        "title": "Share Webhooks Easily",
+        "text": "Generate invite codes for your webhooks and let teammates receive the same events. Perfect for joint monitoring or debugging in groups."
+      },
+      {
+        "badge": "Structure",
+        "title": "Organization & Customizing",
+        "text": "Stay organized with up to 10 webhooks. Assign a unique name, color, and matching icon to each hook to visually distinguish signals instantly."
+      }
+    ]
   }
 }

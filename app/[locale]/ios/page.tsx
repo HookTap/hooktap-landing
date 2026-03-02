@@ -12,16 +12,7 @@ const PixelBlast = dynamic(() => import("@/app/components/PixelBlast"), {
 });
 
 const fadeUp = { hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } };
-
-function ServerIcon({ className = "h-4 w-4" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-      <rect x="3" y="4" width="18" height="7" rx="2" />
-      <rect x="3" y="13" width="18" height="7" rx="2" />
-      <path d="M7 8h.01M7 17h.01M11 8h6M11 17h6" />
-    </svg>
-  );
-}
+const vp = { once: true, amount: 0.15 };
 
 function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -50,9 +41,13 @@ function RedditIcon({ className = "h-4 w-4" }: { className?: string }) {
 }
 
 export default function IosComingSoonPage() {
-  const t = useTranslations();
+  const t = useTranslations("iosComingSoon");
+  const tGlobal = useTranslations();
   const locale = useLocale();
   const homeHref = `/${locale}`;
+
+  const features = t.raw("features") as { badge: string; title: string; text: string }[];
+  const featureImages = ["/ios-feature-1.png", "/ios-feature-2.png", "/ios-feature-3.png"];
 
   return (
     <main className="relative overflow-x-clip flex flex-col min-h-screen">
@@ -69,27 +64,17 @@ export default function IosComingSoonPage() {
           className="mx-auto navbar max-w-6xl rounded-full border border-white/15 bg-black/70 px-3 shadow-xl backdrop-blur-xl"
         >
           <div className="navbar-start gap-2">
-            <a
-              href={homeHref}
-              className="brand-display flex items-center rounded-full px-3 py-2"
-            >
-              <Image
-                src="/hooktap-logo.png"
-                alt="HookTap"
-                width={85}
-                height={32}
-                className="h-8 w-auto object-contain"
-                priority
-              />
+            <a href={homeHref} className="brand-display flex items-center rounded-full px-3 py-2">
+              <Image src="/hooktap-logo.png" alt="HookTap" width={85} height={32} className="h-8 w-auto object-contain" priority />
             </a>
             <a href={homeHref} className="hidden sm:flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/50 hover:text-white/80 transition-colors">
               <ArrowLeft className="w-3 h-3" />
-              {t("iosComingSoon.back")}
+              {t("back")}
             </a>
           </div>
           <div className="navbar-center hidden lg:flex">
              <span className="text-sm font-semibold text-white/50 tracking-wide">
-              {t("iosComingSoon.badge")}
+              {t("badge")}
             </span>
           </div>
           <div className="navbar-end gap-2">
@@ -101,61 +86,77 @@ export default function IosComingSoonPage() {
         </motion.header>
       </div>
 
-      {/* ── Hero / Coming Soon Content ─────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col justify-center">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:px-8 lg:px-10">
-          <motion.section
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-black/20 px-8 py-20 md:px-16 md:py-28"
-          >
-            <div className="pointer-events-none absolute inset-0 z-0 opacity-40">
-              <PixelBlast
-                variant="circle"
-                color="#b91c1c"
-                pixelSize={3.6}
-                patternScale={1.65}
-                patternDensity={1.05}
-                antialias={false}
-                liquid={false}
-                enableRipples={false}
-                noiseAmount={0}
-                speed={0.42}
-                edgeFade={0.18}
-                autoPauseOffscreen
-                transparent
-              />
+      <div className="mx-auto max-w-5xl px-6 py-8 md:px-8 lg:px-10 space-y-24 md:space-y-32">
+        {/* ── Hero ───────────────────────────────────────────────────────────── */}
+        <motion.section
+          initial="hidden" animate="show" variants={fadeUp}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="pt-16 md:pt-24 text-center relative"
+        >
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-30 top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[400px]">
+            <PixelBlast
+              variant="circle" color="#b91c1c" pixelSize={3.6} patternScale={1.65} patternDensity={1.05}
+              antialias={false} liquid={false} enableRipples={false} noiseAmount={0} speed={0.42} edgeFade={0.18}
+              autoPauseOffscreen transparent
+            />
+          </div>
+          
+          <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-6">
+            {t("badge")}
+          </span>
+          <h1 className="text-4xl font-bold leading-tight md:text-6xl mb-6">
+            {t("headline")}
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60">
+            {t("sub")}
+          </p>
+          
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="btn btn-primary btn-lg gap-2 cursor-default opacity-80">
+              <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
+              <span>{t("cta")}</span>
             </div>
-            
-            <div className="relative z-10 mx-auto max-w-3xl text-center">
-              <p className="mb-4 inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                {t("iosComingSoon.badge")}
-              </p>
-              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-                {t("iosComingSoon.headline")}
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
-                {t("iosComingSoon.sub")}
-              </p>
-              
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <div className="btn btn-primary btn-lg gap-2 cursor-default opacity-80">
-                  <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
-                  <span>{t("iosComingSoon.cta")}</span>
+          </div>
+        </motion.section>
+
+        {/* ── Features List ─────────────────────────────────────────────────── */}
+        <div className="space-y-24 md:space-y-32 pb-20">
+          {features.map((feature, idx) => (
+            <motion.section
+              key={idx}
+              initial="hidden" whileInView="show" viewport={vp} variants={fadeUp}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className={`flex flex-col md:items-center gap-10 md:gap-16 ${idx % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"}`}
+            >
+              {/* Feature Content */}
+              <div className="flex-1 space-y-5">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">
+                  {feature.badge}
+                </span>
+                <h2 className="text-3xl font-bold text-white">{feature.title}</h2>
+                <p className="text-white/55 leading-relaxed text-lg">
+                  {feature.text}
+                </p>
+              </div>
+
+              {/* Feature Image */}
+              <div className="flex-1">
+                <div 
+                  className="rounded-[2rem] overflow-hidden bg-white/5 p-4 md:p-8"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <div className="aspect-[4/3] relative rounded-xl overflow-hidden bg-black/40">
+                    <Image
+                      src={featureImages[idx]}
+                      alt={feature.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-                <a href={homeHref} className="btn btn-outline btn-lg">
-                  {t("iosComingSoon.back")}
-                </a>
               </div>
-              
-              <div className="mt-12 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/55">
-                <ServerIcon className="h-3.5 w-3.5" />
-                <span>EU-hosted · Berlin, Germany</span>
-              </div>
-            </div>
-          </motion.section>
+            </motion.section>
+          ))}
         </div>
       </div>
 
@@ -163,69 +164,43 @@ export default function IosComingSoonPage() {
       <footer className="mt-auto border-t border-white/10 bg-black/60 py-12 backdrop-blur">
         <div className="mx-auto max-w-6xl px-6 md:px-8 lg:px-10">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-            {/* Logo & Info */}
             <div className="flex flex-col items-start gap-4">
-              <Image
-                src="/hooktap-logo.png"
-                alt="HookTap Logo"
-                width={85}
-                height={32}
-                className="h-8 w-auto object-contain"
-              />
+              <Image src="/hooktap-logo.png" alt="HookTap Logo" width={85} height={32} className="h-8 w-auto object-contain" />
               <p className="max-w-xs text-sm leading-relaxed text-white/60">
-                {t("footer.description")}
+                {tGlobal("footer.description")}
               </p>
             </div>
-
-            {/* Links */}
             <div className="grid grid-cols-3 gap-4">
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Product</h4>
-                <a href={`${homeHref}#overview`} className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</a>
-                <a href={`${homeHref}#features`} className="text-sm text-white/50 hover:text-white">{t("nav.features")}</a>
-                <a href={`${homeHref}#why`} className="text-sm text-white/50 hover:text-white">{t("nav.why")}</a>
-                <a href={`${homeHref}#pricing`} className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</a>
+                <a href={`${homeHref}#overview`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.overview")}</a>
+                <a href={`${homeHref}#features`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.features")}</a>
+                <a href={`${homeHref}#why`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.why")}</a>
+                <a href={`${homeHref}#pricing`} className="text-sm text-white/50 hover:text-white">{tGlobal("nav.pricing")}</a>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Help</h4>
                 <a href={`${homeHref}#faq`} className="text-sm text-white/50 hover:text-white">FAQ</a>
-                <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</a>
-                <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
+                <a href={`/${locale}/dev`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.devGuide")}</a>
+                <a href="/help" className="text-sm text-white/50 hover:text-white">{tGlobal("footer.support")}</a>
               </div>
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-white/90">Legal</h4>
-                <a href={`/${locale}/datenschutz`} className="text-sm text-white/50 hover:text-white">{t("footer.privacy")}</a>
-                <a href={`/${locale}/impressum`} className="text-sm text-white/50 hover:text-white">{t("footer.imprint")}</a>
-                <a href={`/${locale}/nutzungsbedingungen`} className="text-sm text-white/50 hover:text-white">{t("footer.terms")}</a>
+                <a href={`/${locale}/datenschutz`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.privacy")}</a>
+                <a href={`/${locale}/impressum`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.imprint")}</a>
+                <a href={`/${locale}/nutzungsbedingungen`} className="text-sm text-white/50 hover:text-white">{tGlobal("footer.terms")}</a>
               </div>
             </div>
-
-            {/* Social & Support */}
             <div className="flex flex-col gap-4 md:items-end">
               <h4 className="text-sm font-semibold text-white/90">Social</h4>
               <div className="flex gap-4">
-                <a
-                  href="https://x.com/hooktap_me"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
-                >
+                <a href="https://x.com/hooktap_me" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white">
                   <XIcon className="h-4 w-4" />
                 </a>
-                <a
-                  href="https://instagram.com/hooktap.me"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
-                >
+                <a href="https://instagram.com/hooktap.me" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white">
                   <InstagramIcon className="h-4 w-4" />
                 </a>
-                <a
-                  href="https://www.reddit.com/r/hooktap/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white"
-                >
+                <a href="https://www.reddit.com/r/hooktap/" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/10 hover:text-white">
                   <RedditIcon className="h-4 w-4" />
                 </a>
               </div>
