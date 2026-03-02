@@ -10,20 +10,26 @@ export default function middleware(req: NextRequest) {
 
   // ── Handle ios.hooktap.me subdomain redirect ──────────────────────────
   if (hostname.startsWith("ios.")) {
+    // We only redirect if accessing the root of the ios subdomain
     if (pathname === "/") {
-      // Detect language from headers if possible, otherwise use defaultLocale (en)
       const acceptLang = req.headers.get("accept-language") || "";
       const locale = acceptLang.toLowerCase().includes("de") ? "de" : "en";
       
-      // Determine the target host (handling production and local dev)
-      const targetHost = hostname.replace("ios.", "");
+      // Determine target host - if it's ios.hooktap.me, target is hooktap.me
+      // If it's ios.localhost:3000, target is localhost:3000
+      let targetHost = hostname.replace(/^ios\./, "");
+      
+      // Ensure we have a valid targetHost for production if replacement fails or is ambiguous
+      if (hostname === "ios.hooktap.me") {
+        targetHost = "hooktap.me";
+      }
+
       const protocol = req.headers.get("x-forwarded-proto") || "https";
       
-      // Redirect to hooktap.me/[locale]/ios
-      return NextResponse.redirect(
-        new URL(`${protocol}://${targetHost}/${locale}/ios`, req.url),
-        307 // Temporary redirect
-      );
+      // Create the absolute URL for the redirect
+      const targetUrl = new URL(`/${locale}/ios`, `${protocol}://${targetHost}`);
+      
+      return NextResponse.redirect(targetUrl, 307);
     }
   }
 
@@ -33,12 +39,7 @@ export default function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all pathnames except for
-    // - /api routes
-    // - /_next (Next.js internals)
-    // - /_vercel (Vercel internals)
-    // - /help (standalone English-only route, no locale prefix needed)
-    // - /.*\..* (files with extensions, e.g. favicon.ico)
+    // Standard next-intl matcher with exclusions
     "/((?!api|_next|_vercel|help|.*\\..*).*)",
   ],
 };
