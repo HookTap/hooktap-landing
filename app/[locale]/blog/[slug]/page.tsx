@@ -65,7 +65,7 @@ export default async function BlogPostPage({
       
       <article className="mx-auto max-w-3xl px-6 py-20 md:px-8 lg:px-10">
         <header className="mb-12">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white transition-colors mb-10">
+          <Link href="/blog" locale={locale as "en" | "de"} className="inline-flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white transition-colors mb-10">
             ← {t("back")}
           </Link>
           
@@ -113,7 +113,7 @@ export default async function BlogPostPage({
         </div>
 
         <footer className="mt-20 pt-10 border-t border-white/10">
-          <Link href="/blog" className="btn btn-outline btn-lg rounded-full w-full sm:w-auto">
+          <Link href="/blog" locale={locale as "en" | "de"} className="btn btn-outline btn-lg rounded-full w-full sm:w-auto">
             ← {t("back")}
           </Link>
         </footer>

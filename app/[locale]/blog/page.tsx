@@ -43,7 +43,7 @@ export default async function BlogPage({
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <article key={post.slug} className="group relative flex flex-col rounded-3xl border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 transition-all">
-              <Link href={`/blog/${post.slug}`} className="absolute inset-0 z-10">
+              <Link href={`/blog/${post.slug}`} locale={locale as "en" | "de"} className="absolute inset-0 z-10">
                 <span className="sr-only">{t("readMore")}</span>
               </Link>
               

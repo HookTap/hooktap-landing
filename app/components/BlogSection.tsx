@@ -38,7 +38,8 @@ export async function BlogSection({ locale }: { locale: string }) {
       <div className="grid gap-8 md:grid-cols-3">
         {posts.map((post) => (
           <article key={post.slug} className="group relative flex flex-col rounded-3xl border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 transition-all">
-            <Link href={`/blog/${post.slug}`} className="absolute inset-0 z-10" />
+            {/* Explicitly passing locale to the Link component */}
+            <Link href={`/blog/${post.slug}`} locale={locale as "en" | "de"} className="absolute inset-0 z-10" />
             
             <div className="aspect-[16/9] relative overflow-hidden">
               <Image
@@ -72,7 +73,7 @@ export async function BlogSection({ locale }: { locale: string }) {
       </div>
       
       <div className="mt-12 text-center">
-        <Link href="/blog" className="btn btn-outline rounded-full">
+        <Link href="/blog" locale={locale as "en" | "de"} className="btn btn-outline rounded-full">
           {t("viewAll")}
         </Link>
       </div>
