@@ -35,7 +35,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/opengraph.png",
+          url: "/opengraph-blog.png",
           width: 1200,
           height: 630,
           alt: "HookTap Blog",
