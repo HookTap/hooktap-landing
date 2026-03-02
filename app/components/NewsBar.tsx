@@ -1,0 +1,64 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLocale } from "next-intl";
+
+export function NewsBar() {
+  const [isVisible, setIsVisible] = useState(false);
+  const locale = useLocale();
+
+  useEffect(() => {
+    const isClosed = localStorage.getItem("newsbar-closed");
+    if (!isClosed) {
+      setIsVisible(true);
+    }
+  }, []);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    localStorage.setItem("newsbar-closed", "true");
+  };
+
+  const message = locale === "de" 
+    ? "HookTap für iOS ist in Kürze verfügbar! Schau dir die Features an."
+    : "HookTap for iOS is coming soon! Check out the upcoming features.";
+
+  const cta = locale === "de" ? "Mehr erfahren" : "Learn more";
+  const link = `/${locale}/ios`;
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          className="relative z-[60] bg-primary text-white"
+        >
+          <div className="mx-auto max-w-7xl px-4 py-2.5 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 pr-10 text-center">
+              <p className="text-sm font-medium">
+                <span className="inline-block">{message}</span>
+                <a
+                  href={link}
+                  className="ml-2 inline-block font-bold underline decoration-2 underline-offset-4 hover:opacity-80 transition-opacity"
+                >
+                  {cta} →
+                </a>
+              </p>
+            </div>
+            <button
+              onClick={handleClose}
+              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 hover:bg-white/10 transition-colors"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
