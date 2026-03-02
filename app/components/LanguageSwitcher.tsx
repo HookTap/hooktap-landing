@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { useTransition } from "react";
 import Image from "next/image";
 
@@ -11,12 +11,11 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const switchLocale = (nextLocale: string) => {
+  const switchLocale = (nextLocale: "en" | "de") => {
     if (nextLocale === locale) return;
     startTransition(() => {
-      const segments = pathname.split("/");
-      segments[1] = nextLocale;
-      router.push(segments.join("/") || `/${nextLocale}`);
+      // next-intl's router handles the prefixing automatically
+      router.replace(pathname, { locale: nextLocale });
     });
   };
 
