@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
@@ -47,7 +47,7 @@ export default async function DatenschutzPage({
       ))}
 
       <div className="mt-10">
-        <Link href={`/${locale}`} className="btn btn-outline rounded-full">
+        <Link href="/" className="btn btn-outline rounded-full">
           {t("back")}
         </Link>
       </div>

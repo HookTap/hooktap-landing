@@ -19,7 +19,14 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/impressum", "/datenschutz", "/nutzungsbedingungen"],
+        disallow: [
+          "/impressum",
+          "/datenschutz",
+          "/nutzungsbedingungen",
+          "/imprint",
+          "/privacy",
+          "/terms",
+        ],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
