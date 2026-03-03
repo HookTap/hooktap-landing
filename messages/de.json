@@ -521,7 +521,7 @@
         },
         {
           "title": "2. Verarbeitete Daten",
-          "text": "Bei der Nutzung von HookTap können folgende Daten verarbeitet werden:\n- E-Mail-Adresse (falls ein Konto besteht)\n- Gerätekennungen (Push-Token)\n- Inhalte von Webhook-Payloads\n- Event-Metadaten\n- IP-Adressen\n- Technische Protokolldaten\nDie Verarbeitung erfolgt ausschließlich zur Bereitstellung des Dienstes."
+          "text": "Bei der Nutzung von HookTap können folgende Daten verarbeitet werden:\n- Gerätekennungen (Push-Token)\n- Inhalte von Webhook-Payloads\n- Event-Metadaten\n- IP-Adressen\n- Technische Protokolldaten\nDie Verarbeitung erfolgt ausschließlich zur Bereitstellung des Dienstes."
         },
         {
           "title": "3. Zweck und Rechtsgrundlage",
