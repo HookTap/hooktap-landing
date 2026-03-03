@@ -312,7 +312,7 @@ export function LandingPageClient({
         </Section>
 
         {/* ── Video Showcase ─────────────────────────────────────────────────── */}
-        <Section className="mt-12 md:mt-16">
+        {/* <Section className="mt-12 md:mt-16">
           <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
             <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl shadow-primary/5">
               <video
@@ -345,7 +345,7 @@ export function LandingPageClient({
               </div>
             </div>
           </div>
-        </Section>
+        </Section> */}
 
         {/* ── Social proof ───────────────────────────────────────────────────── */}
         <Section className="mt-14 md:mt-20">
