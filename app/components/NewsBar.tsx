@@ -26,11 +26,11 @@ export function NewsBar() {
   };
 
   const message = locale === "de" 
-    ? "HookTap für iOS ist in Kürze verfügbar! Schau dir die Features an."
-    : "HookTap for iOS is coming soon! Check out the upcoming features.";
+    ? "HookTap ist noch smarter geworden. Schau dir die neusten Features an."
+    : "HookTap got smarter. Have a look at the newest features now";
 
   const cta = locale === "de" ? "Mehr erfahren" : "Learn more";
-  const link = `/${locale}/ios`;
+  const link = `/${locale}/blog/hooktap-smart-notifications-feature`;
 
   return (
     <AnimatePresence>
