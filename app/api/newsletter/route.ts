@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         subscriber_email: email,
-        subscriber_status: "SUBSCRIBED", // Or "UNCONFIRMED" for double opt-in
+        subscriber_status: "UNCONFIRMED",
       }),
     });
 
