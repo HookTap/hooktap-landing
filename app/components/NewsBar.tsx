@@ -26,8 +26,8 @@ export function NewsBar() {
   };
 
   const message = locale === "de" 
-    ? "HookTap ist noch smarter geworden. Schau dir die neusten Features an."
-    : "HookTap got smarter. Have a look at the newest features now";
+    ? "HookTap wird noch smarter. Entdecke jetzt unsere neuesten Features."
+    : "HookTap just got smarter. Explore the latest features now.";
 
   const cta = locale === "de" ? "Mehr erfahren" : "Learn more";
   const link = `/${locale}/blog/hooktap-smart-notifications-feature`;
