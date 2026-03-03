@@ -381,7 +381,7 @@
     "keywords": {
       "badge": "Status & Colors",
       "title": "Automatic Status Detection",
-      "subtitle": "HookTap automatically detects the status of your events based on keywords in the body or title and adjusts the color of the widgets and Live Activities accordingly.",
+      "subtitle": "HookTap automatically detects the status of your events based on keywords in the body or title and adjusts the color of the Live Activities accordingly.",
       "liveActivity": {
         "title": "Live Activity Design (Keywords)",
         "greenLabel": "Green",
