@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { WebhookModal } from "@/app/components/WebhookModal";
 import { usePathname } from "next/navigation";
 
 function XIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -110,10 +109,6 @@ export function Footer() {
               >
                 <RedditIcon className="h-4 w-4" />
               </a>
-            </div>
-            <div className="mt-4 flex items-center gap-2">
-              <span className="text-xs text-white/30">{t("cta.existingUser")}</span>
-              <WebhookModal triggerClassName="btn btn-ghost btn-xs rounded-full border border-white/15 text-xs text-white/60 hover:text-white hover:border-white/30" />
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { WebhookModal } from "@/app/components/WebhookModal";
 
 const PixelBlast = dynamic(() => import("@/app/components/PixelBlast"), {
   ssr: false,
@@ -306,6 +307,10 @@ export function LandingPageClient({
                 >
                   {t("hero.ctaSecondary")}
                 </a>
+              </div>
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <span className="text-xs text-white/30">{t("cta.existingUser")}</span>
+                <WebhookModal triggerClassName="btn btn-ghost btn-xs rounded-full border border-white/15 text-xs text-white/60 hover:text-white hover:border-white/30" />
               </div>
             </div>
           </div>
