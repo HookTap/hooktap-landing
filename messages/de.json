@@ -504,57 +504,74 @@
         "provider": "Anbieter",
         "contact": "Kontakt",
         "responsible": "Verantwortlich für den Inhalt"
+      },
+      "content": {
+        "provider": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nDeutschland",
+        "contact": "E-Mail: mail@hooktap.me",
+        "responsible": "Tim Krisch\nAnschrift wie oben"
       }
     },
     "privacy": {
       "title": "Datenschutzerklärung",
-      "subtitle": "Hinweis: Bitte durch eine rechtlich geprüfte Datenschutzerklärung ersetzen.",
+      "subtitle": "Informationen gemäß Art. 13 DSGVO.",
       "sections": [
         {
           "title": "1. Verantwortlicher",
-          "text": "Tim\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nE-Mail: mail@hooktap.me"
+          "text": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nDeutschland\nE-Mail: mail@hooktap.me"
         },
         {
-          "title": "2. Verarbeitung von Daten",
-          "text": "Bei der Nutzung von HookTap können technische Daten, Webhook-Inhalte und Nutzungsdaten verarbeitet werden, soweit dies für den Betrieb der App erforderlich ist."
+          "title": "2. Verarbeitete Daten",
+          "text": "Bei der Nutzung von HookTap können folgende Daten verarbeitet werden:\n- E-Mail-Adresse (falls ein Konto besteht)\n- Gerätekennungen (Push-Token)\n- Inhalte von Webhook-Payloads\n- Event-Metadaten\n- IP-Adressen\n- Technische Protokolldaten\nDie Verarbeitung erfolgt ausschließlich zur Bereitstellung des Dienstes."
         },
         {
-          "title": "3. Speicherdauer",
-          "text": "Daten werden nur so lange gespeichert, wie es für den jeweiligen Zweck erforderlich ist oder gesetzliche Pflichten dies vorsehen."
+          "title": "3. Zweck und Rechtsgrundlage",
+          "text": "Die Verarbeitung erfolgt zur Bereitstellung von Webhook-Benachrichtigungen, zur Sicherstellung der Systemstabilität sowie zur Missbrauchsprävention.\nRechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Sicherheit und Stabilität)."
         },
         {
-          "title": "4. Deine Rechte",
-          "text": "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch."
+          "title": "4. Hosting und Drittanbieter",
+          "text": "HookTap wird innerhalb der Europäischen Union über Cloud-Infrastruktur (z. B. Google Cloud / Firebase) betrieben.\nPush-Benachrichtigungen werden über Apple Push Notification Services (APNs) zugestellt."
         },
         {
-          "title": "5. Kontakt Datenschutz",
+          "title": "5. Speicherdauer",
+          "text": "Webhook-Inhalte und Protokolldaten werden nur so lange gespeichert, wie dies für die Bereitstellung des Dienstes erforderlich ist. Eine dauerhafte Speicherung wird nicht garantiert."
+        },
+        {
+          "title": "6. Betroffenenrechte",
+          "text": "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie das Recht auf Beschwerde bei einer zuständigen Aufsichtsbehörde."
+        },
+        {
+          "title": "7. Kontakt Datenschutz",
           "text": "Für Anfragen zum Datenschutz: mail@hooktap.me"
         }
       ]
     },
     "terms": {
       "title": "Nutzungsbedingungen",
-      "subtitle": "Hinweis: Bitte durch rechtlich geprüfte Nutzungsbedingungen ersetzen.",
+      "subtitle": "Bedingungen für die Nutzung von HookTap.",
       "sections": [
         {
           "title": "1. Geltungsbereich",
-          "text": "Diese Bedingungen regeln die Nutzung der HookTap-App und der zugehörigen Dienste."
+          "text": "Diese Nutzungsbedingungen regeln die Nutzung der HookTap-App sowie der zugehörigen Dienste. Betreiber ist Tim Krisch, Anschrift wie im Impressum angegeben. HookTap wird derzeit als Einzelunternehmen betrieben."
         },
         {
           "title": "2. Leistungsbeschreibung",
-          "text": "HookTap stellt Webhook-Empfang und Push-Benachrichtigungen auf iOS bereit. Der Leistungsumfang kann je nach Tarif variieren."
+          "text": "HookTap ist ein Webhook-Benachrichtigungsdienst. Der Dienst empfängt HTTP-Webhooks und stellt Benachrichtigungen auf unterstützten Geräten bereit. HookTap ersetzt keine professionelle Monitoring-Infrastruktur und bietet keine Garantie für permanente Verfügbarkeit."
         },
         {
-          "title": "3. Pflichten der Nutzer",
-          "text": "Die Nutzung darf nicht rechtswidrig sein. Insbesondere dürfen keine schädlichen oder missbräuchlichen Inhalte übermittelt werden."
+          "title": "3. Tarife und Zahlungen",
+          "text": "HookTap bietet einen kostenlosen Tarif sowie kostenpflichtige Optionen (Pro-Abonnement und Lifetime-Lizenz). Abonnements verlängern sich automatisch, sofern sie nicht über den jeweiligen Zahlungsanbieter (z. B. Apple App Store) gekündigt werden. \"Lifetime\" bezieht sich auf die Laufzeit des Produkts, nicht auf eine unbegrenzte Garantie."
         },
         {
-          "title": "4. Haftung",
-          "text": "Es gelten die gesetzlichen Haftungsregelungen. Eine Haftung für leichte Fahrlässigkeit ist, soweit zulässig, ausgeschlossen."
+          "title": "4. Pflichten der Nutzer",
+          "text": "Nutzer sind allein verantwortlich für die Inhalte ihrer Webhooks sowie die Rechtmäßigkeit der verarbeiteten Daten. Die Nutzung darf nicht rechtswidrig, missbräuchlich oder störend sein. Der Betreiber ist berechtigt, bei Verstößen den Zugang zu sperren."
         },
         {
-          "title": "5. Schlussbestimmungen",
-          "text": "Es gilt deutsches Recht. Gerichtsstand ist, soweit zulässig, der Sitz des Anbieters."
+          "title": "5. Haftung",
+          "text": "Der Dienst wird \"wie verfügbar\" bereitgestellt. Eine Haftung für nicht zugestellte Webhooks, Datenverluste, entgangenen Gewinn oder mittelbare Schäden ist – soweit gesetzlich zulässig – ausgeschlossen. Die Haftung für kostenpflichtige Nutzer ist auf den in den letzten 12 Monaten gezahlten Betrag begrenzt. Gesetzliche Haftungsansprüche bleiben unberührt."
+        },
+        {
+          "title": "6. Schlussbestimmungen",
+          "text": "Es gilt deutsches Recht. Zwingende Verbraucherschutzvorschriften bleiben unberührt. Eine spätere Übertragung des Dienstes auf eine Gesellschaft (z. B. Proofio LLC) bleibt vorbehalten."
         }
       ]
     }

@@ -496,65 +496,82 @@
     ]
   },
   "legal": {
-    "back": "Back to Home",
+    "back": "Back to homepage",
     "imprint": {
-      "title": "Legal Notice",
-      "subtitle": "Information according to § 5 TMG and § 18 MStV.",
+      "title": "Imprint",
+      "subtitle": "Information in accordance with Section 5 TMG and Section 18 MStV (German law).",
       "sections": {
         "provider": "Provider",
         "contact": "Contact",
         "responsible": "Responsible for content"
+      },
+      "content": {
+        "provider": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nGermany",
+        "contact": "Email: mail@hooktap.me",
+        "responsible": "Tim Krisch\nAddress as stated above"
       }
     },
     "privacy": {
       "title": "Privacy Policy",
-      "subtitle": "Note: Please replace with a legally reviewed privacy policy.",
+      "subtitle": "Information pursuant to Art. 13 GDPR.",
       "sections": [
         {
           "title": "1. Controller",
-          "text": "Tim\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nEmail: mail@hooktap.me"
+          "text": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nGermany\nEmail: mail@hooktap.me"
         },
         {
-          "title": "2. Data Processing",
-          "text": "When using HookTap, technical data, webhook content, and usage data may be processed to the extent necessary for the operation of the app."
+          "title": "2. Data We Process",
+          "text": "When using HookTap, the following data may be processed:\n- Email address (if an account is used)\n- Device identifiers (push tokens)\n- Webhook payload content\n- Event metadata\n- IP addresses\n- Technical log data\nProcessing is carried out solely for the purpose of providing the Service."
         },
         {
-          "title": "3. Storage Duration",
-          "text": "Data is only stored for as long as necessary for the respective purpose or as required by legal obligations."
+          "title": "3. Purpose and Legal Basis",
+          "text": "Data processing is carried out to provide webhook notifications, ensure system stability, and prevent misuse.\nThe legal basis is Art. 6(1)(b) GDPR (performance of a contract) and Art. 6(1)(f) GDPR (legitimate interest in maintaining security and stability)."
         },
         {
-          "title": "4. Your Rights",
-          "text": "You have the right to information, rectification, erasure, restriction of processing, data portability, and objection."
+          "title": "4. Hosting and Third Parties",
+          "text": "HookTap is hosted within the European Union using cloud infrastructure providers (e.g., Google Cloud / Firebase).\nPush notifications are delivered via Apple Push Notification Services (APNs)."
         },
         {
-          "title": "5. Privacy Contact",
-          "text": "For privacy inquiries: mail@hooktap.me"
+          "title": "5. Data Retention",
+          "text": "Webhook content and log data are stored only as long as necessary to provide the Service. Permanent storage is not guaranteed."
+        },
+        {
+          "title": "6. Your Rights",
+          "text": "Under the GDPR, you have the right to access, rectification, erasure, restriction of processing, data portability, and to lodge a complaint with a competent supervisory authority."
+        },
+        {
+          "title": "7. Contact for Privacy Matters",
+          "text": "For privacy-related inquiries: mail@hooktap.me"
         }
       ]
     },
     "terms": {
       "title": "Terms of Use",
-      "subtitle": "Note: Please replace with legally reviewed terms of use.",
+      "subtitle": "Conditions governing the use of HookTap.",
       "sections": [
         {
           "title": "1. Scope",
-          "text": "These terms govern the use of the HookTap app and associated services."
+          "text": "These Terms of Use govern the use of the HookTap application and related services. The operator is Tim Krisch, address as stated in the imprint. HookTap is currently operated as a sole proprietorship."
         },
         {
-          "title": "2. Service Description",
-          "text": "HookTap provides webhook reception and push notifications on iOS. The scope of service may vary depending on the plan."
+          "title": "2. Description of Service",
+          "text": "HookTap is a webhook notification service. The Service receives HTTP webhooks and delivers notifications to supported devices. HookTap does not replace professional monitoring infrastructure and does not guarantee continuous availability."
         },
         {
-          "title": "3. User Obligations",
-          "text": "Use must not be unlawful. In particular, no harmful or abusive content may be transmitted."
+          "title": "3. Plans and Payments",
+          "text": "HookTap offers a free plan as well as paid options (Pro subscription and Lifetime license). Subscriptions renew automatically unless cancelled via the respective payment provider (e.g., Apple App Store). \"Lifetime\" refers to the lifetime of the product, not a perpetual guarantee."
         },
         {
-          "title": "4. Liability",
-          "text": "Legal liability regulations apply. Liability for slight negligence is excluded to the extent permitted."
+          "title": "4. User Responsibilities",
+          "text": "Users are solely responsible for the content of their webhooks and the lawful processing of transmitted data. The Service must not be used for unlawful, abusive, or disruptive purposes. The operator reserves the right to suspend access in case of violations."
         },
         {
-          "title": "5. Final Provisions",
-          "text": "German law applies. The place of jurisdiction is, to the extent permitted, the seat of the provider."
+          "title": "5. Liability",
+          "text": "The Service is provided \"as available\". To the extent permitted by law, liability for missed webhook deliveries, data loss, lost profits, or indirect damages is excluded. For paid users, liability is limited to the amount paid within the preceding 12 months. Mandatory statutory liability remains unaffected."
+        },
+        {
+          "title": "6. Final Provisions",
+          "text": "German law applies. Mandatory consumer protection provisions remain unaffected. The operator reserves the right to transfer the Service to a company (e.g., Proofio LLC) in the future."
         }
       ]
     }
