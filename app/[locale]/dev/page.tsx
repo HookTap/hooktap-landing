@@ -117,6 +117,25 @@ const MAPPING_DEEP = `// Incoming JSON (sent by Stripe)
 //   Title: "payment_intent.succeeded"
 //   Body:  "€4900 · user@example.com"`;
 
+const MAPPING_DEEPLINK = `// Incoming JSON (sent by GitHub)
+{
+  "action": "opened",
+  "pull_request": {
+    "title": "Fix memory leak",
+    "html_url": "https://github.com/acme/repo/pull/42"
+  }
+}
+
+// fieldMapping
+{
+  "title": "PR {action}: {pull_request.title}",
+  "deepLink": "pull_request.html_url"
+}
+
+// → Action
+//   Tapping the notification opens:
+//   "https://github.com/acme/repo/pull/42"`;
+
 // ── Platform icons ────────────────────────────────────────────────────────
 function AppleIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
@@ -405,6 +424,18 @@ export default function DevPage() {
                 style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.72)" }}
               >
                 <code>{MAPPING_DEEP}</code>
+              </pre>
+            </div>
+
+            {/* Deep Links */}
+            <div className="rounded-[1.5rem] p-6 md:p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <p className="text-sm font-semibold text-white/80 mb-1">{t("mapping.deepLinkTitle")}</p>
+              <p className="text-xs text-white/45 mb-4">{t("mapping.deepLinkDesc")}</p>
+              <pre
+                className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"
+                style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.72)" }}
+              >
+                <code>{MAPPING_DEEPLINK}</code>
               </pre>
             </div>
           </div>

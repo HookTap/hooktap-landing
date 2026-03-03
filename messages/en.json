@@ -433,7 +433,9 @@
       "templateTitle": "Template syntax",
       "templateDesc": "Wrap paths in {curly braces} to combine static text, emojis, and multiple fields in one string.",
       "deepTitle": "Deep paths",
-      "deepDesc": "Any depth of nesting is supported – useful for Stripe, Grafana, or custom webhook payloads."
+      "deepDesc": "Any depth of nesting is supported – useful for Stripe, Grafana, or custom webhook payloads.",
+      "deepLinkTitle": "Deep Link (optional)",
+      "deepLinkDesc": "The optional Deep Link field accepts a dot-notation path to a URL within your payload. Tapping the notification or event will open this URL directly. Example: pull_request.html_url."
     },
     "nav": {
       "label": "Developer Guide"

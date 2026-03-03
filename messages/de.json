@@ -433,7 +433,9 @@
       "templateTitle": "Template-Syntax",
       "templateDesc": "Schließe Pfade in {geschweifte Klammern} ein, um statischen Text, Emojis und mehrere Felder in einem String zu kombinieren.",
       "deepTitle": "Tiefe Pfade",
-      "deepDesc": "Beliebige Verschachtelungstiefe wird unterstützt – nützlich für Stripe, Grafana oder eigene Webhook-Payloads."
+      "deepDesc": "Beliebige Verschachtelungstiefe wird unterstützt – nützlich für Stripe, Grafana oder eigene Webhook-Payloads.",
+      "deepLinkTitle": "Deep-Link (optional)",
+      "deepLinkDesc": "Das optionale Deep-Link-Feld nimmt einen Dot-Notation-Pfad zu einer URL in deinem Payload entgegen. Beim Tippen auf die Benachrichtigung oder das Event wird diese URL direkt geöffnet. Beispiel: pull_request.html_url."
     },
     "nav": {
       "label": "Developer Guide"
