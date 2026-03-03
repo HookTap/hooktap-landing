@@ -4,6 +4,18 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      // English localized paths → internal folder names (German slugs).
+      // This is a reliable fallback in case next-intl's middleware
+      // pathname rewriting doesn't fire in production.
+      beforeFiles: [
+        { source: "/en/privacy", destination: "/en/datenschutz" },
+        { source: "/en/imprint", destination: "/en/impressum" },
+        { source: "/en/terms", destination: "/en/nutzungsbedingungen" },
+      ],
+    };
+  },
   images: {
     remotePatterns: [
       {
