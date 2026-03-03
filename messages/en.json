@@ -521,7 +521,7 @@
         },
         {
           "title": "2. Data We Process",
-          "text": "When using HookTap, the following data may be processed:\n- Email address (if an account is used)\n- Device identifiers (push tokens)\n- Webhook payload content\n- Event metadata\n- IP addresses\n- Technical log data\nProcessing is carried out solely for the purpose of providing the Service."
+          "text": "When using HookTap, the following data may be processed:\n- Device identifiers (push tokens)\n- Webhook payload content\n- Event metadata\n- IP addresses\n- Technical log data\nProcessing is carried out solely for the purpose of providing the Service."
         },
         {
           "title": "3. Purpose and Legal Basis",
