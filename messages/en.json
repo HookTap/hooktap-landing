@@ -374,9 +374,32 @@
         {
           "type": "widget",
           "title": "Widget Update",
-          "desc": "The latest event updates your Home Screen and Lock Screen widget in real time (Pro)."
+          "desc": "The latest event updates your Home Screen and Lock Screen widget (Pro)."
         }
       ]
+    },
+    "keywords": {
+      "badge": "Status & Colors",
+      "title": "Automatic Status Detection",
+      "subtitle": "HookTap automatically detects the status of your events based on keywords in the body or title and adjusts the color of the widgets and Live Activities accordingly.",
+      "liveActivity": {
+        "title": "Live Activity Design (Keywords)",
+        "greenLabel": "🟢 Green",
+        "green": "success · passed · completed · deployed · ok · healthy · 200 · erfolgreich · abgeschlossen · bestanden · fertig · bereit · gesund",
+        "redLabel": "🔴 Red",
+        "red": "error · failed · failure · critical · down · crash · 500 · urgent · dringend · exception · alert · fehler · fehlgeschlagen · kritisch · absturz · ausgefallen",
+        "orangeLabel": "🟠 Orange",
+        "orange": "warning · pending · timeout · slow · degraded · 401 · 403 · important · wichtig · warnung · ausstehend · zeitüberschreitung · langsam · beeinträchtigt",
+        "blueLabel": "🔵 Blue",
+        "blue": "started · running · triggered · queued · info · gestartet · läuft · ausgelöst · warteschlange",
+        "defaultLabel": "⚫ Default",
+        "default": "(no match)"
+      },
+      "urgent": {
+        "title": "Urgent Delivery (Time-Sensitive)",
+        "body": "Events with the following keywords are marked as 'Time-Sensitive'. They break through Focus mode and are delivered with priority:",
+        "keywords": "error · fehler · failure · failed · fehlgeschlagen · exception · critical · kritisch · down · crash · 500 · ausgefallen · absturz · urgent · dringend · alert · warning · warnung · timeout · zeitüberschreitung · degraded · beeinträchtigt · 401 · 403 · important · wichtig"
+      }
     },
     "platforms": {
       "badge": "Platforms",

@@ -443,6 +443,54 @@ export default function DevPage() {
           </div>
         </motion.section>
 
+        {/* ── Keywords & Status ─────────────────────────────────────────── */}
+        <motion.section initial="hidden" whileInView="show" viewport={vp} variants={fadeUp} transition={{ duration: 0.5 }}>
+          <div className="mb-2 flex items-center gap-3">
+            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              {t("keywords.badge")}
+            </span>
+          </div>
+          <h2 className="text-2xl font-bold text-white mt-2 mb-2">{t("keywords.title")}</h2>
+          <p className="text-white/50 text-sm mb-7">{t("keywords.subtitle")}</p>
+
+          <div className="space-y-6">
+            <div className="rounded-[1.5rem] p-6 md:p-8" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <h3 className="text-lg font-bold text-white mb-6">{t("keywords.liveActivity.title")}</h3>
+              
+              <div className="grid gap-4 md:grid-cols-2">
+                {[
+                  { key: "green", bg: "bg-emerald-500/10", border: "border-emerald-500/20", text: "text-emerald-400" },
+                  { key: "red", bg: "bg-red-500/10", border: "border-red-500/20", text: "text-red-400" },
+                  { key: "orange", bg: "bg-orange-500/10", border: "border-orange-500/20", text: "text-orange-400" },
+                  { key: "blue", bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" },
+                  { key: "default", bg: "bg-white/5", border: "border-white/10", text: "text-white/40" },
+                ].map((item) => (
+                  <div key={item.key} className={`rounded-xl border ${item.bg} ${item.border} p-4`}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`text-[11px] font-bold uppercase tracking-wider ${item.text}`}>
+                        {t(`keywords.liveActivity.${item.key}Label` as any)}
+                      </span>
+                    </div>
+                    <p className="text-xs text-white/60 leading-relaxed font-mono">
+                      {t(`keywords.liveActivity.${item.key}` as any)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] p-6 md:p-8" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <h3 className="text-lg font-bold text-white mb-3">{t("keywords.urgent.title")}</h3>
+              <p className="text-sm text-white/60 mb-5 leading-relaxed">{t("keywords.urgent.body")}</p>
+              <div className="rounded-xl bg-black/40 border border-white/5 p-4">
+                <p className="text-xs text-primary/80 font-mono leading-relaxed break-words">
+                  {t("keywords.urgent.keywords")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
         {/* ── Platforms ─────────────────────────────────────────────────── */}
         <motion.section initial="hidden" whileInView="show" viewport={vp} variants={fadeUp} transition={{ duration: 0.5 }}>
           <div className="mb-2 flex items-center gap-3">
