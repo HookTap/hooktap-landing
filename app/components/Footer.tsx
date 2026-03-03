@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { WebhookModal } from "@/app/components/WebhookModal";
+import { usePathname } from "next/navigation";
 
 function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -33,6 +34,11 @@ function RedditIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 export function Footer() {
   const t = useTranslations();
+  const pathname = usePathname();
+
+  // Hide global footer on pages that have their own custom footer
+  const isCustomPage = pathname.endsWith("/dev") || pathname.endsWith("/ios");
+  if (isCustomPage) return null;
 
   return (
     <footer className="mt-4 border-t border-white/10 bg-black/60 py-12 backdrop-blur">

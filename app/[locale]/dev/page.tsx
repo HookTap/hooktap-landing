@@ -463,7 +463,6 @@ export default function DevPage() {
                   { key: "red", bg: "bg-red-500/10", border: "border-red-500/20", text: "text-red-400" },
                   { key: "orange", bg: "bg-orange-500/10", border: "border-orange-500/20", text: "text-orange-400" },
                   { key: "blue", bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" },
-                  { key: "default", bg: "bg-white/5", border: "border-white/10", text: "text-white/40" },
                 ].map((item) => (
                   <div key={item.key} className={`rounded-xl border ${item.bg} ${item.border} p-4`}>
                     <div className="flex items-center gap-2 mb-2">

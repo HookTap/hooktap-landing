@@ -384,16 +384,14 @@
       "subtitle": "HookTap automatically detects the status of your events based on keywords in the body or title and adjusts the color of the widgets and Live Activities accordingly.",
       "liveActivity": {
         "title": "Live Activity Design (Keywords)",
-        "greenLabel": "🟢 Green",
+        "greenLabel": "Green",
         "green": "success · passed · completed · deployed · ok · healthy · 200 · erfolgreich · abgeschlossen · bestanden · fertig · bereit · gesund",
-        "redLabel": "🔴 Red",
+        "redLabel": "Red",
         "red": "error · failed · failure · critical · down · crash · 500 · urgent · dringend · exception · alert · fehler · fehlgeschlagen · kritisch · absturz · ausgefallen",
-        "orangeLabel": "🟠 Orange",
+        "orangeLabel": "Orange",
         "orange": "warning · pending · timeout · slow · degraded · 401 · 403 · important · wichtig · warnung · ausstehend · zeitüberschreitung · langsam · beeinträchtigt",
-        "blueLabel": "🔵 Blue",
-        "blue": "started · running · triggered · queued · info · gestartet · läuft · ausgelöst · warteschlange",
-        "defaultLabel": "⚫ Default",
-        "default": "(no match)"
+        "blueLabel": "Blue",
+        "blue": "started · running · triggered · queued · info · gestartet · läuft · ausgelöst · warteschlange"
       },
       "urgent": {
         "title": "Urgent Delivery (Time-Sensitive)",

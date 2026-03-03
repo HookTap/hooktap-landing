@@ -7,10 +7,16 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/app/components/LanguageSwitcher";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = useTranslations();
+  const pathname = usePathname();
+
+  // Hide global navbar on pages that have their own custom header
+  const isCustomPage = pathname.endsWith("/dev") || pathname.endsWith("/ios");
+  if (isCustomPage) return null;
 
   const navItems = [
     { href: "/#overview", label: t("nav.overview") },

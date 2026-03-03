@@ -4,17 +4,21 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
 
 export function NewsBar() {
   const [isVisible, setIsVisible] = useState(false);
   const locale = useLocale();
+  const pathname = usePathname();
 
   useEffect(() => {
     const isClosed = localStorage.getItem("newsbar-closed");
-    if (!isClosed) {
+    const isCustomPage = pathname.endsWith("/dev") || pathname.endsWith("/ios");
+    
+    if (!isClosed && !isCustomPage) {
       setIsVisible(true);
     }
-  }, []);
+  }, [pathname]);
 
   const handleClose = () => {
     setIsVisible(false);

@@ -381,19 +381,17 @@
     "keywords": {
       "badge": "Status & Farben",
       "title": "Automatische Farberkennung",
-      "subtitle": "HookTap erkennt automatisch den Status deiner Events anhand von Keywords im Body oder Title und passt die Farbe der Widgets und Live Activities an.",
+      "subtitle": "HookTap erkennt automatisch den Status deiner Events anhand von Keywords im Body oder Title und passt die Farbe der Live Activities an.",
       "liveActivity": {
         "title": "Live Activity Design (Keywords)",
-        "greenLabel": "🟢 Grün",
+        "greenLabel": "Grün",
         "green": "success · passed · completed · deployed · ok · healthy · 200 · erfolgreich · abgeschlossen · bestanden · fertig · bereit · gesund",
-        "redLabel": "🔴 Rot",
+        "redLabel": "Rot",
         "red": "error · failed · failure · critical · down · crash · 500 · urgent · dringend · exception · alert · fehler · fehlgeschlagen · kritisch · absturz · ausgefallen",
-        "orangeLabel": "🟠 Orange",
+        "orangeLabel": "Orange",
         "orange": "warning · pending · timeout · slow · degraded · 401 · 403 · important · wichtig · warnung · ausstehend · zeitüberschreitung · langsam · beeinträchtigt",
-        "blueLabel": "🔵 Blau",
-        "blue": "started · running · triggered · queued · info · gestartet · läuft · ausgelöst · warteschlange",
-        "defaultLabel": "⚫ Default",
-        "default": "(kein Match)"
+        "blueLabel": "Blau",
+        "blue": "started · running · triggered · queued · info · gestartet · läuft · ausgelöst · warteschlange"
       },
       "urgent": {
         "title": "Dringliche Zustellung (Time-Sensitive)",
