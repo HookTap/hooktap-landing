@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
+import NewsletterForm from "./NewsletterForm";
 
 function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -42,9 +43,9 @@ export function Footer() {
   return (
     <footer className="mt-4 border-t border-white/10 bg-black/60 py-12 backdrop-blur">
       <div className="mx-auto max-w-6xl px-6 md:px-8 lg:px-10">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
           {/* Logo & Info */}
-          <div className="flex flex-col items-start gap-4">
+          <div className="flex flex-col items-start gap-4 lg:col-span-3">
             <Link href="/">
               <Image
                 src="/hooktap-logo.png"
@@ -60,7 +61,7 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4 lg:col-span-5">
             <div className="flex flex-col gap-3">
               <h4 className="text-sm font-semibold text-white/90">{t("footer.sections.product")}</h4>
               <Link href={{pathname: "/", hash: "overview"}} className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</Link>
@@ -84,7 +85,7 @@ export function Footer() {
           </div>
 
           {/* Social & Support */}
-          <div className="flex flex-col gap-4 md:items-end">
+          <div className="flex flex-col gap-4 md:items-start lg:col-span-2">
             <h4 className="text-sm font-semibold text-white/90">Social</h4>
             <div className="flex gap-4">
               <a
@@ -112,6 +113,11 @@ export function Footer() {
                 <RedditIcon className="h-4 w-4" />
               </a>
             </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="lg:col-span-2">
+            <NewsletterForm variant="footer" />
           </div>
         </div>
         <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-white/30">

@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import type { Metadata } from "next";
+import NewsletterForm from "@/app/components/NewsletterForm";
 
 const POST_QUERY = `
   query SinglePost($slug: String!) {
@@ -111,6 +112,9 @@ export default async function BlogPostPage({
             }}
           />
         </div>
+
+        {/* Newsletter CTA */}
+        <NewsletterForm variant="blog" />
 
         <footer className="mt-20 pt-10 border-t border-white/10">
           <Link href="/blog" locale={locale as "en" | "de"} className="btn btn-outline btn-lg rounded-full w-full sm:w-auto">

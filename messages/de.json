@@ -587,5 +587,21 @@
     "back": "Zurück zur Übersicht",
     "viewAll": "Alle Beiträge ansehen",
     "publishedOn": "Veröffentlicht am"
+  },
+  "newsletter": {
+    "placeholder": "Deine E-Mail-Adresse",
+    "button": "Abonnieren",
+    "buttonSuccess": "Abonniert!",
+    "success": "Danke! Du bist jetzt angemeldet.",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuche es später noch einmal.",
+    "privacyNote": "Mit der Anmeldung akzeptierst du unsere Datenschutzbestimmungen. Kein Spam, nur Updates.",
+    "footer": {
+      "title": "Newsletter",
+      "description": "Erhalte die neuesten Updates und Features direkt in dein Postfach."
+    },
+    "blog": {
+      "title": "Kein Update verpassen",
+      "description": "Abonniere unseren Newsletter, um über neue Funktionen, Tutorials und Best Practices rund um HookTap informiert zu werden."
+    }
   }
 }

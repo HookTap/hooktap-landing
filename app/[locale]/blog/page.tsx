@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import type { Metadata } from "next";
+import NewsletterForm from "@/app/components/NewsletterForm";
 
 const ALL_POSTS_QUERY = `
   query AllPosts {
@@ -122,6 +123,11 @@ export default async function BlogPage({
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Newsletter CTA */}
+        <div className="mt-20">
+          <NewsletterForm variant="blog" />
         </div>
       </div>
     </main>
