@@ -312,7 +312,12 @@
     "imprint": "Legal Notice",
     "terms": "Terms",
     "support": "Support",
-    "devGuide": "Developer Guide"
+    "devGuide": "Developer Guide",
+    "sections": {
+      "product": "Product",
+      "help": "Help",
+      "legal": "Legal"
+    }
   },
   "socialProof": {
     "0": "Developers",

@@ -310,9 +310,14 @@
     "madeInGermany": "Hergestellt mit ❤️ in Deutschland",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
-    "terms": "Nutzungsbedingungen",
+    "terms": "AGB",
     "support": "Support",
-    "devGuide": "Developer Guide"
+    "devGuide": "Developer Guide",
+    "sections": {
+      "product": "Produkt",
+      "help": "Hilfe",
+      "legal": "Rechtliches"
+    }
   },
   "socialProof": {
     "0": "Entwickler",
