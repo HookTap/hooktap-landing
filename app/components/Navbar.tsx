@@ -19,14 +19,14 @@ export function Navbar() {
   if (isCustomPage) return null;
 
   const navItems = [
-    { href: "/#overview", label: t("nav.overview") },
-    { href: "/#how", label: t("nav.how") },
-    { href: "/#features", label: t("nav.features") },
-    { href: "/#why", label: t("nav.why") },
-    { href: "/#pricing", label: t("nav.pricing") },
-    { href: "/#faq", label: t("nav.faq") },
+    { href: { pathname: "/", hash: "overview" }, label: t("nav.overview") },
+    { href: { pathname: "/", hash: "how" }, label: t("nav.how") },
+    { href: { pathname: "/", hash: "features" }, label: t("nav.features") },
+    { href: { pathname: "/", hash: "why" }, label: t("nav.why") },
+    { href: { pathname: "/", hash: "pricing" }, label: t("nav.pricing") },
+    { href: { pathname: "/", hash: "faq" }, label: t("nav.faq") },
     { href: "/blog", label: "Blog" },
-  ];
+  ] as const;
 
   return (
     <>
@@ -39,7 +39,7 @@ export function Navbar() {
         >
           <div className="navbar-start">
             <Link
-              href="/#overview"
+              href="/"
               className="brand-display flex items-center rounded-full px-3 py-2"
             >
               <Image
@@ -55,7 +55,7 @@ export function Navbar() {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal gap-1 rounded-full bg-white/5 p-1">
               {navItems.map((item) => (
-                <li key={item.href}>
+                <li key={typeof item.href === "string" ? item.href : item.href.hash}>
                   <Link href={item.href} className="rounded-full text-sm">
                     {item.label}
                   </Link>
@@ -65,7 +65,7 @@ export function Navbar() {
           </div>
           <div className="navbar-end gap-2">
             <LanguageSwitcher />
-            <Link href="/#cta" className="btn btn-primary btn-sm rounded-full hidden sm:flex">
+            <Link href={{ pathname: "/", hash: "cta" }} className="btn btn-primary btn-sm rounded-full hidden sm:flex">
               {t("nav.getApp")}
             </Link>
             <button

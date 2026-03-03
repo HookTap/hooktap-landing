@@ -63,15 +63,15 @@ export function Footer() {
           <div className="grid grid-cols-3 gap-4">
             <div className="flex flex-col gap-3">
               <h4 className="text-sm font-semibold text-white/90">Product</h4>
-              <Link href="/#overview" className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</Link>
-              <Link href="/#features" className="text-sm text-white/50 hover:text-white">{t("nav.features")}</Link>
-              <Link href="/#why" className="text-sm text-white/50 hover:text-white">{t("nav.why")}</Link>
-              <Link href="/#pricing" className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</Link>
+              <Link href={{pathname: "/", hash: "overview"}} className="text-sm text-white/50 hover:text-white">{t("nav.overview")}</Link>
+              <Link href={{pathname: "/", hash: "features"}} className="text-sm text-white/50 hover:text-white">{t("nav.features")}</Link>
+              <Link href={{pathname: "/", hash: "why"}} className="text-sm text-white/50 hover:text-white">{t("nav.why")}</Link>
+              <Link href={{pathname: "/", hash: "pricing"}} className="text-sm text-white/50 hover:text-white">{t("nav.pricing")}</Link>
               <Link href="/blog" className="text-sm text-white/50 hover:text-white">Blog</Link>
             </div>
             <div className="flex flex-col gap-3">
               <h4 className="text-sm font-semibold text-white/90">Help</h4>
-              <Link href="/#faq" className="text-sm text-white/50 hover:text-white">FAQ</Link>
+              <Link href={{pathname: "/", hash: "faq"}} className="text-sm text-white/50 hover:text-white">FAQ</Link>
               <Link href="/dev" className="text-sm text-white/50 hover:text-white">{t("footer.devGuide")}</Link>
               <a href="/help" className="text-sm text-white/50 hover:text-white">{t("footer.support")}</a>
             </div>
