@@ -25,6 +25,11 @@
     "ctaPrimary": "Get Started Free – Download App",
     "ctaSecondary": "Learn More"
   },
+  "video": {
+    "badge": "Showcase",
+    "title": "HookTap in 60 Seconds",
+    "body": "Learn how HookTap accelerates your workflow. In this short video, we show you how to set up your first webhook URL and receive push notifications in real time."
+  },
   "problem": {
     "badge": "Problem",
     "headline": "You deploy, trigger jobs, and never know exactly when something is done.",

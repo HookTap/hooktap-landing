@@ -311,6 +311,42 @@ export function LandingPageClient({
           </div>
         </Section>
 
+        {/* ── Video Showcase ─────────────────────────────────────────────────── */}
+        <Section className="mt-12 md:mt-16">
+          <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl shadow-primary/5">
+              <video
+                src="/hooktap_explain_video.mov"
+                className="h-full w-full object-cover"
+                controls
+                playsInline
+              />
+            </div>
+            <div className="max-w-xl">
+              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                {t("video.badge")}
+              </span>
+              <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+                {t("video.title")}
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-white/60">
+                {t("video.body")}
+              </p>
+              <div className="mt-8">
+                <a
+                  href="#how"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+                >
+                  <span>{t("hero.ctaSecondary")}</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </Section>
+
         {/* ── Social proof ───────────────────────────────────────────────────── */}
         <Section className="mt-14 md:mt-20">
           <div className="rounded-[2rem] px-6 py-10 text-center md:px-10 md:py-12">
