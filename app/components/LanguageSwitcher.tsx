@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { useParams } from "next/navigation";
 import { useTransition } from "react";
 import Image from "next/image";
 
@@ -9,13 +10,15 @@ export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
   const [isPending, startTransition] = useTransition();
 
   const switchLocale = (nextLocale: "en" | "de") => {
     if (nextLocale === locale) return;
     startTransition(() => {
-      // next-intl's router handles the prefixing automatically
-      router.replace(pathname, { locale: nextLocale });
+      // @ts-expect-error -- next-intl requires params for dynamic routes;
+      // useParams() always matches the current pathname at runtime
+      router.replace({ pathname, params }, { locale: nextLocale });
     });
   };
 

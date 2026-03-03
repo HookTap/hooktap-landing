@@ -108,7 +108,7 @@ export function Navbar() {
               <ul className="flex flex-col items-center gap-6 text-center">
                 {navItems.map((item, idx) => (
                   <motion.li
-                    key={item.href}
+                    key={typeof item.href === "string" ? item.href : item.href.hash}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.05 + 0.1 }}
@@ -129,7 +129,7 @@ export function Navbar() {
                   className="mt-4"
                 >
                   <Link
-                    href="/#cta"
+                    href={{ pathname: "/", hash: "cta" }}
                     onClick={() => setIsMenuOpen(false)}
                     className="btn btn-primary btn-lg rounded-full px-12"
                   >
