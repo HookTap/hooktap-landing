@@ -114,7 +114,7 @@ export default async function BlogPostPage({
         </div>
 
         {/* Newsletter CTA */}
-        <NewsletterForm variant="blog" />
+        {/* <NewsletterForm variant="blog" /> */}
 
         <footer className="mt-20 pt-10 border-t border-white/10">
           <Link href="/blog" locale={locale as "en" | "de"} className="btn btn-outline btn-lg rounded-full w-full sm:w-auto">

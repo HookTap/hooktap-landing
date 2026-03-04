@@ -126,9 +126,9 @@ export default async function BlogPage({
         </div>
 
         {/* Newsletter CTA */}
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <NewsletterForm variant="blog" />
-        </div>
+        </div> */}
       </div>
     </main>
   );

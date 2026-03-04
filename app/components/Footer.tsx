@@ -116,9 +116,9 @@ export function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="lg:col-span-2">
+          {/* <div className="lg:col-span-2">
             <NewsletterForm variant="footer" />
-          </div>
+          </div> */}
         </div>
         <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-white/30">
           © {new Date().getFullYear()} HookTap. All rights reserved.
