@@ -754,10 +754,10 @@ export function LandingPageClient({
               {t("cta.sub")}
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/ios" className="btn btn-primary btn-lg gap-2">
+              <a href="https://apps.apple.com/app/id6759625475" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg gap-2">
                 <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
                 <span>{t("cta.ios")}</span>
-              </Link>
+              </a>
               <a
                 href="/HookTap%201.1.2.dmg"
                 download="HookTap 1.1.2.dmg"

@@ -472,10 +472,10 @@
     }
   },
   "iosComingSoon": {
-    "badge": "In Kürze verfügbar",
-    "headline": "HookTap für iOS ist bald da.",
-    "sub": "Wir bereiten aktuell den Launch im App Store vor. In Kürze kannst du HookTap direkt auf deinem iPhone installieren und deine Webhooks in Echtzeit empfangen.",
-    "cta": "Bald im App Store",
+    "badge": "Jetzt verfügbar",
+    "headline": "HookTap für iOS ist jetzt da.",
+    "sub": "Empfange jeden Webhook sofort als Push-Notification direkt auf deinem iPhone – kostenlos starten, keine Registrierung nötig.",
+    "cta": "Im App Store laden",
     "back": "Zurück zur Startseite",
     "features": [
       {

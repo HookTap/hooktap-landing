@@ -113,10 +113,10 @@ export default function IosComingSoonPage() {
           </p>
           
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <div className="btn btn-primary btn-lg gap-2 cursor-default opacity-80">
+            <a href="https://apps.apple.com/app/id6759625475" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg gap-2">
               <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
               <span>{t("cta")}</span>
-            </div>
+            </a>
           </div>
         </motion.section>
 

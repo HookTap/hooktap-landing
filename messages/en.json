@@ -472,10 +472,10 @@
     }
   },
   "iosComingSoon": {
-    "badge": "Coming Soon",
-    "headline": "HookTap for iOS is coming soon.",
-    "sub": "We are currently preparing the launch in the App Store. Soon you will be able to install HookTap directly on your iPhone and receive your webhooks in real time.",
-    "cta": "Soon in App Store",
+    "badge": "Now Available",
+    "headline": "HookTap for iOS is here.",
+    "sub": "Receive every webhook instantly as a push notification directly on your iPhone – start for free, no registration required.",
+    "cta": "Download on the App Store",
     "back": "Back to Home",
     "features": [
       {
