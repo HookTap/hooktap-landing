@@ -1,0 +1,90 @@
+# HookTap
+
+> HookTap is an iOS, macOS, and Windows app that receives HTTP POST webhook requests and delivers them as real-time push notifications to your devices. No server, no registration, ready in under 2 minutes.
+
+## What is HookTap?
+
+HookTap turns any device into a real-time webhook receiver. When an external service (GitHub, Stripe, Zapier, n8n, Make, Grafana, etc.) sends an HTTP POST request to your personal HookTap URL, the app instantly delivers it as a push notification to your iPhone, Mac, or Windows PC.
+
+**Core value:** One URL. One POST. Done. No server to maintain, no bot to configure, no team account required.
+
+## Key Facts
+
+- **Type**: Developer tool / webhook notification app
+- **Platforms**: iOS 16+, macOS 13+, Windows 10+
+- **Hosting**: EU-hosted in Berlin, Germany (GDPR compliant)
+- **Pricing**: Free forever (1 webhook), Pro from $0.99/month or $24.99 lifetime
+- **Website**: https://hooktap.me
+- **App Store**: https://apps.apple.com/app/id6759625475
+- **No account required**: Anonymous account created automatically on first launch
+
+## How It Works
+
+1. Download the HookTap iOS app from the App Store
+2. Copy your personal webhook URL (shown immediately in the app)
+3. Add the URL to any service that can send HTTP POST requests
+4. Receive push notifications within seconds
+
+## Features
+
+- Real-time push notifications from any HTTP POST
+- Home screen and lock screen widgets showing the latest event
+- Live Activity and Dynamic Island support
+- Full event feed with payload inspection and history
+- JSON field mapping (connect GitHub, Stripe, Vercel, etc.)
+- Up to 10 webhooks with custom names, icons, and colors
+- Webhook sharing with teammates via 8-character invite codes (15-min TTL)
+- Desktop apps for macOS and Windows (sync via 6-digit code)
+- No server, no registration, no password
+
+## Pricing
+
+| Plan | Price | Features |
+|---|---|---|
+| Free | $0 forever | 1 webhook URL, push notifications, 20 events |
+| Pro Monthly | $0.99/month | 500 events, widgets, Live Activity, JSON Mapping, 10 webhooks, Mac & Windows |
+| Pro Lifetime | $24.99 one-time | Everything in Pro, all future updates |
+
+## Integrations
+
+Works with any service that can send HTTP POST requests, including:
+GitHub Actions, GitLab CI, Bitbucket Pipelines, Zapier, n8n, Make (Integromat), Vercel, Stripe, Grafana, PagerDuty, Home Assistant, cURL, Node.js, Python, and more.
+
+## Comparison
+
+| | HookTap | Discord/Slack Webhooks | ntfy.sh | Email Alerts |
+|---|---|---|---|---|
+| Purpose-built for webhooks | ✅ | ❌ | ⚠️ | ❌ |
+| Full payload inspection | ✅ | ❌ | ❌ | ❌ |
+| No account needed | ✅ | ❌ | ✅ | ❌ |
+| Native iOS/macOS/Windows | ✅ | ✅ | ❌ | ✅ |
+| Webhook history/log | ✅ | ❌ | ❌ | ❌ |
+| EU-hosted, GDPR | ✅ | ❌ | ⚠️ | ⚠️ |
+| Self-hostable | ❌ | ❌ | ✅ | ❌ |
+
+## Privacy & Compliance
+
+- All data stored on servers in Berlin, Germany
+- Protected by EU GDPR
+- Webhook URLs are cryptographically unique — not guessable
+- No email, no password, no personal data required to use the app
+- Account and all data can be permanently deleted at any time
+
+## Common Use Cases
+
+- CI/CD pipeline completed → iPhone push notification
+- Stripe payment received → instant alert
+- Server downtime or error → push to on-call developer
+- Grafana alert triggered → notification to iPhone
+- Zapier/n8n/Make automation finished → confirmation push
+- Smart home event → personal notification
+- Cron job completed → status push
+
+## Languages
+
+Available in English and German. Website: https://hooktap.me/en (English), https://hooktap.me/de (German).
+
+## Optional
+
+- Blog: https://hooktap.me/en/blog
+- Developer Guide: https://hooktap.me/en/dev

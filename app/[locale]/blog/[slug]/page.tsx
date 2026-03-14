@@ -5,6 +5,7 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import { getArticleSchema } from "@/app/lib/structuredData";
 import type { Metadata } from "next";
 import NewsletterForm from "@/app/components/NewsletterForm";
 
@@ -64,8 +65,21 @@ export default async function BlogPostPage({
 
   if (!post) return <div>Post not found</div>;
 
+  const articleSchema = getArticleSchema({
+    title: post.title,
+    description: post.seoDescription ?? post.excerpt ?? "",
+    slug,
+    publishedAt: post.date,
+    imageUrl: post.image?.url,
+    locale,
+  });
+
   return (
     <main className="relative overflow-x-clip min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-35" />
       
       <article className="mx-auto max-w-3xl px-6 py-20 md:px-8 lg:px-10">

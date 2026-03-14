@@ -8,6 +8,11 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getSiteUrl } from "@/app/lib/seo";
+import {
+  getSoftwareApplicationSchema,
+  getOrganizationSchema,
+  getFAQSchema,
+} from "@/app/lib/structuredData";
 import "../globals.css";
 
 export async function generateMetadata({
@@ -27,20 +32,37 @@ export async function generateMetadata({
     },
     description: t("description"),
     applicationName: "HookTap",
+    authors: [{ name: "HookTap", url: siteUrl }],
+    creator: "HookTap",
+    publisher: "HookTap",
     alternates: {
-      canonical: "/",
+      canonical: `/${locale}`,
       languages: {
+        "x-default": "/en",
         en: "/en",
         de: "/de",
       },
     },
     keywords: [
-      "Webhook iOS",
-      "iPhone Webhook",
-      "Push Notification Webhook",
-      "Developer Tool",
-      "DevOps Notifications",
       "HookTap",
+      "webhook iOS app",
+      "webhook push notification iPhone",
+      "receive webhooks on iPhone",
+      "webhook receiver iOS",
+      "HTTP POST push notification",
+      "webhook to push notification",
+      "GitHub webhook iPhone",
+      "Stripe webhook notification",
+      "CI/CD push notification",
+      "DevOps alert iPhone",
+      "developer notification tool",
+      "webhook monitoring app",
+      "n8n webhook notification",
+      "Zapier webhook iPhone",
+      "webhook Mac app",
+      "webhook Windows app",
+      "GDPR webhook tool",
+      "EU hosted webhook",
     ],
     category: "developer tools",
     robots: {
@@ -57,7 +79,8 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: locale === "de" ? "de_DE" : "en_US",
-      url: "/",
+      alternateLocale: locale === "de" ? "en_US" : "de_DE",
+      url: `/${locale}`,
       siteName: "HookTap",
       title: t("ogTitle"),
       description: t("ogDescription"),
@@ -102,6 +125,26 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} data-theme="night">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getSoftwareApplicationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getOrganizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getFAQSchema(locale)),
+          }}
+        />
+      </head>
       <body className="bg-base-100 text-base-content antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NewsBar />
