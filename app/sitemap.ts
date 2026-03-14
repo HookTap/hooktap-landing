@@ -35,12 +35,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: page.changeFrequency,
         priority: locale === "en" ? page.priority : page.priority - 0.05,
-        alternates: {
-          languages: {
-            en: `${siteUrl}/en${page.path}`,
-            de: `${siteUrl}/de${page.path}`,
-          },
-        },
       });
     }
   }
@@ -59,12 +53,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           lastModified: lastMod,
           changeFrequency: "monthly",
           priority: locale === "en" ? 0.8 : 0.75,
-          alternates: {
-            languages: {
-              en: `${siteUrl}/en/blog/${post.slug}`,
-              de: `${siteUrl}/de/blog/${post.slug}`,
-            },
-          },
         });
       }
     }
