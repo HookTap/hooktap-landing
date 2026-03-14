@@ -2,6 +2,8 @@ import { hygraphFetch } from "@/app/lib/hygraph";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import type { Metadata } from "next";
 import NewsletterForm from "@/app/components/NewsletterForm";
@@ -16,7 +18,9 @@ const POST_QUERY = `
       excerpt
       body {
         json
+        markdown
       }
+      bodyMarkdown
       image {
         url
         width
@@ -96,21 +100,46 @@ export default async function BlogPostPage({
           </div>
         </header>
 
-        {/* Rich Text Content */}
+        {/* Content — supports Markdown (bodyMarkdown field or body.markdown) and RichText (body.json) */}
         <div className="prose prose-invert prose-red max-w-none">
-          <RichText 
-            content={post.body.json} 
-            renderers={{
-              h2: ({ children }) => <h2 className="text-3xl font-bold mt-12 mb-6 text-white">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-2xl font-bold mt-10 mb-4 text-white">{children}</h3>,
-              p: ({ children }) => <p className="text-lg leading-relaxed text-white/70 mb-6">{children}</p>,
-              ul: ({ children }) => <ul className="list-disc list-inside space-y-3 mb-8 text-white/70">{children}</ul>,
-              li: ({ children }) => <li className="text-lg">{children}</li>,
-              a: ({ children, href }) => <a href={href} className="text-primary underline decoration-2 underline-offset-4 hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">{children}</a>,
-              blockquote: ({ children }) => <blockquote className="border-l-4 border-primary bg-primary/5 px-6 py-4 italic rounded-r-xl my-10 text-white/90">{children}</blockquote>,
-              bold: ({ children }) => <strong className="font-bold text-white">{children}</strong>,
-            }}
-          />
+          {(post.bodyMarkdown || post.body?.markdown) ? (
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h2: ({ children }) => <h2 className="text-3xl font-bold mt-12 mb-6 text-white">{children}</h2>,
+                h3: ({ children }) => <h3 className="text-2xl font-bold mt-10 mb-4 text-white">{children}</h3>,
+                p: ({ children }) => <p className="text-lg leading-relaxed text-white/70 mb-6">{children}</p>,
+                ul: ({ children }) => <ul className="list-disc list-inside space-y-3 mb-8 text-white/70">{children}</ul>,
+                ol: ({ children }) => <ol className="list-decimal list-inside space-y-3 mb-8 text-white/70">{children}</ol>,
+                li: ({ children }) => <li className="text-lg">{children}</li>,
+                a: ({ children, href }) => <a href={href} className="text-primary underline decoration-2 underline-offset-4 hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">{children}</a>,
+                blockquote: ({ children }) => <blockquote className="border-l-4 border-primary bg-primary/5 px-6 py-4 italic rounded-r-xl my-10 text-white/90">{children}</blockquote>,
+                strong: ({ children }) => <strong className="font-bold text-white">{children}</strong>,
+                code: ({ children }) => <code className="bg-white/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>,
+                pre: ({ children }) => <pre className="bg-black/40 border border-white/10 rounded-2xl p-6 overflow-x-auto mb-8 text-sm font-mono">{children}</pre>,
+                table: ({ children }) => <div className="overflow-x-auto mb-8"><table className="w-full text-sm border-collapse">{children}</table></div>,
+                th: ({ children }) => <th className="border border-white/20 bg-white/5 px-4 py-2 text-left font-bold text-white">{children}</th>,
+                td: ({ children }) => <td className="border border-white/10 px-4 py-2 text-white/70">{children}</td>,
+                hr: () => <hr className="border-white/10 my-12" />,
+              }}
+            >
+              {post.bodyMarkdown ?? post.body.markdown}
+            </ReactMarkdown>
+          ) : post.body?.json ? (
+            <RichText
+              content={post.body.json}
+              renderers={{
+                h2: ({ children }) => <h2 className="text-3xl font-bold mt-12 mb-6 text-white">{children}</h2>,
+                h3: ({ children }) => <h3 className="text-2xl font-bold mt-10 mb-4 text-white">{children}</h3>,
+                p: ({ children }) => <p className="text-lg leading-relaxed text-white/70 mb-6">{children}</p>,
+                ul: ({ children }) => <ul className="list-disc list-inside space-y-3 mb-8 text-white/70">{children}</ul>,
+                li: ({ children }) => <li className="text-lg">{children}</li>,
+                a: ({ children, href }) => <a href={href} className="text-primary underline decoration-2 underline-offset-4 hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">{children}</a>,
+                blockquote: ({ children }) => <blockquote className="border-l-4 border-primary bg-primary/5 px-6 py-4 italic rounded-r-xl my-10 text-white/90">{children}</blockquote>,
+                bold: ({ children }) => <strong className="font-bold text-white">{children}</strong>,
+              }}
+            />
+          ) : null}
         </div>
 
         {/* Newsletter CTA */}
