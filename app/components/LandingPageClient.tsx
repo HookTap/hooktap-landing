@@ -767,8 +767,8 @@ export function LandingPageClient({
                 <span>{t("cta.mac")}</span>
               </a>
               <a
-                href="/HookTapSetup.exe"
-                download="HookTapSetup.exe"
+                href="/HookTap_1.0.0_x64-setup.exe"
+                download="HookTap_1.0.0_x64-setup.exe"
                 className="btn btn-outline btn-lg gap-2"
               >
                 <Image src="/icons8-windows-11-50.png" alt="Windows" width={18} height={18} />
