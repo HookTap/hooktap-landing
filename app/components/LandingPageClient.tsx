@@ -766,14 +766,27 @@ export function LandingPageClient({
                 <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
                 <span>{t("cta.mac")}</span>
               </a>
-              <a
-                href="/HookTap_1.0.0_x64-setup.exe"
-                download="HookTap_1.0.0_x64-setup.exe"
-                className="btn btn-outline btn-lg gap-2"
-              >
-                <Image src="/icons8-windows-11-50.png" alt="Windows" width={18} height={18} />
-                <span>{t("cta.windows")}</span>
-              </a>
+              <div className="dropdown dropdown-top dropdown-end sm:dropdown-bottom">
+                <div tabIndex={0} role="button" className="btn btn-outline btn-lg gap-2">
+                  <Image src="/icons8-windows-11-50.png" alt="Windows" width={18} height={18} />
+                  <span>{t("cta.windows")}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-44 p-1 shadow-lg border border-white/10 text-sm">
+                  <li>
+                    <a href="/HookTap_1.0.0_x64-setup.exe" download="HookTap_1.0.0_x64-setup.exe" className="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      Setup Installer
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/HookTap-Windows-1.0.1-portable.zip" download="HookTap-Windows-1.0.1-portable.zip" className="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      Portable .exe
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <p className="mt-4 text-sm text-white/55">{t("cta.noAccount")}</p>
           </div>
