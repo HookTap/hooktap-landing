@@ -26,11 +26,11 @@ export function NewsBar() {
   };
 
   const message = locale === "de" 
-    ? "HookTap wird noch smarter. Entdecke jetzt unsere neuesten Features."
-    : "HookTap just got smarter. Explore the latest features now.";
+    ? "Entdecke HookTap jetzt im GitHub Marketplace. Erfahre mehr über die neuesten Funktionen."
+    : "Discover HookTap now on the GitHub Marketplace. Learn about the latest features.";
 
   const cta = locale === "de" ? "Mehr erfahren" : "Learn more";
-  const link = `/${locale}/blog/hooktap-smart-notifications-feature`;
+  const link = `https://github.com/marketplace/actions/hooktap-notify`;
 
   return (
     <AnimatePresence>
