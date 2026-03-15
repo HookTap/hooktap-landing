@@ -449,6 +449,50 @@
     },
     "nav": {
       "label": "Developer Guide"
+    },
+    "integrations": {
+      "badge": "Integrations",
+      "title": "Ready-made recipes for your stack",
+      "subtitle": "Copy-paste examples for the tools you already use. No extra setup.",
+      "githubLabel": "Browse all integrations on GitHub",
+      "items": [
+        {
+          "name": "GitHub Actions",
+          "desc": "Notify on CI pass/fail, deploys, and releases."
+        },
+        {
+          "name": "GitLab CI",
+          "desc": "Pipeline notifications with a single job snippet."
+        },
+        {
+          "name": "Python",
+          "desc": "Zero-dependency helper, requests examples, exception decorator."
+        },
+        {
+          "name": "Node.js / TypeScript",
+          "desc": "CommonJS and ESM helpers, withNotification() wrapper."
+        },
+        {
+          "name": "Shell / cron",
+          "desc": "Wrap any command, disk alerts, bashrc helper function."
+        },
+        {
+          "name": "Docker",
+          "desc": "Compose health checks, container lifecycle events."
+        },
+        {
+          "name": "Go · PHP · Ruby",
+          "desc": "Stdlib-only snippets, ready to drop into any project."
+        },
+        {
+          "name": "Zapier · Make · n8n",
+          "desc": "No-code automation with step-by-step setup guides."
+        },
+        {
+          "name": "Monitoring",
+          "desc": "Uptime checks, CPU alerts, Sentry and Grafana integration."
+        }
+      ]
     }
   },
   "modal": {

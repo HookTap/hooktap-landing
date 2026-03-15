@@ -449,6 +449,50 @@
     },
     "nav": {
       "label": "Developer Guide"
+    },
+    "integrations": {
+      "badge": "Integrationen",
+      "title": "Fertige Rezepte für deinen Stack",
+      "subtitle": "Copy-paste-Beispiele für Tools, die du schon verwendest. Kein Extra-Setup nötig.",
+      "githubLabel": "Alle Integrationen auf GitHub ansehen",
+      "items": [
+        {
+          "name": "GitHub Actions",
+          "desc": "Benachrichtigungen bei CI-Erfolg/-Fehler, Deploys und Releases."
+        },
+        {
+          "name": "GitLab CI",
+          "desc": "Pipeline-Benachrichtigungen mit einem einzigen Job-Snippet."
+        },
+        {
+          "name": "Python",
+          "desc": "Zero-Dependency-Helper, requests-Beispiele, Exception-Decorator."
+        },
+        {
+          "name": "Node.js / TypeScript",
+          "desc": "CommonJS- und ESM-Helper, withNotification()-Wrapper."
+        },
+        {
+          "name": "Shell / cron",
+          "desc": "Beliebige Befehle wrappen, Disk-Alerts, bashrc-Hilfsfunktion."
+        },
+        {
+          "name": "Docker",
+          "desc": "Compose Health Checks, Container-Lifecycle-Events."
+        },
+        {
+          "name": "Go · PHP · Ruby",
+          "desc": "Stdlib-only-Snippets, direkt in jedes Projekt einfügbar."
+        },
+        {
+          "name": "Zapier · Make · n8n",
+          "desc": "No-Code-Automatisierung mit Schritt-für-Schritt-Anleitungen."
+        },
+        {
+          "name": "Monitoring",
+          "desc": "Uptime-Checks, CPU-Alerts, Sentry- und Grafana-Integration."
+        }
+      ]
     }
   },
   "modal": {
