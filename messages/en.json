@@ -550,7 +550,7 @@
         "responsible": "Responsible for content"
       },
       "content": {
-        "provider": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nGermany",
+        "provider": "HookTap\nOwner: Tim Krisch\nSole Proprietor (Einzelunternehmer)\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nGermany",
         "contact": "Email: mail@hooktap.me",
         "responsible": "Tim Krisch\nAddress as stated above"
       }
@@ -561,7 +561,7 @@
       "sections": [
         {
           "title": "1. Controller",
-          "text": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nGermany\nEmail: mail@hooktap.me"
+          "text": "HookTap\nOwner: Tim Krisch\nSole Proprietor (Einzelunternehmer)\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nGermany\nEmail: mail@hooktap.me"
         },
         {
           "title": "2. Data We Process",
@@ -595,7 +595,7 @@
       "sections": [
         {
           "title": "1. Scope",
-          "text": "These Terms of Use govern the use of the HookTap application and related services. The operator is Tim Krisch, address as stated in the imprint. HookTap is currently operated as a sole proprietorship."
+          "text": "These Terms of Use govern the use of the HookTap application and related services. The operator is Tim Krisch (owner, sole proprietor / Einzelunternehmer), address as stated in the imprint. HookTap is operated as a sole proprietorship under German law."
         },
         {
           "title": "2. Description of Service",

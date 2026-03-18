@@ -550,7 +550,7 @@
         "responsible": "Verantwortlich für den Inhalt"
       },
       "content": {
-        "provider": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nDeutschland",
+        "provider": "HookTap\nInhaber: Tim Krisch\nEinzelunternehmer\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nDeutschland",
         "contact": "E-Mail: mail@hooktap.me",
         "responsible": "Tim Krisch\nAnschrift wie oben"
       }
@@ -561,7 +561,7 @@
       "sections": [
         {
           "title": "1. Verantwortlicher",
-          "text": "HookTap\nTim Krisch\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nDeutschland\nE-Mail: mail@hooktap.me"
+          "text": "HookTap\nInhaber: Tim Krisch\nEinzelunternehmer\nc/o MDC Management#6326\nWelserstraße 3\n87463 Dietmannsried\nDeutschland\nE-Mail: mail@hooktap.me"
         },
         {
           "title": "2. Verarbeitete Daten",
@@ -595,7 +595,7 @@
       "sections": [
         {
           "title": "1. Geltungsbereich",
-          "text": "Diese Nutzungsbedingungen regeln die Nutzung der HookTap-App sowie der zugehörigen Dienste. Betreiber ist Tim Krisch, Anschrift wie im Impressum angegeben. HookTap wird derzeit als Einzelunternehmen betrieben."
+          "text": "Diese Nutzungsbedingungen regeln die Nutzung der HookTap-App sowie der zugehörigen Dienste. Betreiber ist Tim Krisch (Inhaber, Einzelunternehmer), Anschrift wie im Impressum angegeben. HookTap wird als Einzelunternehmen nach deutschem Recht betrieben."
         },
         {
           "title": "2. Leistungsbeschreibung",

@@ -40,7 +40,9 @@ export default async function ImpressumPage({
         <p className="mt-3 text-white/75">
           HookTap
           <br />
-          Tim
+          Inhaber: Tim Krisch
+          <br />
+          Einzelunternehmer
           <br />
           c/o MDC Management#6326
           <br />
