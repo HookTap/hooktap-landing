@@ -79,7 +79,7 @@ export async function BlogSection({ locale }: { locale: string }) {
         ))}
       </div>
       
-      <div className="mt-12 text-center">
+      <div className="mt-12 mb-10 text-center">
         <Link href="/blog" locale={locale as "en" | "de"} className="btn btn-outline rounded-full">
           {t("viewAll")}
         </Link>

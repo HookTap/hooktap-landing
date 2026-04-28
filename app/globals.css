@@ -3,9 +3,17 @@
   themes: night --default;
 }
 
+@font-face {
+  font-family: "TikTok Sans";
+  src: url("/TikTok_Sans/TikTokSans-VariableFont_opsz,slnt,wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-body: "Avenir Next", "Plus Jakarta Sans", "Segoe UI Variable", "Segoe UI", sans-serif;
-  --font-display: "SF Pro Display", "Avenir Next", "Segoe UI Variable", "Segoe UI", sans-serif;
+  --font-body: "TikTok Sans", "Segoe UI", sans-serif;
+  --font-display: "TikTok Sans", "Segoe UI", sans-serif;
 }
 
 [data-theme="night"] {
@@ -34,12 +42,61 @@ body {
   color: #e7e7e7;
 }
 
+/* Film grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
 h1,
 h2,
 h3,
 .brand-display {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
+}
+
+h1,
+h2,
+h3 {
+  font-variation-settings: "wdth" 150;
+}
+
+/* Variable font expand on interactive elements */
+.btn {
+  font-variation-settings: "wdth" 100;
+  transition:
+    font-variation-settings 0.25s ease,
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    opacity 0.2s;
+}
+
+.btn:hover {
+  font-variation-settings: "wdth" 135;
+}
+
+/* Infinite marquee scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 .glass-card {
@@ -70,7 +127,6 @@ html {
 .card,
 .mockup-code,
 .collapse,
-.btn,
 .badge {
   border-radius: 1rem;
 }

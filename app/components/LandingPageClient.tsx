@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
@@ -13,6 +14,57 @@ const PixelBlast = dynamic(() => import("@/app/components/PixelBlast"), {
 
 const fadeUp = { hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } };
 const sectionViewport = { once: true, amount: 0.2 };
+
+// Word-by-word stagger variants
+const wordContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.055, delayChildren: 0.05 } },
+};
+const wordItem = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+};
+
+// Animates each word in a heading individually
+function AnimatedWords({ text, className }: { text: string; className?: string }) {
+  return (
+    <motion.span
+      className={className}
+      variants={wordContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {text.split(" ").map((word, i) => (
+        <motion.span key={i} variants={wordItem} className="inline-block">
+          {word}&nbsp;
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+
+// Decorative background section number
+function SectionNum({ n }: { n: string }) {
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none select-none absolute -top-6 left-1/2 -translate-x-1/2 text-[clamp(6rem,16vw,13rem)] font-bold leading-none text-white/[0.028] z-0"
+    >
+      {n}
+    </span>
+  );
+}
+
+// Thin gradient separator between sections
+function Separator() {
+  return (
+    <div
+      aria-hidden
+      className="h-px w-full bg-gradient-to-r from-transparent via-white/[0.09] to-transparent my-0"
+    />
+  );
+}
 
 type IconProps = { className?: string };
 
@@ -162,9 +214,7 @@ const FEATURE_META = [
 ];
 
 const ALT_ICONS = [MessageIcon, MailIcon, ServerIcon, BuildingIcon];
-
 const USE_CASE_ICONS = [ServerIcon, SparkIcon, BellIcon, FlowIcon];
-
 const STEP_ICONS = [DownloadIcon, LinkIcon, BellIcon];
 
 const compatibilityItems = [
@@ -183,6 +233,9 @@ const compatibilityItems = [
 const featureIconTones = [
   "border-red-400/30 bg-red-500/10 text-red-300",
 ];
+
+// Bento: these indices get xl:col-span-2 in the 4-col grid
+const BENTO_WIDE = new Set([0, 5, 6, 7]);
 
 function Section({
   children,
@@ -207,29 +260,23 @@ function Section({
   );
 }
 
-export function LandingPageClient({ 
+export function LandingPageClient({
   locale,
   blogSection
-}: { 
+}: {
   locale: string;
   blogSection: React.ReactNode;
 }) {
   const t = useTranslations();
 
-  const featureTexts = t.raw("features.items") as {
-    title: string;
-    body: string;
-  }[];
+  const featureTexts = t.raw("features.items") as { title: string; body: string }[];
   const features = FEATURE_META.map((meta, i) => ({
     ...meta,
     title: featureTexts[i].title,
     body: featureTexts[i].body,
   }));
 
-  const useCaseGroups = t.raw("useCases.groups") as {
-    title: string;
-    items: string[];
-  }[];
+  const useCaseGroups = t.raw("useCases.groups") as { title: string; items: string[] }[];
   const useCases = useCaseGroups.map((group, i) => ({
     ...group,
     icon: USE_CASE_ICONS[i],
@@ -244,20 +291,31 @@ export function LandingPageClient({
 
   const faqItems = t.raw("faq.items") as { q: string; a: string }[];
 
+  const { scrollY } = useScroll();
+  const [heroRevealed, setHeroRevealed] = useState(false);
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setHeroRevealed(y > 60);
+  });
+
   const freeFeatures = t.raw("pricing.free.features") as string[];
   const monthlyFeatures = t.raw("pricing.monthly.features") as string[];
   const lifetimeFeatures = t.raw("pricing.lifetime.features") as string[];
 
+  // Duplicate for seamless marquee loop
+  const marqueeItems = [...compatibilityItems, ...compatibilityItems];
+
   return (
     <main className="relative overflow-x-clip">
       <div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-45" />
-      <div className="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-28 top-64 -z-10 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+      {/* Stronger background glow orbs */}
+      <div className="pointer-events-none absolute -left-40 top-0 -z-10 h-[700px] w-[700px] rounded-full bg-primary/[0.07] blur-[140px]" />
+      <div className="pointer-events-none absolute -right-40 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-white/[0.03] blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/4 bottom-1/3 -z-10 h-[400px] w-[400px] rounded-full bg-primary/[0.05] blur-[120px]" />
 
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-10">
 
         {/* ── Hero ───────────────────────────────────────────────────────────── */}
-        <Section id="overview" className="pt-16 md:pt-24">
+        <Section id="overview" className="flex flex-col justify-center pt-20 pb-10 md:pt-28 md:pb-14">
           <div className="relative overflow-hidden px-2 py-2 md:px-4 md:py-4">
             <div className="pointer-events-none absolute inset-0 z-0 opacity-75">
               <PixelBlast
@@ -276,25 +334,25 @@ export function LandingPageClient({
                 transparent
               />
             </div>
-            <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_40%,rgba(185,28,28,0.10),transparent_52%)]" />
             <div className="relative z-10 mx-auto max-w-4xl text-center">
-              <p className="mb-4 inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                {t("hero.badge")}
-              </p>
-              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-                {t("hero.headline")}
+              <h1 className="font-bold leading-[1.05] tracking-tight text-[clamp(2.6rem,7.5vw,6.5rem)]">
+                Your iPhone as a Webhook Receiver.<br />
+                <span className="text-primary">In Real Time.</span>
               </h1>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/65">
+              <motion.p
+                className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-white/65"
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
                 {t("hero.sub")}
-              </p>
-              <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/55">
-                <ServerIcon className="h-3.5 w-3.5" />
-                <span>{t("hero.hosting")}</span>
-              </div>
-              <p className="mx-auto mt-5 max-w-3xl rounded-xl border border-white/10 bg-black/30 px-4 py-3 font-mono text-xs text-white/75 md:text-sm">
-                <code>{t("hero.curlExample")}</code>
-              </p>
-              <div className="mt-8 flex flex-nowrap items-center justify-center gap-3">
+              </motion.p>
+              <motion.div
+                className="mt-10 flex flex-nowrap items-center justify-center gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+              >
                 <a
                   href="#cta"
                   className="btn btn-primary btn-sm rounded-full whitespace-nowrap sm:btn-lg"
@@ -307,403 +365,422 @@ export function LandingPageClient({
                 >
                   {t("hero.ctaSecondary")}
                 </a>
-              </div>
-              <div className="mt-6 flex items-center justify-center gap-2">
+              </motion.div>
+              <motion.div
+                className="mt-6 flex items-center justify-center gap-2"
+                initial={{ opacity: 0 }}
+                animate={heroRevealed ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
+              >
                 <span className="text-xs text-white/30">{t("cta.existingUser")}</span>
                 <WebhookModal triggerClassName="btn btn-ghost btn-xs rounded-full border border-white/15 text-xs text-white/60 hover:text-white hover:border-white/30" />
-              </div>
+              </motion.div>
             </div>
           </div>
         </Section>
 
-        {/* ── Video Showcase ─────────────────────────────────────────────────── */}
-        {/* <Section className="mt-12 md:mt-16">
-          <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
-            <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl shadow-primary/5">
-              <video
-                src="/hooktap_explain_video.mov"
-                className="h-full w-full object-cover"
-                controls
-                playsInline
-              />
-            </div>
-            <div className="max-w-xl">
-              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                {t("video.badge")}
-              </span>
-              <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-                {t("video.title")}
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-white/60">
-                {t("video.body")}
-              </p>
-              <div className="mt-8">
-                <a
-                  href="#how"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-                >
-                  <span>{t("hero.ctaSecondary")}</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </Section> */}
+        <Separator />
 
         {/* ── Social proof ───────────────────────────────────────────────────── */}
         <Section className="mt-14 md:mt-20">
-          <div className="rounded-[2rem] px-6 py-10 text-center md:px-10 md:py-12">
-            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              {t("problem.badge")}
-            </span>
-            <h2 className="mx-auto mt-4 max-w-4xl text-3xl font-bold md:text-5xl">
-              {t("problem.headline")}
-            </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/62 md:text-lg">
-              {t("problem.body")}
-            </p>
-            <p className="mt-6 text-lg font-semibold text-primary">
-              {t("problem.cta")}
-            </p>
+          <div className="relative overflow-hidden rounded-[2rem] px-6 py-10 text-center md:px-10 md:py-14">
+            <SectionNum n="01" />
+            <div className="relative z-10">
+              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                {t("problem.badge")}
+              </span>
+              <h2 className="mx-auto mt-4 max-w-4xl text-3xl font-bold md:text-5xl">
+                <AnimatedWords text={t("problem.headline")} />
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/62 md:text-lg">
+                {t("problem.body")}
+              </p>
+              <p className="mt-6 text-lg font-semibold text-primary">
+                {t("problem.cta")}
+              </p>
+            </div>
           </div>
         </Section>
+
+        <Separator />
 
         {/* ── How it works ───────────────────────────────────────────────────── */}
         <Section id="how" className="mt-14 md:mt-20">
-          <div className="rounded-[2rem] px-6 py-8 md:px-10 md:py-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                {t("how.badge")}
-              </span>
-              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-                {t("how.headline")}
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-white/62">
-                {t("how.sub")}
-              </p>
-            </div>
-            <div className="mt-8 grid gap-3 md:grid-cols-[1fr_1.1fr] md:gap-4">
-              <div className="min-w-0 rounded-2xl border border-white/10 bg-black/20 p-4 md:p-5">
-                <p className="text-xs uppercase tracking-[0.14em] text-white/50 md:text-sm">
-                  {t("how.urlLabel")}
-                </p>
-                <p className="mt-3 break-all rounded-xl border border-white/15 bg-black/35 px-3 py-2 font-mono text-xs text-white/85 md:text-sm">
-                  {t("how.urlValue")}
-                </p>
-                <p className="mt-3 text-xs text-white/60 md:text-sm">
-                  {t("how.urlNote")}
+          <div className="relative overflow-hidden rounded-[2rem] px-6 py-8 md:px-10 md:py-10">
+            <SectionNum n="02" />
+            <div className="relative z-10">
+              <div className="mx-auto max-w-3xl text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  {t("how.badge")}
+                </span>
+                <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                  <AnimatedWords text={t("how.headline")} />
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-white/62">
+                  {t("how.sub")}
                 </p>
               </div>
-              <div className="min-w-0 rounded-2xl border border-white/10 bg-black/20 p-4 md:p-5">
-                <pre className="min-w-0 overflow-x-auto whitespace-pre-wrap break-words rounded-xl bg-black/50 p-3 text-[11px] leading-relaxed text-slate-100 md:p-4 md:text-xs">
-                  <code>{t("how.curlExample")}</code>
-                </pre>
-              </div>
-            </div>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {steps.map((item, idx) => (
-                <motion.article
-                  key={item.step}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={sectionViewport}
-                  transition={{ delay: idx * 0.08, duration: 0.4 }}
-                  className="rounded-2xl p-4 md:p-5"
-                >
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="text-xs font-semibold tracking-[0.18em] text-white/45">
-                      {item.step}
-                    </span>
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/90">
-                      <item.icon className="h-4 w-4" />
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold md:text-xl">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-white/62 md:text-sm">
-                    {item.text}
+              <div className="mt-8 grid gap-3 md:grid-cols-[1fr_1.1fr] md:gap-4">
+                <div className="min-w-0 rounded-2xl border border-white/10 bg-black/20 p-4 md:p-5">
+                  <p className="text-xs uppercase tracking-[0.14em] text-white/50 md:text-sm">
+                    {t("how.urlLabel")}
                   </p>
-                </motion.article>
-              ))}
+                  <p className="mt-3 break-all rounded-xl border border-white/15 bg-black/35 px-3 py-2 font-mono text-xs text-white/85 md:text-sm">
+                    {t("how.urlValue")}
+                  </p>
+                  <p className="mt-3 text-xs text-white/60 md:text-sm">
+                    {t("how.urlNote")}
+                  </p>
+                </div>
+                <div className="min-w-0 rounded-2xl border border-white/10 bg-black/20 p-4 md:p-5">
+                  <pre className="min-w-0 overflow-x-auto whitespace-pre-wrap break-words rounded-xl bg-black/50 p-3 text-[11px] leading-relaxed text-slate-100 md:p-4 md:text-xs">
+                    <code>{t("how.curlExample")}</code>
+                  </pre>
+                </div>
+              </div>
+              <div className="mt-8 grid gap-4 md:grid-cols-3">
+                {steps.map((item, idx) => (
+                  <motion.article
+                    key={item.step}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={sectionViewport}
+                    transition={{ delay: idx * 0.08, duration: 0.4 }}
+                    className="rounded-2xl p-4 md:p-5"
+                  >
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="text-xs font-semibold tracking-[0.18em] text-white/45">
+                        {item.step}
+                      </span>
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/90">
+                        <item.icon className="h-4 w-4" />
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold md:text-xl">{item.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-white/62 md:text-sm">
+                      {item.text}
+                    </p>
+                  </motion.article>
+                ))}
+              </div>
             </div>
           </div>
         </Section>
 
-        {/* ── Features ───────────────────────────────────────────────────────── */}
+        <Separator />
+
+        {/* ── Features (Bento Grid) ───────────────────────────────────────────── */}
         <Section id="features" className="mt-14 md:mt-20">
-          <div className="rounded-[2rem] p-6 md:p-10">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                {t("features.badge")}
-              </span>
-              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-                {t("features.headline")}
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-white/62">
-                {t("features.sub")}
+          <div className="relative overflow-hidden rounded-[2rem] p-6 md:p-10">
+            <SectionNum n="03" />
+            <div className="relative z-10">
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  {t("features.badge")}
+                </span>
+                <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                  <AnimatedWords text={t("features.headline")} />
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-white/62">
+                  {t("features.sub")}
+                </p>
+              </div>
+              {/* Bento grid: 4-col at xl, items 0/5/6/7 span 2 cols */}
+              <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {features.map((feature, idx) => {
+                  const isWide = BENTO_WIDE.has(idx);
+                  return (
+                    <motion.div
+                      key={feature.title}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={sectionViewport}
+                      transition={{ delay: idx * 0.05, duration: 0.4 }}
+                      className={[
+                        "rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5 transition-colors hover:border-white/[0.14] hover:bg-white/[0.04]",
+                        isWide ? "xl:col-span-2 xl:p-7" : "",
+                        isWide ? "xl:flex xl:gap-6 xl:items-start" : "",
+                      ].join(" ")}
+                    >
+                      <div
+                        className={[
+                          "inline-flex items-center justify-center rounded-xl border",
+                          featureIconTones[idx % featureIconTones.length],
+                          isWide ? "mb-0 h-12 w-12 shrink-0" : "mb-4 h-10 w-10",
+                        ].join(" ")}
+                      >
+                        <feature.icon className={isWide ? "h-6 w-6" : "h-5 w-5"} />
+                      </div>
+                      <div className={isWide ? "xl:mt-1" : ""}>
+                        <div className="mb-2 flex items-center justify-between gap-2">
+                          <h3 className={["font-semibold", isWide ? "text-xl" : "text-lg"].join(" ")}>
+                            {feature.title}
+                          </h3>
+                        </div>
+                        <p className="text-sm leading-relaxed text-white/62">
+                          {feature.body}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <p className="mt-10 text-center text-sm text-white/50">
+                {t("features.footer")}
               </p>
             </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {features.map((feature, idx) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={sectionViewport}
-                  transition={{ delay: idx * 0.05, duration: 0.4 }}
-                  className="rounded-2xl p-5"
-                >
-                  <div
-                    className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border ${featureIconTones[idx % featureIconTones.length]}`}
-                  >
-                    <feature.icon className="h-5 w-5" />
-                  </div>
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  </div>
-                  <p className="text-sm leading-relaxed text-white/62">
-                    {feature.body}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-            <p className="mt-10 text-center text-sm text-white/50">
-              {t("features.footer")}
-            </p>
           </div>
         </Section>
+
+        <Separator />
 
         {/* ── Why HookTap ────────────────────────────────────────────────────── */}
         <Section id="why" className="mt-20 md:mt-28">
-          <div className="px-2 py-8 md:px-0">
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                {t("why.badge")}
-              </span>
-              <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
-                {t("why.headline")}
-              </h2>
-              <p className="mt-4 text-base text-white/55">{t("why.sub")}</p>
-            </div>
-
-            {/* 2×2 Alternativen-Grid */}
-            <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
-              {([0, 1, 2, 3] as const).map((idx) => {
-                const AltIcon = ALT_ICONS[idx];
-                return (
-                  <motion.div
-                    key={idx}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={sectionViewport}
-                    variants={fadeUp}
-                    transition={{ delay: idx * 0.06, duration: 0.4 }}
-                    className="rounded-2xl border border-white/8 bg-white/[0.03] p-5"
-                  >
-                    <div className="mb-3 flex items-center gap-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                        <AltIcon className="h-4 w-4 text-white/35" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold text-white/60">
-                          {t(`why.alternatives.${idx}.title`)}
-                        </div>
-                        <div className="text-[11px] text-white/30">
-                          {t(`why.alternatives.${idx}.sub`)}
-                        </div>
-                      </div>
-                    </div>
-                    <ul className="space-y-1.5">
-                      {([0, 1, 2, 3] as const).map((j) => (
-                        <li key={j} className="flex items-start gap-2 text-xs text-white/35">
-                          <span className="mt-px shrink-0 text-white/20">—</span>
-                          {t(`why.alternatives.${idx}.items.${j}`)}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* HookTap Highlight-Banner */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={sectionViewport}
-              variants={fadeUp}
-              transition={{ delay: 0.28, duration: 0.45 }}
-              className="mx-auto mt-4 max-w-3xl rounded-2xl border border-primary/40 bg-primary/8 p-6"
-            >
-              <p className="mb-4 text-base font-bold text-white">{t("why.hooktap.title")}</p>
-              <ul className="grid gap-2 sm:grid-cols-2">
-                {([0, 1, 2, 3] as const).map((i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm text-white/80">
-                    <span className="shrink-0 font-bold text-primary">✓</span>
-                    {t(`why.hooktap.items.${i}`)}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </Section>
-
-        {/* ── Use cases ──────────────────────────────────────────────────────── */}
-        <Section id="use-cases" className="mt-20 md:mt-28">
-          <div className="px-2 py-8 md:px-0">
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                {t("useCases.badge")}
-              </span>
-              <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
-                {t("useCases.headline")}
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base text-base-content/60">
-                {t("useCases.sub")}
-              </p>
-            </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-0 md:divide-x md:divide-base-300/20">
-              {useCases.slice(0, 3).map((group, idx) => (
-                <motion.article
-                  key={group.title}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={sectionViewport}
-                  transition={{ delay: idx * 0.08, duration: 0.4 }}
-                  className="px-0 text-center md:px-8"
-                >
-                  <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full border border-base-300/40 bg-white/5 text-white">
-                    <group.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-2xl font-semibold text-white">
-                    {group.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-base-content/60">
-                    {group.items[0]}. {group.items[1]}.
-                  </p>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </Section>
-
-        {/* ── Compatibility ──────────────────────────────────────────────────── */}
-        <Section id="compatibility" className="mt-20 md:mt-28">
-          <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              {t("compatibility.badge")}
-            </span>
-          </div>
-          <h2 className="mt-4 text-3xl font-bold text-center md:text-4xl">
-            {t("compatibility.headline")}
-          </h2>
-          <div className="mt-4 grid grid-cols-3 justify-items-center gap-x-4 gap-y-3 rounded-[2rem] px-6 pt-4 pb-6 sm:grid-cols-4 md:grid-cols-5 md:px-10">
-            {compatibilityItems.map((item) => (
-              <div
-                key={item.label}
-                title={item.label}
-                aria-label={item.label}
-                className="group flex h-20 w-20 cursor-default items-center justify-center p-1 md:h-24 md:w-24"
-              >
-                <Image
-                  src={item.logo}
-                  alt={`${item.label} Logo`}
-                  width={88}
-                  height={88}
-                  className="h-16 w-16 object-contain brightness-0 invert md:h-20 md:w-20"
-                />
+          <div className="relative overflow-hidden px-2 py-8 md:px-0">
+            <SectionNum n="04" />
+            <div className="relative z-10">
+              <div className="mx-auto max-w-3xl text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                  {t("why.badge")}
+                </span>
+                <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                  <AnimatedWords text={t("why.headline")} />
+                </h2>
+                <p className="mt-4 text-base text-white/55">{t("why.sub")}</p>
               </div>
-            ))}
-          </div>
-          <p className="mt-4 text-center text-sm text-white/55">
-            {t("compatibility.more")}
-          </p>
-        </Section>
 
-        {/* ── Pricing ────────────────────────────────────────────────────────── */}
-        <Section id="pricing" className="mt-20 md:mt-28">
-          <div className="rounded-[2rem] px-6 py-8 md:px-10 md:py-10">
-            <div className="mb-8 text-center">
-              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                {t("pricing.badge")}
-              </span>
-              <h2 className="mt-4 text-3xl font-bold text-center md:text-5xl">
-                {t("pricing.headline")}
-              </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-sm text-white/60">
-                {t("pricing.sub")}
-              </p>
-            </div>
-            <div className="grid gap-5 lg:grid-cols-3">
-              {/* Free */}
-              <article className="flex h-full flex-col rounded-2xl p-6">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.14em] text-white/55">
-                    {t("pricing.free.label")}
-                  </p>
-                  <p className="mt-3 text-4xl font-bold">{t("pricing.free.price")}</p>
-                  <p className="mt-1 text-sm text-white/60">{t("pricing.free.period")}</p>
-                </div>
-                <ul className="mt-6 space-y-2 text-sm text-white/82">
-                  {freeFeatures.map((f, i) => (
-                    <li
-                      key={i}
-                      className={f.startsWith("✕") ? "text-white/35" : undefined}
+              <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+                {([0, 1, 2, 3] as const).map((idx) => {
+                  const AltIcon = ALT_ICONS[idx];
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={sectionViewport}
+                      variants={fadeUp}
+                      transition={{ delay: idx * 0.06, duration: 0.4 }}
+                      className="rounded-2xl border border-white/8 bg-white/[0.03] p-5"
                     >
-                      {f}
+                      <div className="mb-3 flex items-center gap-3">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+                          <AltIcon className="h-4 w-4 text-white/35" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-white/60">
+                            {t(`why.alternatives.${idx}.title`)}
+                          </div>
+                          <div className="text-[11px] text-white/30">
+                            {t(`why.alternatives.${idx}.sub`)}
+                          </div>
+                        </div>
+                      </div>
+                      <ul className="space-y-1.5">
+                        {([0, 1, 2, 3] as const).map((j) => (
+                          <li key={j} className="flex items-start gap-2 text-xs text-white/35">
+                            <span className="mt-px shrink-0 text-white/20">—</span>
+                            {t(`why.alternatives.${idx}.items.${j}`)}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={sectionViewport}
+                variants={fadeUp}
+                transition={{ delay: 0.28, duration: 0.45 }}
+                className="mx-auto mt-4 max-w-3xl rounded-2xl border border-primary/40 bg-primary/8 p-6"
+              >
+                <p className="mb-4 text-base font-bold text-white">{t("why.hooktap.title")}</p>
+                <ul className="grid gap-2 sm:grid-cols-2">
+                  {([0, 1, 2, 3] as const).map((i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-white/80">
+                      <span className="shrink-0 font-bold text-primary">✓</span>
+                      {t(`why.hooktap.items.${i}`)}
                     </li>
                   ))}
                 </ul>
-                <a href="#cta" className="btn btn-outline mt-6 w-full rounded-full">
-                  {t("pricing.free.cta")}
-                </a>
-              </article>
-
-              {/* Monthly */}
-              <article className="flex h-full flex-col rounded-2xl p-6">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.14em] text-white/55">
-                    {t("pricing.monthly.label")}
-                  </p>
-                  <p className="mt-3 text-4xl font-bold">{t("pricing.monthly.price")}</p>
-                  <p className="mt-1 text-sm text-white/60">{t("pricing.monthly.period")}</p>
-                </div>
-                <ul className="mt-6 space-y-2 text-sm text-white/82">
-                  {monthlyFeatures.map((f, i) => (
-                    <li key={i}>{f}</li>
-                  ))}
-                </ul>
-                <a href="#cta" className="btn btn-primary mt-6 w-full rounded-full">
-                  {t("pricing.monthly.cta")}
-                </a>
-              </article>
-
-              {/* Lifetime */}
-              <article className="relative flex h-full flex-col rounded-2xl border border-primary/45 bg-gradient-to-b from-primary/15 to-black/20 p-6 shadow-2xl shadow-primary/15">
-                <span className="badge badge-primary absolute right-4 top-4 rounded-full">
-                  {t("pricing.bestDeal")}
-                </span>
-                <div>
-                  <p className="text-sm uppercase tracking-[0.14em] text-primary">
-                    {t("pricing.lifetime.label")}
-                  </p>
-                  <p className="mt-3 text-4xl font-bold">{t("pricing.lifetime.price")}</p>
-                  <p className="mt-1 text-sm text-white/70">{t("pricing.lifetime.period")}</p>
-                </div>
-                <ul className="mt-6 space-y-2 text-sm text-white/90">
-                  {lifetimeFeatures.map((f, i) => (
-                    <li key={i}>{f}</li>
-                  ))}
-                </ul>
-                <a href="#cta" className="btn btn-primary mt-6 w-full rounded-full">
-                  {t("pricing.lifetime.cta")}
-                </a>
-              </article>
+              </motion.div>
             </div>
-            <p className="mt-6 text-center text-sm text-white/58">
-              {t("pricing.footer")}
-            </p>
+          </div>
+        </Section>
+
+        <Separator />
+
+        {/* ── Use cases ──────────────────────────────────────────────────────── */}
+        <Section id="use-cases" className="mt-20 md:mt-28">
+          <div className="relative overflow-hidden px-2 py-8 md:px-0">
+            <SectionNum n="05" />
+            <div className="relative z-10">
+              <div className="mx-auto max-w-3xl text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  {t("useCases.badge")}
+                </span>
+                <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                  <AnimatedWords text={t("useCases.headline")} />
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-base text-base-content/60">
+                  {t("useCases.sub")}
+                </p>
+              </div>
+              <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-0 md:divide-x md:divide-base-300/20">
+                {useCases.slice(0, 3).map((group, idx) => (
+                  <motion.article
+                    key={group.title}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={sectionViewport}
+                    transition={{ delay: idx * 0.08, duration: 0.4 }}
+                    className="px-0 text-center md:px-8"
+                  >
+                    <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full border border-base-300/40 bg-white/5 text-white">
+                      <group.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-2xl font-semibold text-white">
+                      {group.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-base-content/60">
+                      {group.items[0]}. {group.items[1]}.
+                    </p>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Separator />
+
+        {/* ── Compatibility (Marquee) ─────────────────────────────────────────── */}
+        <Section id="compatibility" className="mt-20 md:mt-28">
+          <div className="relative overflow-hidden">
+            <SectionNum n="06" />
+            <div className="relative z-10">
+              <div className="mb-10 text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  {t("compatibility.badge")}
+                </span>
+                <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+                  <AnimatedWords text={t("compatibility.headline")} />
+                </h2>
+              </div>
+              {/* Infinite marquee ticker */}
+              <div className="relative overflow-hidden" style={{ WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)", maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)" }}>
+                <div className="marquee-track">
+                  {marqueeItems.map((item, i) => (
+                    <div
+                      key={i}
+                      title={item.label}
+                      className="flex h-36 w-52 shrink-0 items-center justify-center px-10"
+                    >
+                      <Image
+                        src={item.logo}
+                        alt={`${item.label} Logo`}
+                        width={120}
+                        height={120}
+                        className="h-20 w-20 object-contain brightness-0 invert opacity-50 transition-opacity hover:opacity-90"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="mt-6 mb-10 text-center text-sm text-white/55">
+                {t("compatibility.more")}
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        <Separator />
+
+        {/* ── Pricing ────────────────────────────────────────────────────────── */}
+        <Section id="pricing" className="mt-20 md:mt-28">
+          <div className="relative overflow-hidden rounded-[2rem] px-6 py-8 md:px-10 md:py-10">
+            <SectionNum n="07" />
+            <div className="relative z-10">
+              <div className="mb-10 text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  {t("pricing.badge")}
+                </span>
+                <h2 className="mt-4 text-3xl font-bold text-center md:text-5xl">
+                  <AnimatedWords text={t("pricing.headline")} />
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm text-white/60">
+                  {t("pricing.sub")}
+                </p>
+              </div>
+              <div className="grid gap-5 lg:grid-cols-3 lg:items-stretch">
+                {/* Free */}
+                <article className="flex h-full flex-col rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.14em] text-white/55">
+                      {t("pricing.free.label")}
+                    </p>
+                    <p className="mt-3 text-4xl font-bold">{t("pricing.free.price")}</p>
+                    <p className="mt-1 text-sm text-white/60">{t("pricing.free.period")}</p>
+                  </div>
+                  <ul className="mt-6 space-y-2 text-sm text-white/82">
+                    {freeFeatures.map((f, i) => (
+                      <li key={i} className={f.startsWith("✕") ? "text-white/35" : undefined}>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#cta" className="btn btn-outline mt-6 w-full rounded-full">
+                    {t("pricing.free.cta")}
+                  </a>
+                </article>
+
+                {/* Monthly */}
+                <article className="flex h-full flex-col rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.14em] text-white/55">
+                      {t("pricing.monthly.label")}
+                    </p>
+                    <p className="mt-3 text-4xl font-bold">{t("pricing.monthly.price")}</p>
+                    <p className="mt-1 text-sm text-white/60">{t("pricing.monthly.period")}</p>
+                  </div>
+                  <ul className="mt-6 space-y-2 text-sm text-white/82">
+                    {monthlyFeatures.map((f, i) => (
+                      <li key={i}>{f}</li>
+                    ))}
+                  </ul>
+                  <a href="#cta" className="btn btn-primary mt-6 w-full rounded-full">
+                    {t("pricing.monthly.cta")}
+                  </a>
+                </article>
+
+                {/* Lifetime — breakout featured card */}
+                <article className="relative z-10 flex h-full flex-col rounded-2xl border border-primary/50 bg-gradient-to-b from-primary/15 to-black/20 p-6 shadow-2xl shadow-primary/25 lg:-mt-5 lg:-mb-1 lg:scale-[1.04]">
+                  <span className="badge badge-primary absolute right-4 top-4 rounded-full">
+                    {t("pricing.bestDeal")}
+                  </span>
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.14em] text-primary">
+                      {t("pricing.lifetime.label")}
+                    </p>
+                    <p className="mt-3 text-4xl font-bold">{t("pricing.lifetime.price")}</p>
+                    <p className="mt-1 text-sm text-white/70">{t("pricing.lifetime.period")}</p>
+                  </div>
+                  <ul className="mt-6 space-y-2 text-sm text-white/90">
+                    {lifetimeFeatures.map((f, i) => (
+                      <li key={i}>{f}</li>
+                    ))}
+                  </ul>
+                  <a href="#cta" className="btn btn-primary mt-6 w-full rounded-full">
+                    {t("pricing.lifetime.cta")}
+                  </a>
+                </article>
+              </div>
+              <p className="mt-8 text-center text-sm text-white/58">
+                {t("pricing.footer")}
+              </p>
+            </div>
           </div>
         </Section>
 
@@ -712,85 +789,98 @@ export function LandingPageClient({
           {blogSection}
         </Section>
 
+        <Separator />
+
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
         <Section id="faq" className="mt-20 md:mt-28">
-          <div className="text-center">
-            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              {t("faq.badge")}
-            </span>
-          </div>
-          <h2 className="mt-4 text-3xl font-bold text-center md:text-4xl">
-            {t("faq.headline")}
-          </h2>
-          <div className="mt-7 space-y-3">
-            {faqItems.map((item, idx) => (
-              <div key={idx} className="collapse-arrow collapse rounded-2xl">
-                <input
-                  type="radio"
-                  name="faq-accordion"
-                  defaultChecked={idx === 0}
-                />
-                <div className="collapse-title text-base font-semibold">
-                  {item.q}
-                </div>
-                <div className="collapse-content text-sm text-white/62">
-                  <p>{item.a}</p>
-                </div>
+          <div className="relative overflow-hidden">
+            <SectionNum n="08" />
+            <div className="relative z-10">
+              <div className="text-center">
+                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  {t("faq.badge")}
+                </span>
               </div>
-            ))}
+              <h2 className="mt-4 text-3xl font-bold text-center md:text-4xl">
+                <AnimatedWords text={t("faq.headline")} />
+              </h2>
+              <div className="mt-7 space-y-3">
+                {faqItems.map((item, idx) => (
+                  <div key={idx} className="collapse-arrow collapse rounded-2xl">
+                    <input
+                      type="radio"
+                      name="faq-accordion"
+                      defaultChecked={idx === 0}
+                    />
+                    <div className="collapse-title text-base font-semibold">
+                      {item.q}
+                    </div>
+                    <div className="collapse-content text-sm text-white/62">
+                      <p>{item.a}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Section>
 
+        <Separator />
+
         {/* ── CTA ────────────────────────────────────────────────────────────── */}
         <Section id="cta" className="mt-20 pb-20 md:mt-28">
-          <div className="rounded-[2rem] px-7 py-10 text-center md:px-14">
-            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              {t("cta.badge")}
-            </span>
-            <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-              {t("cta.headline")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-white/62">
-              {t("cta.sub")}
-            </p>
-            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href="https://apps.apple.com/app/id6759625475" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg gap-2">
-                <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
-                <span>{t("cta.ios")}</span>
-              </a>
-              <a
-                href="/HookTap%201.1.2.dmg"
-                download="HookTap 1.1.2.dmg"
-                className="btn btn-outline btn-lg gap-2"
-              >
-                <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
-                <span>{t("cta.mac")}</span>
-              </a>
-              <div className="dropdown dropdown-top dropdown-end sm:dropdown-bottom">
-                <div tabIndex={0} role="button" className="btn btn-outline btn-lg gap-2">
-                  <Image src="/icons8-windows-11-50.png" alt="Windows" width={18} height={18} />
-                  <span>{t("cta.windows")}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <div className="relative overflow-hidden rounded-[2rem] px-7 py-10 text-center md:px-14 md:py-16">
+            <SectionNum n="09" />
+            <div className="relative z-10">
+              <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                {t("cta.badge")}
+              </span>
+              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                <AnimatedWords text={t("cta.headline")} />
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-white/62">
+                {t("cta.sub")}
+              </p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <a href="https://apps.apple.com/app/id6759625475" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg gap-2">
+                  <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
+                  <span>{t("cta.ios")}</span>
+                </a>
+                <a
+                  href="/HookTap%201.1.2.dmg"
+                  download="HookTap 1.1.2.dmg"
+                  className="btn btn-outline btn-lg gap-2"
+                >
+                  <Image src="/icons8-mac-os-50.png" alt="Apple" width={18} height={18} />
+                  <span>{t("cta.mac")}</span>
+                </a>
+                <div className="dropdown dropdown-top dropdown-end sm:dropdown-bottom">
+                  <div tabIndex={0} role="button" className="btn btn-outline btn-lg gap-2">
+                    <Image src="/icons8-windows-11-50.png" alt="Windows" width={18} height={18} />
+                    <span>{t("cta.windows")}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
+                  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-44 p-1 shadow-lg border border-white/10 text-sm">
+                    <li>
+                      <a href="/HookTap_1.0.0_x64-setup.exe" download="HookTap_1.0.0_x64-setup.exe" className="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Setup Installer
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/HookTap-Windows-1.0.1-portable.zip" download="HookTap-Windows-1.0.1-portable.zip" className="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Portable .exe
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-44 p-1 shadow-lg border border-white/10 text-sm">
-                  <li>
-                    <a href="/HookTap_1.0.0_x64-setup.exe" download="HookTap_1.0.0_x64-setup.exe" className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                      Setup Installer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/HookTap-Windows-1.0.1-portable.zip" download="HookTap-Windows-1.0.1-portable.zip" className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                      Portable .exe
-                    </a>
-                  </li>
-                </ul>
               </div>
+              <p className="mt-4 text-sm text-white/55">{t("cta.noAccount")}</p>
             </div>
-            <p className="mt-4 text-sm text-white/55">{t("cta.noAccount")}</p>
           </div>
         </Section>
+
       </div>
     </main>
   );
