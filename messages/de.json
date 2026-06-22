@@ -366,6 +366,17 @@
       "fieldBody": "body",
       "fieldBodyDesc": "Benachrichtigungstext"
     },
+    "cli": {
+      "badge": "CLI",
+      "title": "Offizielles Kommandozeilen-Tool",
+      "subtitle": "Einmal mit Homebrew installieren und Events direkt aus dem Terminal senden — gemacht für Pipes, stdin und Skripte.",
+      "installLabel": "Installation",
+      "usageLabel": "Sende dein erstes Event",
+      "feature1": "Liest von stdin — leite die Ausgabe jedes Befehls an dein iPhone",
+      "feature2": "Benannte Profile für mehrere Webhooks",
+      "feature3": "Shell-Completions für zsh, bash & fish",
+      "githubLabel": "CLI auf GitHub ansehen"
+    },
     "types": {
       "badge": "Referenz",
       "title": "So werden Events zugestellt",

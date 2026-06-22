@@ -366,6 +366,17 @@
       "fieldBody": "body",
       "fieldBodyDesc": "Notification body text"
     },
+    "cli": {
+      "badge": "CLI",
+      "title": "Official command-line tool",
+      "subtitle": "Install once with Homebrew and send events straight from your terminal — built for pipes, stdin, and scripts.",
+      "installLabel": "Install",
+      "usageLabel": "Send your first event",
+      "feature1": "Reads from stdin — pipe any command's output to your phone",
+      "feature2": "Named profiles for juggling multiple webhooks",
+      "feature3": "Shell completions for zsh, bash & fish",
+      "githubLabel": "View the CLI on GitHub"
+    },
     "types": {
       "badge": "Reference",
       "title": "How events are delivered",
