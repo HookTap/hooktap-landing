@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
@@ -268,6 +267,10 @@ export function LandingPageClient({
   blogSection: React.ReactNode;
 }) {
   const t = useTranslations();
+  const heroHeadline = t("hero.headline");
+  const heroAccentMatch = heroHeadline.match(/^(.*?)(In (?:Real Time|Echtzeit)\.)$/);
+  const heroHeadlineLead = heroAccentMatch?.[1].trim() ?? heroHeadline;
+  const heroHeadlineAccent = heroAccentMatch?.[2] ?? "";
 
   const featureTexts = t.raw("features.items") as { title: string; body: string }[];
   const features = FEATURE_META.map((meta, i) => ({
@@ -291,12 +294,6 @@ export function LandingPageClient({
 
   const faqItems = t.raw("faq.items") as { q: string; a: string }[];
 
-  const { scrollY } = useScroll();
-  const [heroRevealed, setHeroRevealed] = useState(false);
-  useMotionValueEvent(scrollY, "change", (y) => {
-    setHeroRevealed(y > 60);
-  });
-
   const freeFeatures = t.raw("pricing.free.features") as string[];
   const monthlyFeatures = t.raw("pricing.monthly.features") as string[];
   const lifetimeFeatures = t.raw("pricing.lifetime.features") as string[];
@@ -307,17 +304,13 @@ export function LandingPageClient({
   return (
     <main className="relative overflow-x-clip">
       <div className="pointer-events-none absolute inset-0 -z-10 dot-grid opacity-45" />
-      {/* Stronger background glow orbs */}
-      <div className="pointer-events-none absolute -left-40 top-0 -z-10 h-[700px] w-[700px] rounded-full bg-primary/[0.07] blur-[140px]" />
-      <div className="pointer-events-none absolute -right-40 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-white/[0.03] blur-[100px]" />
-      <div className="pointer-events-none absolute left-1/4 bottom-1/3 -z-10 h-[400px] w-[400px] rounded-full bg-primary/[0.05] blur-[120px]" />
 
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-8 lg:px-10">
 
         {/* ── Hero ───────────────────────────────────────────────────────────── */}
         <Section id="overview" className="flex flex-col justify-center pt-20 pb-10 md:pt-28 md:pb-14">
-          <div className="relative overflow-hidden px-2 py-2 md:px-4 md:py-4">
-            <div className="pointer-events-none absolute inset-0 z-0 opacity-75">
+          <div className="relative flex min-h-[520px] items-center overflow-hidden px-2 py-10 md:min-h-[620px] md:px-4 md:py-14">
+            <div className="pointer-events-none absolute inset-x-[-22%] -top-28 bottom-[-7rem] z-0 opacity-95">
               <PixelBlast
                 variant="circle"
                 color="#b91c1c"
@@ -335,27 +328,27 @@ export function LandingPageClient({
               />
             </div>
             <div className="relative z-10 mx-auto max-w-4xl text-center">
-              <h1 className="font-bold leading-[1.05] tracking-tight text-[clamp(2.6rem,7.5vw,6.5rem)]">
-                Your iPhone as a Webhook Receiver.<br />
-                <span className="hero-serif text-primary">In Real Time.</span>
+              <h1 className="font-bold leading-[1.04] text-[clamp(2.25rem,5.9vw,5.35rem)]">
+                {heroHeadlineLead}<br />
+                <span className="hero-highlight text-primary">{heroHeadlineAccent}</span>
               </h1>
               <motion.p
-                className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-white/65"
+                className="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-white/66 md:text-lg"
                 initial={{ opacity: 0, y: 20 }}
-                animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 {t("hero.sub")}
               </motion.p>
               <motion.div
-                className="mt-10 flex flex-nowrap items-center justify-center gap-3"
+                className="mt-9 flex flex-nowrap items-center justify-center gap-3"
                 initial={{ opacity: 0, y: 20 }}
-                animate={heroRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
               >
                 <a
                   href="#cta"
-                  className="btn btn-primary btn-sm rounded-full whitespace-nowrap sm:btn-lg"
+                  className="btn btn-primary btn-sm rounded-full whitespace-nowrap shadow-[0_18px_45px_-24px_rgba(239,68,68,0.9)] sm:btn-lg"
                 >
                   {t("hero.ctaPrimary")}
                 </a>
@@ -369,7 +362,7 @@ export function LandingPageClient({
               <motion.div
                 className="mt-6 flex items-center justify-center gap-2"
                 initial={{ opacity: 0 }}
-                animate={heroRevealed ? { opacity: 1 } : { opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
               >
                 <span className="text-xs text-white/30">{t("cta.existingUser")}</span>
@@ -395,7 +388,7 @@ export function LandingPageClient({
               <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/62 md:text-lg">
                 {t("problem.body")}
               </p>
-              <p className="mt-6 text-lg font-semibold text-primary">
+              <p className="hero-highlight mt-6 text-lg text-primary">
                 {t("problem.cta")}
               </p>
             </div>
