@@ -337,7 +337,7 @@ export function LandingPageClient({
             <div className="relative z-10 mx-auto max-w-4xl text-center">
               <h1 className="font-bold leading-[1.05] tracking-tight text-[clamp(2.6rem,7.5vw,6.5rem)]">
                 Your iPhone as a Webhook Receiver.<br />
-                <span className="text-primary">In Real Time.</span>
+                <span className="hero-serif text-primary">In Real Time.</span>
               </h1>
               <motion.p
                 className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-white/65"
