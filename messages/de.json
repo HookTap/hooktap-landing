@@ -369,13 +369,33 @@
     "cli": {
       "badge": "CLI",
       "title": "Offizielles Kommandozeilen-Tool",
-      "subtitle": "Einmal mit Homebrew installieren und Events direkt aus dem Terminal senden — gemacht für Pipes, stdin und Skripte.",
+      "subtitle": "Installiere die HookTap CLI, um Events aus Skripten zu senden, eine Terminal UI zu öffnen, Profile zu verwalten und bei fertigen Commands benachrichtigt zu werden.",
       "installLabel": "Installation",
       "usageLabel": "Sende dein erstes Event",
       "feature1": "Liest von stdin — leite die Ausgabe jedes Befehls an dein iPhone",
       "feature2": "Benannte Profile für mehrere Webhooks",
       "feature3": "Shell-Completions für zsh, bash & fish",
-      "githubLabel": "CLI auf GitHub ansehen"
+      "githubLabel": "CLI auf GitHub ansehen",
+      "install": {
+        "label": "Installation",
+        "title": "Mit einem Befehl installieren",
+        "body": "Nutze den curl Installer für macOS und Linux oder installiere über den Homebrew Tap."
+      },
+      "setup": {
+        "label": "Setup",
+        "title": "Webhook verbinden",
+        "body": "Starte einmal den geführten Wizard oder richte benannte Profile non-interaktiv für CI und Team-Workflows ein."
+      },
+      "tui": {
+        "label": "Terminal UI",
+        "title": "Aus einer Fullscreen-UI senden",
+        "body": "Öffne HookTap im Terminal, um Events zu schreiben, Profile zu prüfen, Snippets anzusehen und Diagnosen auszuführen."
+      },
+      "watch": {
+        "label": "Watch",
+        "title": "Benachrichtigen, wenn Commands fertig sind",
+        "body": "Umschließe Builds, Deploys, Migrationen und Skripte. Die Ausgabe läuft normal weiter, der Exit Code bleibt erhalten."
+      }
     },
     "types": {
       "badge": "Referenz",

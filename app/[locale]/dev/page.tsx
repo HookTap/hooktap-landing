@@ -137,7 +137,17 @@ const MAPPING_DEEPLINK = `// Incoming JSON (sent by GitHub)
 //   "https://github.com/acme/repo/pull/42"`;
 
 // ── CLI examples (locale-independent) ─────────────────────────────────────────
-const CLI_INSTALL = `brew install HookTap/tap/hooktap`;
+const CLI_INSTALL = `# macOS / Linux
+curl -fsSL https://hooktap.me/install.sh | sh
+
+# Homebrew
+brew install HookTap/tap/hooktap`;
+
+const CLI_SETUP = `# Guided setup
+hooktap setup
+
+# Non-interactive setup
+hooktap setup --name ci --hook https://hooks.hooktap.me/webhook/YOUR_ID --type push`;
 
 const CLI_USAGE = `# Save your webhook id once
 hooktap config set hook_id YOUR_ID
@@ -150,6 +160,19 @@ make deploy | hooktap send "Deploy" --type push
 
 # Check the service is reachable
 hooktap ping`;
+
+const CLI_TUI = `# Open the terminal UI
+hooktap
+hooktap tui
+
+# Keyboard
+# 1-4 switch screens · Tab moves inputs · Ctrl+T cycles type · Ctrl+S sends`;
+
+const CLI_WATCH = `# Notify when a command exits
+hooktap watch -- npm run build
+
+# Custom title
+hooktap watch --title "Production deploy" -- make deploy`;
 
 // ── Platform icons ────────────────────────────────────────────────────────
 function AppleIcon({ className = "w-6 h-6" }: { className?: string }) {
@@ -405,19 +428,38 @@ export default function DevPage() {
           <h2 className="text-2xl font-bold text-white mt-2 mb-2">{t("cli.title")}</h2>
           <p className="text-white/55 text-sm mb-7">{t("cli.subtitle")}</p>
 
-          {/* Install */}
-          <div className="rounded-[1.5rem] p-6 md:p-7 mb-5" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
-            <p className="text-[10px] uppercase tracking-[0.14em] text-white/35 mb-3">{t("cli.installLabel")}</p>
-            <pre
-              className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"
-              style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.78)" }}
-            >
-              <code>{CLI_INSTALL}</code>
-            </pre>
+          <div className="grid gap-5 md:grid-cols-2">
+            {[
+              { key: "install", code: CLI_INSTALL },
+              { key: "setup", code: CLI_SETUP },
+              { key: "tui", code: CLI_TUI },
+              { key: "watch", code: CLI_WATCH },
+            ].map((item) => (
+              <div
+                key={item.key}
+                className="rounded-[1.5rem] p-6 md:p-7"
+                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <p className="text-[10px] uppercase tracking-[0.14em] text-white/35 mb-2">
+                  {t(`cli.${item.key}.label` as Parameters<typeof t>[0])}
+                </p>
+                <h3 className="text-base font-bold text-white mb-2">
+                  {t(`cli.${item.key}.title` as Parameters<typeof t>[0])}
+                </h3>
+                <p className="mb-4 text-xs leading-relaxed text-white/50">
+                  {t(`cli.${item.key}.body` as Parameters<typeof t>[0])}
+                </p>
+                <pre
+                  className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"
+                  style={{ background: "rgba(8,8,10,0.97)", color: "rgba(255,255,255,0.74)" }}
+                >
+                  <code>{item.code}</code>
+                </pre>
+              </div>
+            ))}
           </div>
 
-          {/* Usage */}
-          <div className="rounded-[1.5rem] p-6 md:p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="mt-5 rounded-[1.5rem] p-6 md:p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
             <p className="text-[10px] uppercase tracking-[0.14em] text-white/35 mb-3">{t("cli.usageLabel")}</p>
             <pre
               className="rounded-xl overflow-x-auto p-4 text-xs font-mono leading-relaxed"

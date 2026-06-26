@@ -369,13 +369,33 @@
     "cli": {
       "badge": "CLI",
       "title": "Official command-line tool",
-      "subtitle": "Install once with Homebrew and send events straight from your terminal — built for pipes, stdin, and scripts.",
+      "subtitle": "Install the HookTap CLI to send events from scripts, open a terminal UI, configure profiles, and get notified when commands finish.",
       "installLabel": "Install",
       "usageLabel": "Send your first event",
       "feature1": "Reads from stdin — pipe any command's output to your phone",
       "feature2": "Named profiles for juggling multiple webhooks",
       "feature3": "Shell completions for zsh, bash & fish",
-      "githubLabel": "View the CLI on GitHub"
+      "githubLabel": "View the CLI on GitHub",
+      "install": {
+        "label": "Install",
+        "title": "Install with one command",
+        "body": "Use the curl installer for macOS and Linux, or install from the Homebrew tap."
+      },
+      "setup": {
+        "label": "Setup",
+        "title": "Connect your webhook",
+        "body": "Run the guided wizard once, or configure a named profile non-interactively for CI and team workflows."
+      },
+      "tui": {
+        "label": "Terminal UI",
+        "title": "Send from a full-screen UI",
+        "body": "Open HookTap in the terminal to compose events, inspect profiles, view snippets, and run basic diagnostics."
+      },
+      "watch": {
+        "label": "Watch",
+        "title": "Notify when commands finish",
+        "body": "Wrap builds, deploys, migrations, and scripts. Output streams normally, and the final exit code is preserved."
+      }
     },
     "types": {
       "badge": "Reference",
