@@ -383,8 +383,8 @@
       },
       "setup": {
         "label": "Setup",
-        "title": "Webhook verbinden",
-        "body": "Starte einmal den geführten Wizard oder richte benannte Profile non-interaktiv für CI und Team-Workflows ein."
+        "title": "Per Pairing-Code verbinden",
+        "body": "Erzeuge in der iPhone-App einen einmaligen Code und starte setup. Manuelle Webhook-IDs und benannte CI-Profile funktionieren weiter."
       },
       "tui": {
         "label": "Terminal UI",

@@ -383,8 +383,8 @@
       },
       "setup": {
         "label": "Setup",
-        "title": "Connect your webhook",
-        "body": "Run the guided wizard once, or configure a named profile non-interactively for CI and team workflows."
+        "title": "Connect with a pairing code",
+        "body": "Generate a one-time code in the iPhone app and run setup. Manual webhook IDs and named CI profiles still work."
       },
       "tui": {
         "label": "Terminal UI",

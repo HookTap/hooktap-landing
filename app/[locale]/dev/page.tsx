@@ -144,6 +144,9 @@ curl -fsSL https://hooktap.me/install.sh | sh
 brew install HookTap/tap/hooktap`;
 
 const CLI_SETUP = `# Guided setup
+hooktap setup --code 123456
+
+# Manual setup
 hooktap setup
 
 # Non-interactive setup
