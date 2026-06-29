@@ -52,10 +52,13 @@ export default function AdminPage() {
         setIsLoggedIn(false);
         return;
       }
-      if (!res.ok) throw new Error("Failed to load stats");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? `HTTP ${res.status}`);
+      }
       setStats(await res.json());
-    } catch {
-      setStatsError("Could not load stats. Check Firebase credentials.");
+    } catch (err) {
+      setStatsError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setLoading(false);
     }

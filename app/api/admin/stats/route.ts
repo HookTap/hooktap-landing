@@ -56,7 +56,8 @@ export async function GET() {
       updatedAt: new Date().toISOString(),
     });
   } catch (err) {
-    console.error("Admin stats error:", err);
-    return NextResponse.json({ error: "Failed to fetch stats" }, { status: 500 });
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("Admin stats error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

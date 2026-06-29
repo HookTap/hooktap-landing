@@ -7,7 +7,10 @@ function initAdmin() {
 
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  // dotenv may or may not expand \n in quoted values depending on version.
+  // Replace literal \n sequences just in case they weren't expanded.
+  const raw = process.env.FIREBASE_PRIVATE_KEY ?? "";
+  const privateKey = raw.includes("\\n") ? raw.replace(/\\n/g, "\n") : raw;
 
   if (!projectId || !clientEmail || !privateKey) {
     throw new Error(
