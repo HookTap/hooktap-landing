@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 
 interface Stats {
   users: number;
+  iosDevices: number;
   linkedDevices: number;
   webhooks: number;
   events: number;
@@ -174,7 +175,8 @@ export default function AdminPage() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <StatCard label="iOS Users" value={stats?.users} icon="👥" />
+          <StatCard label="Registered Users" value={stats?.users} icon="👥" />
+          <StatCard label="iOS Devices" value={stats?.iosDevices} icon="📱" />
           <StatCard label="Linked Mac Devices" value={stats?.linkedDevices} icon="💻" />
           <StatCard label="Webhooks" value={stats?.webhooks} icon="🎣" />
           <StatCard label="Total Events" value={stats?.events} icon="📨" />
