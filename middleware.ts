@@ -12,6 +12,6 @@ export const config = {
     // - /_vercel (Vercel internals)
     // - /help (standalone English-only route, no locale prefix needed)
     // - /.*\..* (files with extensions, e.g. favicon.ico)
-    "/((?!api|_next|_vercel|help|.*\..*).*)",
+    "/((?!api|_next|_vercel|help|admin|.*\..*).*)",
   ],
 };
