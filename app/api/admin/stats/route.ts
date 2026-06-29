@@ -19,15 +19,19 @@ async function countCollection(collection: string): Promise<number> {
   return snap.data().count;
 }
 
-async function countUsers(): Promise<number> {
-  let count = 0;
-  let pageToken: string | undefined;
-  do {
-    const result = await adminAuth.listUsers(1000, pageToken);
-    count += result.users.length;
-    pageToken = result.pageToken;
-  } while (pageToken);
-  return count;
+async function countUsers(): Promise<number | null> {
+  try {
+    let count = 0;
+    let pageToken: string | undefined;
+    do {
+      const result = await adminAuth.listUsers(1000, pageToken);
+      count += result.users.length;
+      pageToken = result.pageToken;
+    } while (pageToken);
+    return count;
+  } catch {
+    return null; // insufficient permissions for Auth – show null
+  }
 }
 
 export async function GET() {
@@ -48,7 +52,7 @@ export async function GET() {
     ]);
 
     return NextResponse.json({
-      users,
+      users,         // null if Auth permissions missing
       devices,
       linkedDevices,
       webhooks,

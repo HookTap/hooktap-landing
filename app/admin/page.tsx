@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 interface Stats {
-  users: number;
+  users: number | null;
   devices: number;
   linkedDevices: number;
   webhooks: number;
@@ -17,15 +17,17 @@ function StatCard({
   icon,
 }: {
   label: string;
-  value: number | null;
+  value: number | null | undefined;
   icon: string;
 }) {
   return (
     <div className="bg-base-200 rounded-2xl p-6 flex flex-col gap-2">
       <span className="text-3xl">{icon}</span>
       <p className="text-4xl font-bold tabular-nums">
-        {value === null ? (
+        {value === undefined ? (
           <span className="loading loading-dots loading-sm" />
+        ) : value === null ? (
+          <span className="text-base-content/30">?</span>
         ) : (
           value.toLocaleString()
         )}
