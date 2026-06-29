@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createHash } from "crypto";
-import { adminDb, adminAuth } from "../../../lib/firebase-admin";
+import { adminDb } from "../../../lib/firebase-admin";
 
 function makeToken(password: string): string {
   const secret = process.env.ADMIN_SECRET ?? "hooktap-admin-fallback";
@@ -19,21 +19,6 @@ async function countCollection(collection: string): Promise<number> {
   return snap.data().count;
 }
 
-async function countUsers(): Promise<number | null> {
-  try {
-    let count = 0;
-    let pageToken: string | undefined;
-    do {
-      const result = await adminAuth.listUsers(1000, pageToken);
-      count += result.users.length;
-      pageToken = result.pageToken;
-    } while (pageToken);
-    return count;
-  } catch {
-    return null; // insufficient permissions for Auth – show null
-  }
-}
-
 export async function GET() {
   const cookieStore = await cookies();
   const session = cookieStore.get("admin_session")?.value;
@@ -43,8 +28,8 @@ export async function GET() {
   }
 
   try {
-    const [users, devices, linkedDevices, webhooks, events] = await Promise.all([
-      countUsers(),
+    // devices has one doc per userId → best user count without Auth Admin API
+    const [users, linkedDevices, webhooks, events] = await Promise.all([
       countCollection("devices"),
       countCollection("linkedDevices"),
       countCollection("webhooks"),
@@ -52,8 +37,7 @@ export async function GET() {
     ]);
 
     return NextResponse.json({
-      users,         // null if Auth permissions missing
-      devices,
+      users,
       linkedDevices,
       webhooks,
       events,

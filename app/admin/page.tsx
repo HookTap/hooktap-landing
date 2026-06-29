@@ -3,8 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 interface Stats {
-  users: number | null;
-  devices: number;
+  users: number;
   linkedDevices: number;
   webhooks: number;
   events: number;
@@ -17,7 +16,7 @@ function StatCard({
   icon,
 }: {
   label: string;
-  value: number | null | undefined;
+  value: number | undefined;
   icon: string;
 }) {
   return (
@@ -26,8 +25,6 @@ function StatCard({
       <p className="text-4xl font-bold tabular-nums">
         {value === undefined ? (
           <span className="loading loading-dots loading-sm" />
-        ) : value === null ? (
-          <span className="text-base-content/30">?</span>
         ) : (
           value.toLocaleString()
         )}
@@ -177,15 +174,10 @@ export default function AdminPage() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <StatCard label="Registered Users" value={stats?.users ?? null} icon="👥" />
-          <StatCard label="iOS Devices" value={stats?.devices ?? null} icon="📱" />
-          <StatCard
-            label="Linked Mac Devices"
-            value={stats?.linkedDevices ?? null}
-            icon="💻"
-          />
-          <StatCard label="Webhooks" value={stats?.webhooks ?? null} icon="🎣" />
-          <StatCard label="Total Events" value={stats?.events ?? null} icon="📨" />
+          <StatCard label="iOS Users" value={stats?.users} icon="👥" />
+          <StatCard label="Linked Mac Devices" value={stats?.linkedDevices} icon="💻" />
+          <StatCard label="Webhooks" value={stats?.webhooks} icon="🎣" />
+          <StatCard label="Total Events" value={stats?.events} icon="📨" />
         </div>
       </div>
     </div>
